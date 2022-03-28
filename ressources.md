@@ -15,3 +15,7 @@
 >[read more about seeded watershed algorithm](https://www.youtube.com/watch?v=VChBuGZro9s)
 >
 >[example with opencv](https://docs.opencv.org/4.x/d3/db4/tutorial_py_watershed.html)
+
+## [BLOOD CELL IMAGE SEGMENTATION AND COUNTING](https://www.researchgate.net/publication/50984930_BLOOD_CELL_IMAGE_SEGMENTATION_AND_COUNTING)
+>
+>[citation](ressources\bibtex\patil2014blood.bib)
