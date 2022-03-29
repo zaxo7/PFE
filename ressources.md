@@ -19,3 +19,16 @@
 ## [BLOOD CELL IMAGE SEGMENTATION AND COUNTING](https://www.researchgate.net/publication/50984930_BLOOD_CELL_IMAGE_SEGMENTATION_AND_COUNTING)
 >
 >[citation](ressources\bibtex\patil2014blood.bib)
+
+## [Segmentation and Counting of WBCs and RBCs from Microscopic Blood Sample Images](https://j.mecs-press.net/ijigsp/ijigsp-v8-n11/IJIGSP-V8-N11-5.pdf)
+
+> an article from 2016, they are segmenting and counting RBC (red blood cells), WBC (White blood cells) and platelets using the are using the Otsu's thresholding for segmentation and for the counting the are comparing two methods: \
+the watershed algorithm and Circular Hough Transform.
+>
+>[citation](ressources/bibtex/bhavnani2016segmentation.bib)
+
+## [A novel approach for segmentation and counting of overlapped leukocytes in microscopic blood images](https://sci-hub.se/https://doi.org/10.1016/j.bbe.2020.02.005)
+
+>
+>
+>[citation](ressources/bibtex/S0208521620300267.bib)

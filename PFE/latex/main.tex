@@ -267,7 +267,7 @@
         \begin{mdframed}[style=MyFrame]
             \begin{center}
             \color{Black}
-              \Large{\textbf{La segmentation (Comptage) des cellules biologiques}}
+              \Large{\textbf{La segmentation et Comptage des cellules biologiques}}
 
               \Large{\textbf{dans images de microscope par apprentissage profond}}
             \end{center}
@@ -305,10 +305,12 @@
 \hspace*{0.16in}
 \end{changemargin}
 
+Le comptage de cellules est une tâche fastidieuse qui bénéficierait grandement de l'automatisation. Le comptage précis des cellules fournit des informations quantitatives essentielles et joue un rôle clé dans la recherche biologique ainsi que dans les applications industrielles et biomédicales. Malheureusement, la méthode de comptage manuel couramment utilisée demande beaucoup de temps, mal standardisée et n'est pas reproductible. La tâche est rendue encore plus difficile par le chevauchement des cellules. la mauvaise qualité de l'imagerie ... , nous décrivons ici un réseau de neurones convolutionnel qui vas segmenter les cellules comme une première phase, et les compter dans la seconde phase.
+
 \vspace{1in}
 
 \begin{changemargin}{0.9cm}{0.9cm}
-Mots clés :
+Mots clés : CNN, Comptage des cellules, segmentation d'image
 \end{changemargin}
 
 \newpage
@@ -327,12 +329,15 @@ Mots clés :
 \cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{Abstract}}{}
 \begin{changemargin}{0.9cm}{0.9cm}
 \hspace*{0.16in}
+
+Cell counting is a tedious task that would benefit greatly from automation. Accurate cell counting provides essential quantitative information and plays a key role in biological research as well as industrial and biomedical applications. Unfortunately, the commonly used manual counting method is time consuming, poorly standardized and not reproducible. The task is made even more difficult by overlapping cells and poor imaging quality. In this paper we describe a convolutional neural network that will segment the cells as a first phase, and count them in the second phase.
+
 \end{changemargin}
 
 \vspace{1in}
 
 \begin{changemargin}{0.9cm}{0.9cm}
-Keywords:
+Keywords: CNN, cell segmentation, cell counting, convolutional neural networks
 \end{changemargin}
 
 \newpage
@@ -390,13 +395,7 @@ Keywords:
 
 \newpage
 
-\section{Introduction}
-\vspace{0.2in}
-\hspace*{0.16in}
-
-\section{Conclusion}
-\vspace{0.1in}
-\hspace*{0.16in}
+\input{./chap1.tex}
 
 \newpage
 
