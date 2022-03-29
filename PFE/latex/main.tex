@@ -1,0 +1,465 @@
+\documentclass[12pt]{report}
+
+\usepackage{setspace}
+\renewcommand{\baselinestretch}{1.5}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[table,xcdraw,dvipsnames]{xcolor}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{titling}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{caption}
+%\usepackage[a4paper,margin=0.5in]{geometry}
+\usepackage[a4paper,%
+            left=2cm,right=2cm,top=1cm,bottom=1cm,%
+            footskip=.25in]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[none]{hyphenat}
+\usepackage[hidelinks]{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\useunder{\uline}{\ul}{}
+
+% No hyphenation (word wrapping) with text justification
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+% Replace table caption name
+\usepackage{caption}
+\captionsetup[table]{name=Tableau}
+
+% For toc, lot and lof
+\usepackage[titles]{tocloft}
+
+% For liste of figures and tables!
+\graphicspath{{figures/}}
+\usepackage{array}
+
+% Disable auto indentation globally
+\setlength{\parindent}{0pt}
+
+% Font options
+\usepackage{mathptmx}
+%\usepackage{tgtermes}
+%\usepackage{tgpagella}
+%\usepackage{helvet}
+%\usepackage{tgbonum}
+
+% fancy logo for page numbers!
+\usepackage{fancyhdr,blindtext,tikz}
+\usepackage{lastpage,refcount}
+
+% Box frame for figures #\fbox{}
+\setlength{\fboxsep}{0pt}
+\setlength{\fboxrule}{2pt}
+
+% Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage[Conny]{fncychap}
+
+% Redifining from 0.1 to 1 ... 2 ... and so on
+\renewcommand{\thesection}{\arabic{section}}
+
+% Renaming Bibliography name
+\renewcommand\bibname{Bibliographie}
+
+% Bibliography styling
+\bibliographystyle{plain}
+
+% Redifining from 1.1 to 1.a ... 1.b ... and so on
+%\renewcommand{\thesubsection}{\alph{subsection}}
+
+% Part rules
+\titlecontents{part}[1em]
+{\vskip 0.5ex}%
+{}% numbered sections formatting
+{\itshape\scshape}% unnumbered sections formatting
+{}%
+
+% Chapter rules
+\titlecontents{chapter}[1em]
+{\vskip 0.5ex}%
+{}% numbered sections formatting
+{\itshape\scshape}% unnumbered sections formatting
+{\titlerule*[0.3pc]{.}\contentspage}%
+
+% Section rules
+\titlecontents{section}[1em]
+{\vskip 0.2ex}%
+{\hspace{0.15in}\contentslabel{0.13in}.\hspace{0.1in}}% numbered sections formatting
+{\itshape}% unnumbered sections formatting
+{\titlerule*[0.3pc]{.}\contentspage}%
+
+% Subsection rules
+\titlecontents{subsection}[3.5em]
+{}%
+{\contentslabel{0.10in}\hspace{0.25in}}% numbered sections formatting
+{}% unnumbered sections formatting
+{\titlerule*[0.3pc]{.}\contentspage}%
+
+% Custom colors!
+\definecolor{MYCOL}{HTML}{00318A}
+
+% List of Figures settings:
+\renewcommand{\listfigurename}{Liste Des Figures}
+\renewcommand{\cftloftitlefont}{\vspace*{-0.6in}\hfill\color{Black}\fontsize{35}{43}\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill}
+\setlength{\cftfigindent}{0pt} % left aligned Fig entries
+\renewcommand{\cftfigpresnum}{Figure } % put before the number
+\renewcommand{\cftfigaftersnum}{:} % put before the number
+\addtolength{\cftfignumwidth}{2.5em} % extra space for \cftpresnum
+
+% List of Tables settings:
+\renewcommand{\listtablename}{Liste Des Tableaux}
+\renewcommand{\cftlottitlefont}{\vspace*{-0.6in}\hfill\color{Black}\fontsize{35}{43}\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
+\setlength{\cfttabindent}{0pt} % left aligned Tab entries
+\renewcommand{\cfttabpresnum}{Tableau } % put before the number
+\renewcommand{\cfttabaftersnum}{:} % put before the number
+\addtolength{\cfttabnumwidth}{2.5em} % extra space for \cftpresnum
+
+% Table of contents settings:
+\renewcommand{\contentsname}{Table Des Matières}
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+% For the box (theme)
+\mdfdefinestyle{MyFrame}{%
+    linecolor=black,
+    outerlinewidth=2pt,
+    roundcorner=0pt,
+    innertopmargin=13pt,
+    innerbottommargin=13pt,
+    innerrightmargin=20pt,
+    innerleftmargin=20pt,
+    backgroundcolor=gray!10!white}
+
+
+% My custom page style
+\fancypagestyle{myfancy}{%   
+   \fancyhf{}%
+   \fancyfoot[C]{\tikz[baseline={(0,0)},anchor=center] \node[label={center:\thepage}]{\includegraphics[scale=.037]{../images/cloud.png}};}%
+   \renewcommand{\headrulewidth}{0pt}%
+   \renewcommand{\footrulewidth}{0pt}%
+   \fancyhead{}
+   \fancyfoot{}
+   \fancyfoot[C]{\vspace{-0.35in}\textcolor{Gray}{\Large{Page}}\hspace{0.04in} \large{\thepage}\hspace{0.07in}\large{|}\hspace{0.07in}\large{\pageref{LastPage}}}
+}%
+\pagestyle{empty}
+
+% Custom environment
+\newenvironment{changemargin}[2]{%
+\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{#1}%
+\setlength{\rightmargin}{#2}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{\parskip}%
+}%
+\item[]}{\end{list}}
+
+% 'myfancy' page styling is also applied on chapters!
+\usepackage{etoolbox}
+\patchcmd{\chapter}{\thispagestyle{empty}}{\thispagestyle{myfancy}}{}{}
+
+\titleformat{\chapter}
+{\centering\fontsize{40}{50}\bfseries\color{Black}\scshape}
+{}
+{}
+{\vspace{-1.7in}{\color{Black} \rule{\linewidth}{1.2mm} }}[\vspace{-0.35in}{\color{Black} \rule{\linewidth}{1.2mm} }\vspace{-1in}]
+
+\titleformat{\section}
+{\Large\bfseries\color{Black}}
+{\thesection.\hspace{0.08in}}
+{0em}
+{}[\titlerule]
+
+\titleformat{\subsection}
+{\large\bfseries\color{Black}}
+{\hspace{0.25in}\thesubsection\hspace{0.08in}}
+{0em}
+{}[]
+
+\titleformat{\subsubsection}
+{\bfseries\large}
+{\hspace{0.40in}}
+{0em}
+{}[]
+
+\newenvironment{myindentpar}[1]%
+  {\begin{list}{}%
+          {\setlength{\leftmargin}{#1}}%
+          \item[]%
+  }
+  {\end{list}}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{titlepage}
+
+   \begin{tikzpicture}[remember picture, overlay]
+      \draw[line width = 2pt] ($(current page.north west) + (0.25in,-0.25in)$) rectangle ($(current page.south east) + (-0.25in,0.25in)$);
+   \end{tikzpicture}
+
+   \begin{center}
+       \vspace*{-0.4in}
+
+       \begin{large}
+
+           République Algérienne Démocratique et Populaire
+
+           Ministère de l'Enseignement Supérieur et de la Recherche Scientifique
+
+           Université M'Hamed Bougara de Boumerdès
+
+       \end{large}
+
+       \vspace{0.1in}
+
+    \begin{figure}[h]
+    \centering
+        \includegraphics[width = 1.5in, height = 1in]{../images/UnivUMBB.jpg}
+    \end{figure}
+     \vspace*{-0.1in}
+    \large{Faculté des Sciences}
+    \\
+    \vspace*{-0.1in}
+    \large{Département d'informatique}
+   \end{center}
+
+    \hspace{0.2in}
+    \large{\textbf{Domaine \,\; :}  Mathématiques Informatique}
+    \kern 1in
+    \large{\textbf{Année universitaire :}}
+
+    \hspace{0.2in}
+    \large{\textbf{Filière \quad\,\,\, :}  Informatique}
+    \kern 2.65in
+    2021 / 2022
+
+    \hspace{0.2in}
+    \large{\textbf{Spécialité \, :}  Technologie de l'information}
+
+    \begin{center}
+        \begin{large}
+
+            \vspace{0.1in}
+
+            \textit{\textbf{\uline{Projet fin d'étude}}}
+        
+        \end{large}
+
+        \vspace{0.3in}
+
+        \textit{\Huge{\textbf{\uline{Thème}}}}
+
+        \vspace{0.2in}
+
+        \begin{mdframed}[style=MyFrame]
+            \begin{center}
+            \color{Black}
+              \Large{\textbf{La segmentation (Comptage) des cellules biologiques}}
+
+              \Large{\textbf{dans images de microscope par apprentissage profond}}
+            \end{center}
+        \end{mdframed}
+    \end{center}
+
+    \vspace{0.4in}
+
+    \hspace{0.2in}
+    \textit{\textbf{Présenté par :}}
+
+    \hspace{0.2in}
+    Gharbi Aghiles
+
+    \hspace{0.2in}
+    Neggazi Mohamed Lamine
+
+\end{titlepage}
+
+\newpage
+
+\vspace*{0.2in}
+
+\thispagestyle{empty}
+
+\begin{center}
+    {\color{Black} \rule{3in}{1.4mm} }\\
+    \vspace{0.1in}
+    \scshape{\fontsize{34}{46}{\bfseries{\color{Black}{Résumé}}}}
+    \\
+    \vspace{0.6in}
+\end{center}
+\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{Résumé}}{}
+\begin{changemargin}{0.9cm}{0.9cm}
+\hspace*{0.16in}
+\end{changemargin}
+
+\vspace{1in}
+
+\begin{changemargin}{0.9cm}{0.9cm}
+Mots clés :
+\end{changemargin}
+
+\newpage
+
+\vspace*{0.2in}
+
+\thispagestyle{empty}
+
+\begin{center}
+    {\color{Black} \rule{3in}{1.4mm} }\\
+    \vspace{0.1in}
+    \scshape{\fontsize{34}{46}{\bfseries{\color{Black}{Abstract}}}}
+    \\
+    \vspace{0.6in}
+\end{center}
+\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{Abstract}}{}
+\begin{changemargin}{0.9cm}{0.9cm}
+\hspace*{0.16in}
+\end{changemargin}
+
+\vspace{1in}
+
+\begin{changemargin}{0.9cm}{0.9cm}
+Keywords:
+\end{changemargin}
+
+\newpage
+
+\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{Table des matières}}{}
+\tableofcontents
+
+\newpage
+
+\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{Liste des figures}}{}
+\listoffigures
+
+\newpage
+
+\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{Liste des tableaux}}{}
+\listoftables
+
+\addtocontents{toc}{\protect\renewcommand{\protect\cftsecleader}{\protect\cftdotfill{\protect\cftsecdotsep}}}
+
+\addtocontents{lof}{\protect\thispagestyle{empty}}
+\addtocontents{lot}{\protect\thispagestyle{empty}}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+
+\newpage
+
+\pagestyle{myfancy}
+
+\vspace*{-0.2in}
+
+\setcounter{page}{1}
+
+\begin{center}
+    {\color{Black} \rule{6.2in}{1.4mm} }\\
+    \vspace{0.1in}
+    \scshape{\fontsize{34}{46}{\bfseries{\color{Black}{Introduction générale}}}}
+    \\
+    \vspace{0.5in}
+\end{center}
+\addcontentsline{toc}{chapter}{\vspace{-0.12in}\color{Black}{Introduction générale}}
+\hspace*{0.16in}
+
+\newpage
+
+\vspace*{\fill}
+\begin{center}
+    {\color{Black} \rule{\linewidth}{1.2mm} }\\
+\vspace{0.25in}
+ {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapitre I : Etat de l'art}}}}}
+\vspace{0.35in}\\
+    {\color{Black} \rule{\linewidth}{1.2mm} }
+\end{center}
+\vspace*{\fill}
+\addcontentsline{toc}{chapter}{\color{Black}{Chapitre I : Etat de l'art}}
+\setcounter{section}{0}
+
+\newpage
+
+\section{Introduction}
+\vspace{0.2in}
+\hspace*{0.16in}
+
+\section{Conclusion}
+\vspace{0.1in}
+\hspace*{0.16in}
+
+\newpage
+
+\vspace*{\fill}
+\begin{center}
+    {\color{Black} \rule{\linewidth}{1.2mm} }\\
+\vspace{0.25in}
+    {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapitre II : Analyse et Conception}}}}}
+\vspace{0.35in}\\
+    {\color{Black} \rule{\linewidth}{1.2mm} }
+\end{center}
+\vspace*{\fill}
+\addcontentsline{toc}{chapter}{\color{Black}{Chapitre II : Analyse et Conception}}
+\setcounter{section}{0}
+
+\newpage
+
+\section{Introduction}
+\hspace*{0.16in}
+
+\section{Conclusion}
+\hspace*{0.16in}
+
+\newpage
+
+\vspace*{\fill}
+\begin{center}
+    {\color{Black} \rule{\linewidth}{1.2mm} }\\
+\vspace{0.25in}
+    {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapitre III : Implémentation}}}}}
+\vspace{0.35in}\\
+    {\color{Black} \rule{\linewidth}{1.2mm} }
+\end{center}
+\vspace*{\fill}
+\addcontentsline{toc}{chapter}{\color{Black}{Chapitre III : Implémentation}}
+\setcounter{section}{0}
+
+\newpage
+
+\section{Introduction}
+\vspace{0.2in}
+\hspace*{0.16in}
+
+\section{Conclusion}
+\vspace{0.1in}
+\hspace*{0.16in}
+
+\newpage
+
+\vspace*{-0.2in}
+
+\begin{center}
+    {\color{Black} \rule{5.5in}{1.4mm} }\\
+    \vspace{0.1in}
+    \scshape{\fontsize{34}{46}{\bfseries{\color{Black}{Conclusion générale}}}}
+    \\
+    \vspace{0.5in}
+\end{center}
+\addcontentsline{toc}{chapter}{\vspace{-0.12in}\color{Black}{Conclusion générale}}
+\hspace*{0.16in}
+
+\newpage
+
+% \bibliography{rapport}
+
+\end{document}
