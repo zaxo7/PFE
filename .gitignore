@@ -1,3 +1,4 @@
 PFE/latex/*
 !PFE/latex/*.tex
+!PFE/latex/*.bib
 PFE/.olauth
