@@ -1,3 +1,11 @@
-latex/*
-!latex/*.tex
-!latex/*.bib
+latex/*.log
+latex/*.aux
+latex/*.bbl
+latex/*.blg
+latex/*.lof
+latex/*.lot
+latex/*.out
+latex/*.pdf
+latex/*.toc
+
+
