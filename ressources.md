@@ -17,8 +17,11 @@
 >[example with opencv](https://docs.opencv.org/4.x/d3/db4/tutorial_py_watershed.html)
 
 ## [BLOOD CELL IMAGE SEGMENTATION AND COUNTING](https://www.researchgate.net/publication/50984930_BLOOD_CELL_IMAGE_SEGMENTATION_AND_COUNTING)
+> V.KIMBAHUNE and al have developed a method for segmenting and counting red blood cells (RBC) and white blood cells (WBC).
 >
->[citation](ressources\bibtex\patil2014blood.bib)
+> segmentation is done using Pulse-Coupled Neural Network (PCNN) and square tracing algorithm for countour tracing after de-noising it with PCNN + median filter, the counting is performed by scaning the image and using edge detection method. this method gave good results compared to state of art methods.
+>
+>[citation](ressources/bibtex/citation-50984930.bib)
 
 ## [Segmentation and Counting of WBCs and RBCs from Microscopic Blood Sample Images](https://j.mecs-press.net/ijigsp/ijigsp-v8-n11/IJIGSP-V8-N11-5.pdf)
 
