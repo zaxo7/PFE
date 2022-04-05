@@ -43,12 +43,14 @@ abnormalities.
 
 ## Books
 
-### [Advances in Intelligent Data Analysis XVIII](https://link.springer.com/content/pdf/10.1007/978-3-030-44584-3.pdf)
+### [Advances in Intelligent Data Analysis XVIII _ DO-U-Net](https://link.springer.com/content/pdf/10.1007/978-3-030-44584-3.pdf)
 
 > this book contains a chapter about segmenting and counting objects from stelite data and medical images (DO-U-Net for Segmentation and Counting Applications to Satellite and Medical Images) from page 390
 >
 > the chapter talks about segmentation and counting IDP(Internally Displaced people) and erythrocytes (red blood cells) using DO-U-Net (Dual Output U-Net), the model trains on extremely small datasets (10 images !!!) and gives a high segmentation accurancy, for the IDP they had 98.69% for fixed resolution images and 94.66% for scale-invariant satelite images.
 >
 > for the erythrocytes they had 99.07% accurancy which is an exelent result.
+>
+> [citation](ressources/bibtex/10.1007_978-3-030-44584-3_31-citation.bib)
 >
 > [DO-U-Net source code](https://github.com/ToyahJade/DO-U-Net)
