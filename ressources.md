@@ -41,6 +41,12 @@ abnormalities.
 >
 >[citation](ressources/bibtex/S0208521620300267.bib)
 
+### [Blood Cell Count Using Deep Learning Semantic Segmentation](https://www.preprints.org/manuscript/201909.0075/v1)
+
+> 
+>
+> [citation](ressources/bibtex/tran2019blood.bib)
+
 ## Books
 
 ### [Advances in Intelligent Data Analysis XVIII _ DO-U-Net](https://link.springer.com/content/pdf/10.1007/978-3-030-44584-3.pdf)
