@@ -43,7 +43,7 @@ abnormalities.
 
 ### [Blood Cell Count Using Deep Learning Semantic Segmentation](https://www.preprints.org/manuscript/201909.0075/v1)
 
-> 
+>
 >
 > [citation](ressources/bibtex/tran2019blood.bib)
 
@@ -60,3 +60,10 @@ abnormalities.
 > [citation](ressources/bibtex/10.1007_978-3-030-44584-3_31-citation.bib)
 >
 > [DO-U-Net source code](https://github.com/ToyahJade/DO-U-Net)
+
+## Databases
+
+### [ALL-IDB: the Acute Lymphoblastic Leukemia Image DataBase for Image Processing](https://ieeexplore.ieee.org/abstract/document/6115881?casa_token=CFqAjNox2i8AAAAA:En2kA58ZJb8IGEVa4-RgmbnbcoKZ5mjrb3AClgq3rhOFD1x0ZZwlnuLBZzVh8FBioU1THQfwcD1PJRo)
+
+>
+>[citation](ressources/bibtex/labati2011all.bib)
