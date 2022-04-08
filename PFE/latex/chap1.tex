@@ -28,7 +28,7 @@ This approach achieved a relatively good accuracy of 95\% but with some failure 
   \item bad focal planes.
 \end{itemize}
 
-Tran, Thanh and Minh et al \textsuperscript{\cite{DBLP:journals/corr/abs-1802-10548}} have developed a method for segmenting and counting RBC and WBCs by using the SegNet model with weights from a pre-trained VGG-16 model, for the counting they first apply Distance transform with 4 different distance metrics, then they apply binary dilation. At the End, they apply the connected component labeling algorithm to count the number of separated cells in images mask. the model had an accuracy of 89\%.
+Tran, Thanh and Minh et al \textsuperscript{\cite{tran2019blood}} have developed a method for segmenting and counting RBC and WBCs by using the SegNet model with weights from a pre-trained VGG-16 model, for the counting they first apply Distance transform with 4 different distance metrics, then they apply binary dilation. At the End, they apply the connected component labeling algorithm to count the number of separated cells in images mask. the model had an accuracy of 89\%.\\
 
 K. Sudha and P. Geetha \textsuperscript{\cite{SUDHA2020639}} have developed a two stage framework which will segment the leukocytes (a type of WBC) with an edge strength-based Grabcut method as a first stage, in the second stage will count the cells using the novel gradient circular hough transform (GCHT) method. the new GCHT method can segment touched cells and even overlapped cells.\\
 
