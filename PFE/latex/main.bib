@@ -13,7 +13,46 @@ pages="391--403",
 abstract="Many image analysis tasks involve the automatic segmentation and counting of objects with specific characteristics. However, we find that current approaches look to either segment objects or count them through bounding boxes, and those methodologies that both segment and count struggle with co-located and overlapping objects. This restricts our capabilities when, for example, we require the area covered by particular objects as well as the number of those objects present, especially when we have a large amount of images to obtain this information for. In this paper, we address this by proposing a Dual-Output U-Net. DO-U-Net is an Encoder-Decoder style, Fully Convolutional Network (FCN) for object segmentation and counting in image processing. Our proposed architecture achieves precision and sensitivity superior to other, similar models by producing two target outputs: a segmentation mask and an edge mask. Two case studies are used to demonstrate the capabilities of DO-U-Net: locating and counting Internally Displaced People (IDP) tents in satellite imagery, and the segmentation and counting of erythrocytes in blood smears. The model was demonstrated to work with a relatively small training dataset, achieving a sensitivity of 98.69{\%} for IDP camps of the fixed resolution, and 94.66{\%} for a scale-invariant IDP model. DO-U-Net achieved a sensitivity of 99.07{\%} on the erythrocytes dataset. DO-U-Net has a reduced memory footprint, allowing for training and deployment on a machine with a lower to mid-range GPU, making it accessible to a wider audience, including non-governmental organisations (NGOs) providing humanitarian aid, as well as health care organisations.",
 isbn="978-3-030-44584-3"
 }
-﻿@Article{Kouzehkanan2022,
+
+@article{DBLP:journals/corr/abs-1802-10548,
+  author    = {Carlos X. Hern{\'{a}}ndez and
+               Mohammad M. Sultan and
+               Vijay S. Pande},
+  title     = {Using Deep Learning for Segmentation and Counting within Microscopy
+               Data},
+  journal   = {CoRR},
+  volume    = {abs/1802.10548},
+  year      = {2018},
+  url       = {http://arxiv.org/abs/1802.10548},
+  eprinttype = {arXiv},
+  eprint    = {1802.10548},
+  timestamp = {Mon, 13 Aug 2018 16:46:54 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-1802-10548.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{bhavnani2016segmentation,
+  title={Segmentation and counting of WBCs and RBCs from microscopic blood sample images},
+  author={Bhavnani, Lata A and Jaliya, Udesang K and Joshi, Mahasweta J},
+  journal={International Journal of Image, Graphics and Signal Processing},
+  volume={8},
+  number={11},
+  pages={32},
+  year={2016},
+  publisher={Modern Education and Computer Science Press}
+}
+
+@article{kimbahune2011blood,
+  title={Blood cell image segmentation and counting},
+  author={Kimbahune, Vinod V and Uke, NJ},
+  journal={Inter J Engineer Sci Tech},
+  volume={3},
+  number={3},
+  pages={2448--2453},
+  year={2011}
+}
+
+@Article{Kouzehkanan2022,
 author={Kouzehkanan, Zahra Mousavi
 and Saghari, Sepehr
 and Tavakoli, Sajad
@@ -37,65 +76,8 @@ abstract={Accurate and early detection of anomalies in peripheral white blood ce
 issn={2045-2322},
 doi={10.1038/s41598-021-04426-x},
 url={https://doi.org/10.1038/s41598-021-04426-x}
-}@article{SUDHA2020639,
-title = {A novel approach for segmentation and counting of overlapped leukocytes in microscopic blood images},
-journal = {Biocybernetics and Biomedical Engineering},
-volume = {40},
-number = {2},
-pages = {639-648},
-year = {2020},
-issn = {0208-5216},
-doi = {https://doi.org/10.1016/j.bbe.2020.02.005},
-url = {https://www.sciencedirect.com/science/article/pii/S0208521620300267},
-author = {K. Sudha and P. Geetha},
-keywords = {Leukocytes, Microscopic blood images, Edge strength, Grabcut technique, Gradient circular hough transform},
-abstract = {Leukocytes count in the blood smear images plays an important role in identifying the overall health of the patient. The major steps involved in leukocytes counting system are segmentation and counting. However, the counting accuracy is greatly affected due to the morphological diversity of cells, the presence of staining artifacts and the overlapped cells. Therefore, this paper introduces a new framework to segment and counting of leukocytes. To segment leukocytes, an edge strength-based Grabcut method has been proposed. Later, the leukocyte region including the overlapped cells was counted using the novel gradient circular hough transform (GCHT) method. The research work was performed on ALL-IDB and Cellavision datasets. The proposed segmentation method has yielded high precision, recall and f-measure compared to the state-of-the-art methods. Additionally, comparison analysis was performed between the region count obtained using the existing and the GCHT method. The overall experimental results of the work showed that the proposed framework produced more accuracy in counting the leukocytes.}
 }
-@article{Zheng2018,
-  title={Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning},
-  author={Xin Zheng and Yong Wang and Guoyou Wang and Jianguo Liu},
-  journal={Micron},
-  volume={107},
-  pages={55--71},
-  year={2018},
-  publisher={Elsevier}
-  doi={https://doi.org/10.1016/j.micron.2018.01.010},
-  url={https://www.sciencedirect.com/science/article/pii/S0968432817303037}
-}@article{DBLP:journals/corr/abs-1802-10548,
-  author    = {Carlos X. Hern{\'{a}}ndez and
-               Mohammad M. Sultan and
-               Vijay S. Pande},
-  title     = {Using Deep Learning for Segmentation and Counting within Microscopy
-               Data},
-  journal   = {CoRR},
-  volume    = {abs/1802.10548},
-  year      = {2018},
-  url       = {http://arxiv.org/abs/1802.10548},
-  eprinttype = {arXiv},
-  eprint    = {1802.10548},
-  timestamp = {Mon, 13 Aug 2018 16:46:54 +0200},
-  biburl    = {https://dblp.org/rec/journals/corr/abs-1802-10548.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
-@article{bhavnani2016segmentation,
-  title={Segmentation and counting of WBCs and RBCs from microscopic blood sample images},
-  author={Bhavnani, Lata A and Jaliya, Udesang K and Joshi, Mahasweta J},
-  journal={International Journal of Image, Graphics and Signal Processing},
-  volume={8},
-  number={11},
-  pages={32},
-  year={2016},
-  publisher={Modern Education and Computer Science Press}
-}
-@article{kimbahune2011blood,
-  title={Blood cell image segmentation and counting},
-  author={Kimbahune, Vinod V and Uke, NJ},
-  journal={Inter J Engineer Sci Tech},
-  volume={3},
-  number={3},
-  pages={2448--2453},
-  year={2011}
-}
+
 @inproceedings{labati2011all,
   title={All-IDB: The acute lymphoblastic leukemia image database for image processing},
   author={Labati, Ruggero Donida and Piuri, Vincenzo and Scotti, Fabio},
@@ -114,6 +96,7 @@ abstract = {Leukocytes count in the blood smear images plays an important role i
   pages={637--637},
   year={2012}
 }
+
 @article{Kong:20,
 author = {Yan Kong and Hui Li and Yongyong Ren and Georgi Z. Genchev and Xiaolei Wang and Hongyu Zhao and Zhiping Xie and Hui Lu},
 journal = {OSA Continuum},
@@ -129,6 +112,7 @@ url = {http://opg.optica.org/osac/abstract.cfm?URI=osac-3-4-982},
 doi = {10.1364/OSAC.388082},
 abstract = {Yeast fluorescence microscopic images are widely used to observe the living conditions and survival of yeast cells under experimental conditions. Accurate cell counting provides key quantitative feedback and plays key roles in biological research as well as in industrial and biomedical applications. Unfortunately, the commonly used manual counting method is time-intensive, poorly standardized, and non-reproducible. Here, we developed a two-stage framework using parallel modified U-Nets together with seed guided water-mesh algorithm for automatic segmentation and yeast cells counting. The proposed framework was tested with independent images, of which the ground truth of yeast cell number and locations was done by skilled technicians. Our method improved cell counting by reducing bias and demonstrated a 99.35\% consistent recall rate of experienced manual counting, and decreased the time required from 5 minutes on average to only 5 seconds for each image.},
 }
+
 @article{patil2014blood,
   title={BLOOD CELL ANALYSIS USING IMAGE SEGMENTATION AND COUNTING},
   author={Patil, Shivani and Nikam, Vidya and Patil, Rajeshwari},
@@ -138,10 +122,38 @@ abstract = {Yeast fluorescence microscopic images are widely used to observe the
   pages={657--660},
   year={2014}
 }
+
+@article{SUDHA2020639,
+title = {A novel approach for segmentation and counting of overlapped leukocytes in microscopic blood images},
+journal = {Biocybernetics and Biomedical Engineering},
+volume = {40},
+number = {2},
+pages = {639-648},
+year = {2020},
+issn = {0208-5216},
+doi = {https://doi.org/10.1016/j.bbe.2020.02.005},
+url = {https://www.sciencedirect.com/science/article/pii/S0208521620300267},
+author = {K. Sudha and P. Geetha},
+keywords = {Leukocytes, Microscopic blood images, Edge strength, Grabcut technique, Gradient circular hough transform},
+abstract = {Leukocytes count in the blood smear images plays an important role in identifying the overall health of the patient. The major steps involved in leukocytes counting system are segmentation and counting. However, the counting accuracy is greatly affected due to the morphological diversity of cells, the presence of staining artifacts and the overlapped cells. Therefore, this paper introduces a new framework to segment and counting of leukocytes. To segment leukocytes, an edge strength-based Grabcut method has been proposed. Later, the leukocyte region including the overlapped cells was counted using the novel gradient circular hough transform (GCHT) method. The research work was performed on ALL-IDB and Cellavision datasets. The proposed segmentation method has yielded high precision, recall and f-measure compared to the state-of-the-art methods. Additionally, comparison analysis was performed between the region count obtained using the existing and the GCHT method. The overall experimental results of the work showed that the proposed framework produced more accuracy in counting the leukocytes.}
+}
+
 @article{tran2019blood,
   title={Blood cell count using deep learning semantic segmentation},
   author={Tran, Thanh and Minh, Lam Binh and Lee, Suk-Hwan and Kwon, Ki-Ryong},
   year={2019},
   publisher={Preprints}
+}
+
+@article{Zheng2018,
+  title={Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning},
+  author={Xin Zheng and Yong Wang and Guoyou Wang and Jianguo Liu},
+  journal={Micron},
+  volume={107},
+  pages={55--71},
+  year={2018},
+  publisher={Elsevier},
+  doi={https://doi.org/10.1016/j.micron.2018.01.010},
+  url={https://www.sciencedirect.com/science/article/pii/S0968432817303037}
 }
 
