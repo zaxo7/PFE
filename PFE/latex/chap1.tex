@@ -32,7 +32,17 @@ Tran, Thanh and Minh et al \textsuperscript{\cite{tran2019blood}} have developed
 
 K. Sudha and P. Geetha \textsuperscript{\cite{SUDHA2020639}} have developed a two stage framework which will segment the leukocytes (a type of WBC) with an edge strength-based Grabcut method as a first stage, in the second stage will count the cells using the novel gradient circular hough transform (GCHT) method. the new GCHT method can segment touched cells and even overlapped cells.\\
 
-Yan Kong et al \textsuperscript{\cite{Kong:20}} have developed a two-stage framework using parallel modified U-Nets together with seed guided water-mesh algorithm for automatic segmentation and yeast cells counting which is used to observe the living conditions and survival of yeast cells under experimental conditions. This method achieved a precision of over 96\% and a recall rate of 99.35\%.\\
+Yan Kong et al \textsuperscript{\cite{Kong:20}} have developed a two-stage framework using parallel modified U-Nets together with seed guided water-mesh algorithm for automatic segmentation and yeast cells counting which is used to observe the living conditions and survival of yeast cells under experimental conditions.
+
+The cell images used in this study were captured by Olympus IX83 (Olympus Life Sciences, Tokyo, Japan) inverted microscope. They manually selected 20 raw DIC (differential interference contrast) images which contained a number of yeast cells and the annotations were done manually by laboratory technicians, they then obtain 40 images, 20 masked annotation images and the other 20 is center annotation images of yeast cells.
+
+After spliting images into tiles of size 224x224 with a step stride of 65 and 33 pixels for the horizontal and vertical direction, respectively. They got 4360 raw image tiles and the corresponding center annotation and masked annotation images, from that set 3310 tiles were randomly selected as the training data set and rest was a validation set.
+
+The raw test DIC images used in this study were sized approximately 1002x1998 pixels, but they were resized into 1092x2084 pixels so that each DIC image could be split into a grid of 8x16 image blocks. The image blocks were then fed into modified U-Net.
+
+\newpage
+
+This method achieved a precision of over 96\% and an average recall rate of 99.35\%. however, there is a limitation using this approach, which is the detection of small objects.\\
 
 Overton, Toyah and Tucker, Allan \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} have developed a method about segmentation and counting IDP (Internally Displaced people) and erythrocytes (red blood cells) using DO-U-Net (Dual Output U-Net) which outputs a segmentation mask and an edge mask then they substract them to get rid of the overlapping and the touching problem, the model trains on extremely small datasets (10 images) and gives a high segmentation accuracy, for the IDP they had 98.69\% for fixed resolution images and 94.66\% for scale-invariant satellite images.\\
 
