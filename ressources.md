@@ -72,3 +72,23 @@ abnormalities.
 
 >
 > [citation](ressources/bibtex/ljosa2012annotated.bib)
+
+### [Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning](https://github.com/zxaoyou/segmentation_WBC)
+
+>
+> [citation](ressources/bibtex/Zheng2018.bib)
+>
+> [ack- tecom-cn](https://en.tecom-cn.com/)
+>
+> [ack - cellavision](https://blog.cellavision.com/)
+
+### [Touching-Cell-Dataset](https://github.com/zxaoyou/Touching-Cell-Dataset)
+
+>
+> [citation](ressources/bibtex/Zheng2018.bib)
+>
+> [ack - cellavision](https://blog.cellavision.com/)
+
+### [A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm](https://www.nature.com/articles/s41598-021-04426-x)
+>
+> [citation](ressources/bibtex/Kouzehkanan2022;bib)

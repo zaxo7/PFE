@@ -13,7 +13,31 @@ pages="391--403",
 abstract="Many image analysis tasks involve the automatic segmentation and counting of objects with specific characteristics. However, we find that current approaches look to either segment objects or count them through bounding boxes, and those methodologies that both segment and count struggle with co-located and overlapping objects. This restricts our capabilities when, for example, we require the area covered by particular objects as well as the number of those objects present, especially when we have a large amount of images to obtain this information for. In this paper, we address this by proposing a Dual-Output U-Net. DO-U-Net is an Encoder-Decoder style, Fully Convolutional Network (FCN) for object segmentation and counting in image processing. Our proposed architecture achieves precision and sensitivity superior to other, similar models by producing two target outputs: a segmentation mask and an edge mask. Two case studies are used to demonstrate the capabilities of DO-U-Net: locating and counting Internally Displaced People (IDP) tents in satellite imagery, and the segmentation and counting of erythrocytes in blood smears. The model was demonstrated to work with a relatively small training dataset, achieving a sensitivity of 98.69{\%} for IDP camps of the fixed resolution, and 94.66{\%} for a scale-invariant IDP model. DO-U-Net achieved a sensitivity of 99.07{\%} on the erythrocytes dataset. DO-U-Net has a reduced memory footprint, allowing for training and deployment on a machine with a lower to mid-range GPU, making it accessible to a wider audience, including non-governmental organisations (NGOs) providing humanitarian aid, as well as health care organisations.",
 isbn="978-3-030-44584-3"
 }
-@article{SUDHA2020639,
+﻿@Article{Kouzehkanan2022,
+author={Kouzehkanan, Zahra Mousavi
+and Saghari, Sepehr
+and Tavakoli, Sajad
+and Rostami, Peyman
+and Abaszadeh, Mohammadjavad
+and Mirzadeh, Farzaneh
+and Satlsar, Esmaeil Shahabi
+and Gheidishahran, Maryam
+and Gorgi, Fatemeh
+and Mohammadi, Saeed
+and Hosseini, Reshad},
+title={A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm},
+journal={Scientific Reports},
+year={2022},
+month={Jan},
+day={21},
+volume={12},
+number={1},
+pages={1123},
+abstract={Accurate and early detection of anomalies in peripheral white blood cells plays a crucial role in the evaluation of well-being in individuals and the diagnosis and prognosis of hematologic diseases. For example, some blood disorders and immune system-related diseases are diagnosed by the differential count of white blood cells, which is one of the common laboratory tests. Data is one of the most important ingredients in the development and testing of many commercial and successful automatic or semi-automatic systems. To this end, this study introduces a free access dataset of normal peripheral white blood cells called Raabin-WBC containing about 40,000 images of white blood cells and color spots. For ensuring the validity of the data, a significant number of cells were labeled by two experts. Also, the ground truths of the nuclei and cytoplasm are extracted for 1145 selected cells. To provide the necessary diversity, various smears have been imaged, and two different cameras and two different microscopes were used. We did some preliminary deep learning experiments on Raabin-WBC to demonstrate how the generalization power of machine learning methods, especially deep neural networks, can be affected by the mentioned diversity. Raabin-WBC as a public data in the field of health can be used for the model development and testing in different machine learning tasks including classification, detection, segmentation, and localization.},
+issn={2045-2322},
+doi={10.1038/s41598-021-04426-x},
+url={https://doi.org/10.1038/s41598-021-04426-x}
+}@article{SUDHA2020639,
 title = {A novel approach for segmentation and counting of overlapped leukocytes in microscopic blood images},
 journal = {Biocybernetics and Biomedical Engineering},
 volume = {40},
@@ -27,7 +51,17 @@ author = {K. Sudha and P. Geetha},
 keywords = {Leukocytes, Microscopic blood images, Edge strength, Grabcut technique, Gradient circular hough transform},
 abstract = {Leukocytes count in the blood smear images plays an important role in identifying the overall health of the patient. The major steps involved in leukocytes counting system are segmentation and counting. However, the counting accuracy is greatly affected due to the morphological diversity of cells, the presence of staining artifacts and the overlapped cells. Therefore, this paper introduces a new framework to segment and counting of leukocytes. To segment leukocytes, an edge strength-based Grabcut method has been proposed. Later, the leukocyte region including the overlapped cells was counted using the novel gradient circular hough transform (GCHT) method. The research work was performed on ALL-IDB and Cellavision datasets. The proposed segmentation method has yielded high precision, recall and f-measure compared to the state-of-the-art methods. Additionally, comparison analysis was performed between the region count obtained using the existing and the GCHT method. The overall experimental results of the work showed that the proposed framework produced more accuracy in counting the leukocytes.}
 }
-@article{DBLP:journals/corr/abs-1802-10548,
+@article{Zheng2018,
+  title={Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning},
+  author={Xin Zheng and Yong Wang and Guoyou Wang and Jianguo Liu},
+  journal={Micron},
+  volume={107},
+  pages={55--71},
+  year={2018},
+  publisher={Elsevier}
+  doi={https://doi.org/10.1016/j.micron.2018.01.010},
+  url={https://www.sciencedirect.com/science/article/pii/S0968432817303037}
+}@article{DBLP:journals/corr/abs-1802-10548,
   author    = {Carlos X. Hern{\'{a}}ndez and
                Mohammad M. Sultan and
                Vijay S. Pande},
