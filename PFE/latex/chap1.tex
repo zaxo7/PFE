@@ -5,20 +5,25 @@
 \section{Related Work}
 \vspace{0.2in}
 \hspace*{0.16in}
-Blood cell segmentation is the extraction of different blood cells from microscopic images. Blood cell counting is the process of counting the detected blood cells after segmentation. Many researchers have implemented methods for segmentation and counting of blood cells using different approach's. In this section we devise the methods according to the segmentation approach.\\
+Blood cell segmentation is the extraction of different blood cells from microscopic images. Blood cell counting is the process of counting the detected blood cells after segmentation. Many researchers have implemented methods for segmentation and counting of blood cells using different approach's. In this section we devise the methods according to the segmentation approach.
 
-\subsection{Image Processing Approach's}
+\subsection{Image Processing Approaches}
 
-Bhavnani et al \textsuperscript{\cite{bhavnani2016segmentation}} have developed a method for segmenting and counting RBC (red blood cells), WBC (White blood cells) and platelets which is also called complete blood count (CBC), by using Otsu’s thresholding and morphological operations as a segmentation method, and for counting the are preforming a comparison between two methods: the watershed algorithm and Circular Hough Transform. The model takes an RGB image as an input apply some processing steps then uses Otsu's Thresholding to extract RBC and WBC separately with different threshold values then apply the two algorithm to compare the results, the model has no image size constraint because it's based only on image processing techniques and needs a small database to select the threshold values for RBC and WBC in this article they used 20 images. In the Experiment phase they used ALLIDB Database which contains 108 images with 1712x1368 and 2592x1944 resolution.The CHT method is the best in terms of accuracy with 92.67\% but it has some weaknesses with overlapping cells and morphological abnormalities. In the other side the watershed method which is a little bit adapted with overlapping and touching cells had an accuracy of 91.07\%.\\
+Bhavnani et al. \textsuperscript{\cite{bhavnani2016segmentation}} have developed a method for segmenting and counting RBC (red blood cells), WBC (White blood cells) and platelets which is also called complete blood count (CBC), by using Otsu’s thresholding and morphological operations as a segmentation method, and for counting the are preforming a comparison between two methods: the watershed algorithm and Circular Hough Transform. The model takes an RGB image as an input apply some processing steps then uses Otsu's Thresholding to extract RBC and WBC separately with different threshold values then apply the two algorithm to compare the results, the model has no image size constraint because it's based only on image processing techniques and needs a small database to select the threshold values for RBC and WBC in this article they used 20 images. In the Experiment phase they used ALLIDB Database which contains 108 images with 1712x1368 and 2592x1944 resolution.The CHT method is the best in terms of accuracy with 92.67\% but it has some weaknesses with overlapping cells and morphological abnormalities. In the other side the watershed method which is a little bit adapted with overlapping and touching cells had an accuracy of 91.07\%.\\
+
+Guiliang, FENG et al. \textsuperscript{\cite{guiliang2016microscopic}} have a developed an algorithm that segments and counts cell images based on image definition, a Discrete Cosine Transform (DCT) is applied, which is proposed by N. Ahmed and Rao in 1974 \textsuperscript{\cite{ahmed1974discrete}}. Instead of the traditional watershed approach, the DCT method showed better results in comparison.
+
+However, there is a drawback to this approach, because this algorithm depends on image definition it relies on well focused images, consequently, when the images are out of focus the segmentation and counting is not reliable. But despite that drawback, it achieved a relatively high accuracy of over 90\% which is better that the watershed method.
 
 \newpage
-\subsection{Machine Learning Approach's}
 
-Kimbahune et al \textsuperscript{\cite{kimbahune2011blood}} have developed a method for segmenting and counting red blood cells (RBC) and white blood cells (WBC).
+\subsection{Machine Learning Approaches}
+
+Kimbahune et al. \textsuperscript{\cite{kimbahune2011blood}} have developed a method for segmenting and counting red blood cells (RBC) and white blood cells (WBC).
 segmentation is done using Pulse-Coupled Neural Network (PCNN) and square tracing algorithm for countour tracing after de-noising it with PCNN combined with median filter, the counting is performed by scanning the image and using edge detection methods as square tracing algorithm. this method gave good results compared to state of art methods.\\
 %this kimbahune article they didn't give any info about the database or the experimental results 
 
-Carlos X. Hern{\'{a}}ndez et al \textsuperscript{\cite{DBLP:journals/corr/abs-1802-10548}} have implemented a convolutional neural network (CNN) using a feature pyramid network (FPN) combined with a VGG style neural network for segmenting and counting of cells in a given microscopy image.
+Carlos X. Hern{\'{a}}ndez et al. \textsuperscript{\cite{DBLP:journals/corr/abs-1802-10548}} have implemented a convolutional neural network (CNN) using a feature pyramid network (FPN) combined with a VGG style neural network for segmenting and counting of cells in a given microscopy image.
 The dataset they used is BBBC005 \textsuperscript{\cite{ljosa2012annotated}} from Broad Institute's Bioimage Benchmark Collection, which consists of 9600 images and each image is 696x520 pixels but they were scaled down to 256x192 for the purposes of their experiment.
 
 Out of the total 9600 images only 600 of the images which have a corresponding mask were used for the FPN training. And 100 of those were used for fast prototyping and a standard of 80-20 train/test split for the final models.
@@ -33,7 +38,7 @@ This approach achieved a relatively good accuracy of 81.75\% but with some failu
   \item bad focal planes.
 \end{itemize}
 
-Tran, Thanh and Minh et al \textsuperscript{\cite{tran2019blood}} have developed a method for segmenting and counting RBC and WBCs by using the SegNet model initialised with weights from a pre-trained VGG-16 model, for the counting they first apply Distance transform with 4 different distance metrics, then they apply binary dilation. At the End, they apply the connected component labeling algorithm to count the number of separated cells in images mask. for the training they used 42 images from ALL-IDB1 \textsuperscript{\cite{labati2011all}} after they cropped them to decrease the computation time and
+Tran, Thanh and Minh et al. \textsuperscript{\cite{tran2019blood}} have developed a method for segmenting and counting RBC and WBCs by using the SegNet model initialised with weights from a pre-trained VGG-16 model, for the counting they first apply Distance transform with 4 different distance metrics, then they apply binary dilation. At the End, they apply the connected component labeling algorithm to count the number of separated cells in images mask. for the training they used 42 images from ALL-IDB1 \textsuperscript{\cite{labati2011all}} after they cropped them to decrease the computation time and
 memory usage and reduce the number of RBC compared to WBC the result images have a resolution of 360*480*3 (RGB), they used 29 images for training and 13 for testing ,the model had a segmentation accuracy of 89\% and counting accuracy of 93.3\% on RBC and accuracy of 100\% on WBC with the testing database which has the cropped images of RBC and WBC.\\
 On the first database with cropped images they had only few WBC but in this second database they have more WBC , the database 2 contains 108 only WBC images with the same size of database 1 360*480*3, they augmented the training dataset from 76 to 380 and used 32 images for testing, this second model focus only on the WBC which will increase the segmentation accuracy to 98.5\%, and have a counting accuracy of 97.29\%. The counting accuracy have decreased because of the clumped cells which is the weakness of this model.\\
 
@@ -42,7 +47,7 @@ After the experiments the proposed method had rached an avreage segmentation acc
 
 The new GCHT method can segment touched cells and even overlapped cells.\\
 
-Yan Kong et al \textsuperscript{\cite{Kong:20}} have developed a two-stage framework using parallel modified U-Nets together with seed guided water-mesh algorithm for automatic segmentation and yeast cells counting which is used to observe the living conditions and survival of yeast cells under experimental conditions.
+Yan Kong et al. \textsuperscript{\cite{Kong:20}} have developed a two-stage framework using parallel modified U-Nets together with seed guided water-mesh algorithm for automatic segmentation and yeast cells counting which is used to observe the living conditions and survival of yeast cells under experimental conditions.
 
 The cell images used in this study were captured by Olympus IX83 (Olympus Life Sciences, Tokyo, Japan) inverted microscope. They manually selected 20 raw DIC (differential interference contrast) images which contained a number of yeast cells and the annotations were done manually by laboratory technicians, they then obtain 40 images, 20 masked annotation images and the other 20 is center annotation images of yeast cells.
 
@@ -57,7 +62,6 @@ Overton, Toyah and Tucker, Allan \textsuperscript{\cite{10.1007/978-3-030-44584-
 \section{Comparative study}
 
 \input{tables/table1.tex}
-
 
 \section{Conclusion}
 \vspace{0.1in}

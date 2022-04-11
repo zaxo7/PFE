@@ -1,4 +1,11 @@
-PFE/latex/*
-!PFE/latex/*.tex
-!PFE/latex/*.bib
+PFE/latex/*.log
+PFE/latex/*.aux
+PFE/latex/*.bbl
+PFE/latex/*.blg
+PFE/latex/*.lof
+PFE/latex/*.lot
+PFE/latex/*.out
+PFE/latex/*.pdf
+PFE/latex/*.toc
+
 PFE/.olauth
