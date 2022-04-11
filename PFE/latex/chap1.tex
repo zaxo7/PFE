@@ -51,6 +51,32 @@ This method achieved a precision of over 96\% and an average recall rate of 99.3
 
 Overton, Toyah and Tucker, Allan \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} have developed a method which segments and counts IDP (Internally Displaced people) and erythrocytes (red blood cells) using DO-U-Net (Dual Output U-Net) which outputs a segmentation mask and an edge mask then they substract them to get rid of the overlapping and the touching problem, the model trains on extremely small datasets (10 images) and gives a high segmentation accuracy, They selected 10 images of 108 from ALL-IDB dataset for training the model, the model takes images with a resolution of 188x188 and outputs a segmentation mask and edge mask of lower resolution 100x100, the experiments results have given an accuracy of 98.31\% on a 5 randomly selected images from ALL-IDB, for the IDP they had 98.69\% for fixed resolution images and 94.66\% for scale-invariant satellite images.\\
 
+\section{Comparative study}
+
+\begin{table}[]
+\begin{adjustbox}{angle=0}
+\begin{tabular}{|l|cc|c|c|c|cc|}
+\hline
+\rowcolor[HTML]{9B9B9B} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{9B9B9B}\textbf{Reference}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}\textbf{Segmentation Approach}}                                                              & \textbf{Counting Approach}                                                                                 & \textbf{Input Image Size}                                          & \textbf{Database Name} & \textbf{Database Size}         & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}\textbf{Segmentation Accuracy}} & \textbf{Counting Accuracy}                                                              \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Kimbahune et al}                                         & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}PCNN}                                                                                        & Square tracing method                                                                                      & N/A                                                                & N/A                    & N/A                            & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}N/A}                            & \cellcolor[HTML]{9698ED}N/A                                                             \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Bhavnani et al}                                          & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}OTsu's thresholding \\ and morphological operations\end{tabular}} & \begin{tabular}[c]{@{}c@{}}1-Circular Hough Transfer\\ 2-Watershed Algorithm\end{tabular}                  & \begin{tabular}[c]{@{}c@{}}2594x1944 \\ and 1712x1368\end{tabular} & ALLIDB                 & 20 / 108                       & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}}                               & \cellcolor[HTML]{9698ED}\begin{tabular}[c]{@{}c@{}}1- 92.67\%\\ 2- 91.07\%\end{tabular} \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Carlos X. Hern{\'{a}}ndez et al}      & \multicolumn{2}{c|}{\cellcolor[HTML]{C0C0C0}FPN combined with VGG style neural network}                                                                                                                                                               & 256x196                                                            & BBBC005                & 80 / 20                        & \multicolumn{2}{c|}{\cellcolor[HTML]{C0C0C0}95\%}                                                                                                                     \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Tran, Thanh and Minh et al}                              & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}SegNet with weights from\\ a pre-trained VGG-16\end{tabular}}     & \begin{tabular}[c]{@{}c@{}}Distance Transform and \\ Connected component\\ labeling algorithm\end{tabular} & 360x480 (RGB)                                                      & ALL-IDB1               & aug. 76 -\textgreater 380 / 32 & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}98.5\%}                         & \cellcolor[HTML]{9698ED}97.29\%                                                         \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{K. Sudha and P. Geetha}                                  & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Edge strength-based Grabcut}                                                                 & Gradient Circular Hough Transform                                                                          & 256x256                                                            & ALL-IDB                &                                & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}99.32\%}                        & \cellcolor[HTML]{9698ED}97.3\%                                                          \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Yan Kong et al}                                          & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Two parallel modified U-Nets}                                                                & Seed Guided Water-Mesh Algorithm                                                                           & 224x224                                                            & Self Annotated         & 3310 / 1050                    & \multicolumn{2}{c|}{\cellcolor[HTML]{C0C0C0}96\%}                                                                                                                     \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Overton, Toyah and Tucker, Allan}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}DO-U-Net}                                                                                    & Marching Squares Algorithm                                                                                 & 188x188                                                            & ALL-IDB1               & 10 / 5                         & \multicolumn{2}{c|}{\cellcolor[HTML]{C0C0C0}98.31\%}                                                                                                                  \\ \hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
 \section{Conclusion}
 \vspace{0.1in}
 \hspace*{0.16in}
