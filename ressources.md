@@ -94,3 +94,5 @@ abnormalities.
 ### [A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm](https://www.nature.com/articles/s41598-021-04426-x)
 >
 > [citation](ressources/bibtex/Kouzehkanan2022;bib)
+
+### [BCCD dataset](https://github.com/Shenggan/BCCD_Dataset)
