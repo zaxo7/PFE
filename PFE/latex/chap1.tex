@@ -12,9 +12,12 @@ Bhavnani et al. \textsuperscript{\cite{bhavnani2016segmentation}} have developed
 
 Guiliang, FENG et al. \textsuperscript{\cite{guiliang2016microscopic}} have a developed an algorithm that segments and counts cell images based on image definition, a Discrete Cosine Transform (DCT) is applied, which is proposed by N. Ahmed and Rao in 1974 \textsuperscript{\cite{ahmed1974discrete}}. Instead of the traditional watershed approach, the DCT method showed better results in comparison.
 
-However, there is a drawback to this approach, because this algorithm depends on image definition it relies on well focused images, consequently, when the images are out of focus the segmentation and counting is not reliable. But despite that drawback, it achieved a relatively high accuracy of over 90\% which is better that the watershed method.
+However, there is a drawback to this approach, because this algorithm depends on image definition it relies on well focused images, consequently, when the images are out of focus the segmentation and counting is not reliable. But despite that drawback, it achieved a relatively high accuracy of over 90\% which is better that the watershed method. \\
 
-\newpage
+K. Sudha and P. Geetha \textsuperscript{\cite{SUDHA2020639}} have developed a two stage framework which will segment the leukocytes (a type of WBC) with an edge strength-based Grabcut method as a first stage, in the second stage will count the cells using the novel gradient circular hough transform (GCHT) method. the model takes and RGB image convert it to HSV color space to extract the S component where the WBCs are more clear then applies the edge strength-based location detection the results are fed to fine segmentation using Grabcut Algorithm which will output the edge segmentation mask, for the counting the mask will be fed to the proposed GCHT Algorithm. In the experiments phase they used ALL-IDB \textsuperscript{\cite{labati2011all}} and Cellavision \textsuperscript{\cite{Zheng2018}} datasets, after resising the images to 256x256.\\
+After the experiments the proposed method had rached an avreage segmentation accuracy of 99.32\% and a counting accuracy of 97.3\%.
+
+The new GCHT method can segment touched cells and even overlapped cells.\\
 
 \subsection{Machine Learning Approaches}
 
@@ -40,11 +43,6 @@ This approach achieved a relatively good accuracy of 81.75\% but with some failu
 Tran, Thanh and Minh et al. \textsuperscript{\cite{tran2019blood}} have developed a method for segmenting and counting RBC and WBCs by using the SegNet model initialised with weights from a pre-trained VGG-16 model, for the counting they first apply Distance transform with 4 different distance metrics, then they apply binary dilation. At the End, they apply the connected component labeling algorithm to count the number of separated cells in images mask. for the training they used 42 images from ALL-IDB1 \textsuperscript{\cite{labati2011all}} after they cropped them to decrease the computation time and
 memory usage and reduce the number of RBC compared to WBC the result images have a resolution of 360*480*3 (RGB), they used 29 images for training and 13 for testing ,the model had a segmentation accuracy of 89\% and counting accuracy of 93.3\% on RBC and accuracy of 100\% on WBC with the testing database which has the cropped images of RBC and WBC.\\
 On the first database with cropped images they had only few WBC but in this second database they have more WBC , the database 2 contains 108 only WBC images with the same size of database 1 360*480*3, they augmented the training dataset from 76 to 380 and used 32 images for testing, this second model focus only on the WBC which will increase the segmentation accuracy to 98.5\%, and have a counting accuracy of 97.29\%. The counting accuracy have decreased because of the clumped cells which is the weakness of this model.\\
-
-K. Sudha and P. Geetha \textsuperscript{\cite{SUDHA2020639}} have developed a two stage framework which will segment the leukocytes (a type of WBC) with an edge strength-based Grabcut method as a first stage, in the second stage will count the cells using the novel gradient circular hough transform (GCHT) method. the model takes and RGB image convert it to HSV color space to extract the S component where the WBCs are more clear then applies the edge strength-based location detection the results are fed to fine segmentation using Grabcut Algorithm which will output the edge segmentation mask, for the counting the mask will be fed to the proposed GCHT Algorithm. In the experiments phase they used ALL-IDB \textsuperscript{\cite{labati2011all}} and Cellavision \textsuperscript{\cite{Zheng2018}} datasets, after resising the images to 256x256.\\
-After the experiments the proposed method had rached an avreage segmentation accuracy of 99.32\% and a counting accuracy of 97.3\%.
-
-The new GCHT method can segment touched cells and even overlapped cells.\\
 
 Yan Kong et al. \textsuperscript{\cite{Kong:20}} have developed a two-stage framework using parallel modified U-Nets together with seed guided water-mesh algorithm for automatic segmentation and yeast cells counting which is used to observe the living conditions and survival of yeast cells under experimental conditions.
 

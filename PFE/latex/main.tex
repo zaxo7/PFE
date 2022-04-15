@@ -39,7 +39,7 @@
 \usepackage[titles]{tocloft}
 
 % For liste of figures and tables!
-\graphicspath{{figures/}}
+\graphicspath{{./images/}}
 \usepackage{array}
 
 % Disable auto indentation globally
@@ -64,6 +64,10 @@
 
 % Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
 \usepackage[Conny]{fncychap}
+
+%package for inserting raw text files
+\usepackage{verbatim}
+\usepackage{listings}
 
 % Redifining from 0.1 to 1 ... 2 ... and so on
 \renewcommand{\thesection}{\arabic{section}}
@@ -206,6 +210,8 @@
 \usetikzlibrary{calc}
 
 \usepackage{fullwidth}
+
+
 
 
 \begin{document}
@@ -422,23 +428,17 @@ This thesis is presented in four chapters:\\
 \begin{center}
     {\color{Black} \rule{\linewidth}{1.2mm} }\\
 \vspace{0.25in}
-    {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapitre II : Analyse et Conception}}}}}
+    {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapter II : Dataset Collection}}}}}
 \vspace{0.35in}\\
     {\color{Black} \rule{\linewidth}{1.2mm} }
 \end{center}
 \vspace*{\fill}
-\addcontentsline{toc}{chapter}{\color{Black}{Chapitre II : Analyse et Conception}}
+\addcontentsline{toc}{chapter}{\color{Black}{Chapter II : Dataset Collection}}
 \setcounter{section}{0}
 
 \newpage
 
-\section{Introduction}
-\hspace*{0.16in}
-
-\section{Conclusion}
-\hspace*{0.16in}
-
-\newpage
+\input{chap2.tex}
 
 \vspace*{\fill}
 \begin{center}
