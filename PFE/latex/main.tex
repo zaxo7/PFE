@@ -60,7 +60,7 @@
 
 % Box frame for figures #\fbox{}
 \setlength{\fboxsep}{0pt}
-\setlength{\fboxrule}{2pt}
+\setlength{\fboxrule}{0.69pt}
 
 % Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
 \usepackage[Conny]{fncychap}
@@ -403,6 +403,23 @@ This thesis is presented in four chapters:\\
 \textbf{Chapter 3 Dataset collection:}\\
 \textbf{Chapter 4 Implementation and experiments:}\\
 
+\newpage
+
+\vspace*{\fill}
+\begin{center}
+    {\color{Black} \rule{\linewidth}{1.2mm} }\\
+\vspace{0.25in}
+ {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapitre 0 : Blood cell}}}}}
+\vspace{0.35in}\\
+    {\color{Black} \rule{\linewidth}{1.2mm} }
+\end{center}
+\vspace*{\fill}
+\addcontentsline{toc}{chapter}{\color{Black}{Chapitre 0 : Blood cell}}
+\setcounter{section}{0}
+
+\newpage
+
+\input{chap0.tex}
 
 \newpage
 
@@ -438,7 +455,7 @@ This thesis is presented in four chapters:\\
 
 \newpage
 
-\input{chap2.tex}
+% \input{chap2.tex}
 
 \vspace*{\fill}
 \begin{center}
