@@ -9,3 +9,5 @@ PFE/latex/*.pdf
 PFE/latex/*.toc
 
 PFE/.olauth
+
+ressources/datasets/*
