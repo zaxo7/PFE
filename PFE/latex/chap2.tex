@@ -85,7 +85,94 @@ The annotation of ALL-IDB2 is similar to the ALL-IDB1 but with no centroid coord
 
 \newpage 
 
+\section{Broad Bioimage Benchmark Collection}
+
+The Broad Bioimage Benchmark Collection (BBBC) is a collection of freely downloadable microscopy image sets, cited in 450+ studies. In addition to the images themselves, each set includes a description of the biological application and some type of "ground truth" (expected results) \textsuperscript{\cite{ljosa2012annotated}}. The BBBC is organized by the Broad Institute's Imaging Platform.\\
+
+The dataset contains 54 image collections of various cell types, each collection has at least one of 6 ground truth types such as cell count, foreground / background, outlines of objects, biological labels, location and bounding boxes. in the sections below we describe each ground truth:
+\subsection{Cell counts}
+In this case, the ground truth consists of the number of cells (or other objects) in each image, as counted by one or more humans. for example in BBBC1(Human HT29 colon-cancer cells) we have an image in figure \ref{fig:BBBC1} with the labels file in figure \ref{fig:BBBC001_Counts}:
+
+\begin{figure}[H]
+\begin{minipage}[c]{\linewidth}
+\centering
+\includegraphics[width=60mm]{../images/AS_09125_050118150001_A03f05d0.jpg}
+\subcaption{AS\_09125\_050118150001\_A03f05d0.jpg}
+\label{fig:BBBC1}
+\end{minipage}
+
+\begin{minipage}[c]{\linewidth}
+\centering
+\lstinputlisting[breaklines]{../images/BBBC001_v1_counts.txt}
+\subcaption{BBBC001\_v1\_counts.txt}
+\label{fig:BBBC001_Counts}
+\end{minipage}
+\caption{Sample data from the BBBC1 Database with counts Ground truth}
+\end{figure}
+
+
+in the figure \ref{fig:BBBC001_Counts} we can see the two counts performed by two experts, for the image \ref{fig:BBBC1} the first expert have found 241 cells but the second one found 257 cells.
+
+\subsection{Foreground and background}
+
+In this case, a human produces a binary (black and white but in some cases thy use other colors) image the same size as the original image. Pixels that belong to the foreground (i.e., the cells or other objects) are white, and pixels that belong to the background are black. in the example below (figure \ref{fig:BBBC004_img} and \ref{fig:BBBC004_F}) we can see the image and the corresponding mask where the cells colored with blue and the background with black.
+
+\begin{figure}[H]
+\begin{minipage}[c]{0.4\linewidth}
+\centering
+\includegraphics[width=80mm]{../images/BBBC4-1.jpg}
+\subcaption{2Gray1.tif (image)}
+\label{fig:BBBC004_img}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.4\linewidth}
+\centering
+\includegraphics[width=80mm]{../images/BBBC4-1-F.jpg}
+\subcaption{1.tif (mask)}
+\label{fig:BBBC004_F}
+\end{minipage}
+\caption{Sample data from the BBBC4 Database with mask as ground truth}
+\end{figure}
+
+\subsection{Outlines of of individual objects}
+In this case, a human outlines each cell in the image in order to indicate which pixels belong to which cell. The ground truth is provided as binary images, with black outlines on a white background.
+
+\begin{figure}[H]
+\begin{minipage}[c]{0.4\linewidth}
+\centering
+\includegraphics[width=80mm]{../images/48hr-001-DIC.jpg}
+\subcaption{48hr-001-DIC.jpg (image)}
+\label{fig:BBBC009_img}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.4\linewidth}
+\centering
+\includegraphics[width=80mm]{../images/48hr-001-DIC_.jpg}
+\subcaption{48hr-001-DIC.jpg (edge mask)}
+\label{fig:BBBC009_O}
+\end{minipage}
+\caption{Sample data from the BBBC9 Database with edge mask (outlines) as ground truth}
+\end{figure}
+
+\subsection{Biological labels}
+In these cases, the experiments have been prepared with control samples for which we know the expected biological result. The types of controls that are available dictate the type of statistic that can be calculated.
+
+\subsection{Location}
+In this case, the ground truth consists of the X, Y, and optionally Z location of objects (typically their centroids similar to ALL-IDB1 Annotation \ref{fig:Im006.xyc.jpg}) .
+
+\subsection{Bounding Boxes}
+Bounding boxes are rectangles completely enclosing an object.
+
+\newpage
+
+\section{WBC Image Dataset : Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning}
+This is two datasets of white blood cell (WBC) images used for “Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning”, which can be used to evaluate cell image segmentation methods \textsuperscript{\cite{Zheng2018}}.
+contains
+
+\newpage
 \section{Conclusion}
 \hspace*{0.16in}
+
+
 
 \newpage

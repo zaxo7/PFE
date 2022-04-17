@@ -67,6 +67,9 @@ abnormalities.
 
 ### [ALL-IDB: the Acute Lymphoblastic Leukemia Image DataBase for Image Processing](https://ieeexplore.ieee.org/abstract/document/6115881?casa_token=CFqAjNox2i8AAAAA:En2kA58ZJb8IGEVa4-RgmbnbcoKZ5mjrb3AClgq3rhOFD1x0ZZwlnuLBZzVh8FBioU1THQfwcD1PJRo)
 
+> [link description](https://homes.di.unimi.it/scotti/all/)
+>
+> [download link](https://www.kaggle.com/datasets/nikhilsharma00/leukemia-dataset/download)
 >
 > [citation](ressources/bibtex/labati2011all.bib)
 
@@ -77,6 +80,8 @@ abnormalities.
 
 ### [Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning](https://github.com/zxaoyou/segmentation_WBC)
 
+>
+> [article](https://www.sciencedirect.com/science/article/abs/pii/S0968432817303037)
 >
 > [citation](ressources/bibtex/Zheng2018.bib)
 >
