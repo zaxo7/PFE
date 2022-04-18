@@ -1,0 +1,209 @@
+\section{Introduction}
+\hspace*{0.16in}
+
+\section{ALL-IDB}
+
+ALL-IDB (Acute Lymphoblastic Leukemia Image Database for Image Processing) \textsuperscript{\cite{labati2011all}} is a public and free dataset, specifically designed for the evaluation and the comparison of algorithms for segmentation and image classification. The database focus on Acute Lymphoblastic Leukemia (ALL), Acute is a type of blood cancer that starts in white blood cells in bone marrow, the soft inner part of bones. It develops from immature lymphocytes, a kind of white blood cell that’s key to immune system.\textsuperscript{\cite{Annie_Stuart_What_2022_webmd}}.\\
+
+Each image in the dataset, Contains classification/position of ALL lymphoblasts is provided by expert oncologists. A lymphoblast is a modified naive lymphocyte with altered cell morphology. It occurs when the lymphocyte is activated by an antigen.\\
+
+The images of the dataset has been captured with an optical laboratory microscope coupled with a Canon PowerShot G5 camera. All images are in JPG format with 24 bit color depth, resolution 2592 x 1944. the ALL-IDB devides on two Datasets ALL-IDB1 and ALL-IDB2.\\
+
+\subsection{Dataset ALL-IDB1}
+
+The ALL-IDB1 can be used for segmentation or classification with image processing methods or Artificial intelligence models. The dataset is composed of 108 images collected during September, 2005. It contains about 39000 blood elements, where the lymphocytes has been labeled by expert oncologists.
+
+\begin{figure}[H]
+\centering
+\includegraphics{../images/ALLIDB1.jpg}
+\caption{Examples of the images contained in ALL-IDB1: healthy cells from non-ALL patients (a,b,c), probable lymphoblasts from ALL patients (d,e,f). }
+\end{figure}
+
+
+\textbf{annotation:} input image ''Im006\_1.jpg'' (a) and the related classification file ''Im006\_1.xyc'' reporting the coordinates of the centroids of probable ALL lymphoblasts (b).
+
+
+
+\begin{figure}[H]
+\begin{minipage}[b]{0.35\linewidth}
+\centering
+\includegraphics{../images/Im006_1.jpg}
+\subcaption{Im006\_1.jpg}
+\label{fig:Im006.jpg}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.3\linewidth}
+\centering
+\lstinputlisting[breaklines]{../images/Im006\_1.xyc}
+\subcaption{Im006\_1.xyc}
+\label{fig:Im006.xyc}
+\end{minipage}
+
+\begin{minipage}[b]{0.35\linewidth}
+\centering
+\includegraphics[width=57mm]{../images/Im033_1.jpg}
+\subcaption{Im033\_1.jpg}
+\label{fig:Im033.jpg}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.3\linewidth}
+\centering
+\lstinputlisting[breaklines]{../images/Im033\_1.xyc}
+\subcaption{Im033\_1.xyc}
+\label{fig:Im033.xyc}
+\end{minipage}
+\caption{Sample data from the ALL-IDB1 Database}
+\end{figure}
+
+The ALL-IDB1 image files are named with the notation ImXXX\_Y.jpg where XXX is a 3-digit integer counter and Y is a boolean digit equal to 0 if no blast cells are present, and equal to 1 if at least one blast cell is present in the image. All images labeled with Y=0 are from for healthy individuals, and all images labeled with Y=1 are from ALL patients. Each image file ImXXX\_Y.jpg (figure \ref{fig:Im006.jpg}, \ref{fig:Im033.jpg}) is associated with a text file ImXXX\_Y.xyc (figure \ref{fig:Im006.xyc}, \ref{fig:Im033.xyc}) reporting the coordinates of the centroids of the blast cells, if any. \\
+
+if we plot the coordinates in the Img006\_1.xyc (figure \ref{fig:Im006.jpg}) file on the image Im006\_1.jpg (figure \ref{fig:Im006.xyc}) we get the figure \ref{fig:Im006.xyc.jpg}
+
+\begin{figure}[H]
+\centering
+\includegraphics{../images/img006.xyc.jpg}
+\caption{coordinates from Img006\_1.xyc ploted on Img006\_1.jpg}
+\label{fig:Im006.xyc.jpg}
+\end{figure}
+
+\newpage
+
+\subsection{Dataset ALL-IDB1}
+
+This dataset has been created for testing the performances of classification systems. where the dataset has no segmentation information it contains only one information wich is the presence of ALL lymphoblasts, the dataset is a collection of cropped area of interest of normal and blast cells that belongs to the ALL-IDB1 dataset as we can see in figure \ref{fig:ALL-IDB2}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics{../images/ALL-IDB2.jpg}
+\caption{Examples of the images contained in ALL-IDB2: healthy cells from non-ALL patients (a-d), probable lymphoblasts from ALL patients (e-h).}
+\label{fig:ALL-IDB2}
+\end{figure}
+
+
+The annotation of ALL-IDB2 is similar to the ALL-IDB1 but with no centroid coordinates. The ALL-IDB2 image files are named with the notation ImXXX\_Y.jpg where XXX is a progressive 3-digit integer and Y is a boolean digit equal to 0 if the cell placed in the center of the image is not a blast cell, and equal to 1 if the cell placed in the center of the image is a blast cell. all images labeled with Y=0 are from for healthy individuals, and all images labeled with Y=1 are from ALL patients. 
+
+\newpage 
+
+\section{Broad Bioimage Benchmark Collection}
+
+The Broad Bioimage Benchmark Collection (BBBC) is a collection of freely downloadable microscopy image sets, cited in 450+ studies. In addition to the images themselves, each set includes a description of the biological application and some type of "ground truth" (expected results) \textsuperscript{\cite{ljosa2012annotated}}. The BBBC is organized by the Broad Institute's Imaging Platform.\\
+
+The dataset contains 54 image collections of various cell types, each collection has at least one of 6 ground truth types such as cell count, foreground / background, outlines of objects, biological labels, location and bounding boxes. in the sections below we describe each ground truth:
+\subsection{Cell counts}
+In this case, the ground truth consists of the number of cells (or other objects) in each image, as counted by one or more humans. for example in BBBC1(Human HT29 colon-cancer cells) we have an image in figure \ref{fig:BBBC1} with the labels file in figure \ref{fig:BBBC001_Counts}:
+
+\begin{figure}[H]
+\begin{minipage}[c]{\linewidth}
+\centering
+\includegraphics[width=60mm]{../images/AS_09125_050118150001_A03f05d0.jpg}
+\subcaption{AS\_09125\_050118150001\_A03f05d0.jpg}
+\label{fig:BBBC1}
+\end{minipage}
+
+\begin{minipage}[c]{\linewidth}
+\centering
+\lstinputlisting[breaklines]{../images/BBBC001_v1_counts.txt}
+\subcaption{BBBC001\_v1\_counts.txt}
+\label{fig:BBBC001_Counts}
+\end{minipage}
+\caption{Sample data from the BBBC1 Database with counts Ground truth}
+\end{figure}
+
+
+in the figure \ref{fig:BBBC001_Counts} we can see the two counts performed by two experts, for the image \ref{fig:BBBC1} the first expert have found 241 cells but the second one found 257 cells.
+
+\subsection{Foreground and background}
+
+In this case, a human produces a binary (black and white but in some cases thy use other colors) image the same size as the original image. Pixels that belong to the foreground (i.e., the cells or other objects) are white, and pixels that belong to the background are black. in the example below (figure \ref{fig:BBBC004_img} and \ref{fig:BBBC004_F}) we can see the image and the corresponding mask where the cells colored with blue and the background with black.
+
+\begin{figure}[H]
+\begin{minipage}[c]{0.4\linewidth}
+\centering
+\includegraphics[width=80mm]{../images/BBBC4-1.jpg}
+\subcaption{2Gray1.tif (image)}
+\label{fig:BBBC004_img}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.4\linewidth}
+\centering
+\includegraphics[width=80mm]{../images/BBBC4-1-F.jpg}
+\subcaption{1.tif (mask)}
+\label{fig:BBBC004_F}
+\end{minipage}
+\caption{Sample data from the BBBC4 Database with mask as ground truth}
+\end{figure}
+
+\subsection{Outlines of individual objects}
+In this case, a human outlines each cell in the image in order to indicate which pixels belong to which cell. The ground truth is provided as binary images, with black outlines on a white background.
+
+\begin{figure}[H]
+\begin{minipage}[c]{0.4\linewidth}
+\centering
+\includegraphics[width=80mm]{../images/48hr-001-DIC.jpg}
+\subcaption{48hr-001-DIC.jpg (image)}
+\label{fig:BBBC009_img}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.4\linewidth}
+\centering
+\includegraphics[width=80mm]{../images/48hr-001-DIC_.jpg}
+\subcaption{48hr-001-DIC.jpg (edge mask)}
+\label{fig:BBBC009_O}
+\end{minipage}
+\caption{Sample data from the BBBC9 Database with edge mask (outlines) as ground truth}
+\end{figure}
+
+\subsection{Biological labels}
+In these cases, the experiments have been prepared with control samples for which we know the expected biological result. The types of controls that are available dictate the type of statistic that can be calculated.
+
+\subsection{Location}
+In this case, the ground truth consists of the X, Y, and optionally Z location of objects (typically their centroids similar to ALL-IDB1 Annotation \ref{fig:Im006.xyc.jpg}) .
+
+\subsection{Bounding Boxes}
+Bounding boxes are rectangles completely enclosing an object.
+
+\newpage
+
+\section{WBC Image Dataset : Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning}
+This is two datasets of white blood cell (WBC) images used for “Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning”, which can be used to evaluate cell image segmentation methods \textsuperscript{\cite{Zheng2018}}.
+This collection contains two datasets different from each other in terms of the image color, cell shape, background, etc. The ground truth segmentation results are manually sketched by domain experts, where the nuclei, cytoplasms and background including red blood cells are marked in white, gray and black respectively. 
+
+\subsection{Dataset 1}
+was obtained from Jiangxi Tecom Science Corporation \textsuperscript{\cite{2022_tecom-cn}}, China. It contains three hundred 120×120 images of WBCs and their color depth is 24 bits. The images were taken by a Motic Moticam Pro 252A optical microscope camera with a N800-D motorized auto-focus microscope.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{../images/WBC_Dataset1.png}
+\caption{Sample data from WBC\_Segmentaion Dataset 1}
+\label{fig:WBC_Dataset1_sample}
+\end{figure}
+
+\subsection{Dataset 2}
+consists of one hundred 300×300 color images, which were collected from the CellaVision blog \textsuperscript{\cite{2022_cellavision}}. The cell images are generally purple and may contain many red blood cells around the white blood cells.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{../images/WBC_Dataset2.png}
+\caption{Sample data from WBC\_Segmentaion Dataset 2}
+\label{fig:WBC_Dataset2_sample}
+\end{figure}
+
+
+\subsection{Annotation}
+The class labels of each image in Dataset 1 and Dataset 2 are stored in csv files . The labels (1- 5) represent neutrophil, lymphocyte, monocyte, eosinophil and basophil, respectively.
+
+
+\subsection{A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm}
+
+
+\subsection{BCCD}
+
+
+\newpage
+\section{Conclusion}
+\hspace*{0.16in}
+
+
+
+\newpage
