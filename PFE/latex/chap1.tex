@@ -2,64 +2,104 @@
 \vspace{0.2in}
 \hspace*{0.16in}
 
-Blood cell segmentation is the extraction of different blood cells from microscopic images. Blood cell counting is the process of counting the detected blood cells after segmentation. Many researchers have implemented methods for segmentation and counting of blood cells using different approaches. In this section we devise the methods according to the segmentation approach.
+In this chapter, we will present to you the blood cells and it's three main types (red, white blood cells and platelets) as well as the complete blood count and the purpose of it. Then, we will present some of the many diseases related to blood cells, and how can we detect and avoid them using artificial intelligence.
 
-\section{Related Work}
+\section{Blood cell}
+\subsection{Definition}
 
-\subsection{Image Processing Approaches}
+A blood cell, also called a hematopoietic cell, hemocyte, or hematocyte, is a cell produced through hematopoiesis and found mainly in the blood. Major types of blood cells include red blood cells (erythrocytes), white blood cells (leukocytes), and platelets (thrombocytes). Together, these three kinds of blood cells add up to a total 45\% of the blood tissue by volume, with the remaining 55\% of the volume composed of plasma, the liquid component of blood. \textsuperscript{\cite{hopkins1993human}}\\
 
-Bhavnani et al. \textsuperscript{\cite{bhavnani2016segmentation}} have developed a method for segmenting and counting RBC (red blood cells), WBC (White blood cells) and platelets which is also called complete blood count (CBC), by using Otsu’s thresholding and morphological operations as a segmentation method, and for counting the are preforming a comparison between two methods: the watershed algorithm and Circular Hough Transform. The model takes an RGB image as an input apply some processing steps then uses Otsu's Thresholding to extract RBC and WBC separately with different threshold values then apply the two algorithm to compare the results, the model has no image size constraint because it's based only on image processing techniques and needs a small database to select the threshold values for RBC and WBC in this article they used 20 images. In the Experiment phase they used ALLIDB Database which contains 108 images with 1712x1368 and 2592x1944 resolution.The CHT method is the best in terms of accuracy with 92.67\% but it has some weaknesses with overlapping cells and morphological abnormalities. In the other side the watershed method which is a little bit adapted with overlapping and touching cells had an accuracy of 91.07\%.\\
+\vspace{0.1in}
 
-Guiliang, FENG et al. \textsuperscript{\cite{guiliang2016microscopic}} have a developed an algorithm that segments and counts cell images based on image definition, a Discrete Cosine Transform (DCT) is applied, which is proposed by N. Ahmed and Rao in 1974 \textsuperscript{\cite{ahmed1974discrete}}. Instead of the traditional watershed approach, the DCT method showed better results in comparison.
+\begin{figure}[h]
+\centering
+  \vspace{-0.1in}
+    \centerline{\fbox{\includegraphics[width = 4in, height = 3.1in]{../images/BloodCells.jpg}}}
+    \caption{Blood cells}
+\end{figure}
 
-However, there is a drawback to this approach, because this algorithm depends on image definition it relies on well focused images, consequently, when the images are out of focus the segmentation and counting is not reliable. But despite that drawback, it achieved a relatively high accuracy of over 90\% which is better that the watershed method. \\
+That said, there are three main types of blood cells:
 
-K. Sudha and P. Geetha \textsuperscript{\cite{SUDHA2020639}} have developed a two stage framework which will segment the leukocytes (a type of WBC) with an edge strength-based Grabcut method as a first stage, in the second stage will count the cells using the novel gradient circular hough transform (GCHT) method. the model takes and RGB image convert it to HSV color space to extract the S component where the WBCs are more clear then applies the edge strength-based location detection the results are fed to fine segmentation using Grabcut Algorithm which will output the edge segmentation mask, for the counting the mask will be fed to the proposed GCHT Algorithm. In the experiments phase they used ALL-IDB \textsuperscript{\cite{labati2011all}} and Cellavision \textsuperscript{\cite{Zheng2018}} datasets, after resising the images to 256x256.\\
-After the experiments the proposed method had rached an avreage segmentation accuracy of 99.32\% and a counting accuracy of 97.3\%.
+\subsection{Red blood cells}
 
-The new GCHT method can segment touched cells and even overlapped cells.\\
+Red blood cells (RBCs) are the cells which carry fresh oxygen all over the human body. This is important to our health. They are round with a flattish, indented center, like doughnuts without a hole. 
+The hemoglobin is the protein found inside the red blood cell, and it's main purpose is carrying oxygen.
 
-\subsection{Machine Learning Approaches}
+Most people don't think about their red blood cells unless they have a disease that affects these cells. Problems with red blood cells can be caused by illnesses or a lack of iron or vitamins. Some diseases of the red blood cells are inherited.
 
-Kimbahune et al. \textsuperscript{\cite{kimbahune2011blood}} have developed a method for segmenting and counting red blood cells (RBC) and white blood cells (WBC).
-segmentation is done using Pulse-Coupled Neural Network (PCNN) and square tracing algorithm for countour tracing after de-noising it with PCNN combined with median filter, the counting is performed by scanning the image and using edge detection methods as square tracing algorithm. this method gave good results compared to state of art methods.\\
-%this kimbahune article they didn't give any info about the database or the experimental results 
+Diseases of the red blood cells include many types of anemia. This is a condition in which there are too few red blood cells to carry enough oxygen all over the body.
 
-Carlos X. Hern{\'{a}}ndez et al. \textsuperscript{\cite{DBLP:journals/corr/abs-1802-10548}} have implemented a convolutional neural network (CNN) using a feature pyramid network (FPN) combined with a VGG style neural network for segmenting and counting of cells in a given microscopy image.
-The dataset they used is BBBC005 \textsuperscript{\cite{ljosa2012annotated}} from Broad Institute's Bioimage Benchmark Collection, which consists of 9600 images and each image is 696x520 pixels but they were scaled down to 256x192 for the purposes of their experiment.
+People with anemia may have red blood cells that have an abnormal shape or that look normal, larger than normal, or smaller than normal.
 
-Out of the total 9600 images only 600 of the images which have a corresponding mask were used for the FPN training. And 100 of those were used for fast prototyping and a standard of 80-20 train/test split for the final models.
-On the other hand, the full 9600 images were used for the VGG network.
-This approach achieved a relatively good accuracy of 81.75\% but with some failure cases such as:
-%the accuracy is calculated manually from the given results in the article
-% 100 - (rmspe = np.sqrt(np.mean(np.square(((y_true - y_pred) / y_true)), axis=0)))
+Symptoms of anemia include tiredness, fast heart rate, pale skin, feeling cold, and, in severe cases, heart failure. Children who don't have enough healthy red blood cells grow and develop more slowly than other children. These symptoms show how important red blood cells are to your daily life. \textsuperscript{\cite{Department_2022_rochester}}
+
+\subsection{White blood cells}
+
+On the other hand, White blood cells (WBCs), also known as leukocytes, are the ones responsible for protecting the human body from infections. As part of the immune system, These cells circulate in the blood and respond to injury or illness. They travel through the bloodstream searching for infections. Then, they notify other WBCs of their location to help defending against attacks from other unknown organisms. Once the army of WBCs arrive, they fight the invader by producing antibody proteins to attach to the organism and destroy it. \textsuperscript{\cite{Attacking_Any_Unknown_2022_clevelandclinic}}
+
+White blood cells are divided into five types:
 
 \begin{itemize}
-  \item High cell overlap
-  \item Irregular cell shapes
-  \item bad focal planes.
+  \item \textbf{Neutrophils:} Help protect your body from infections by killing bacteria, fungi and foreign debris.
+  \item \textbf{Lymphocytes:} Consist of T cells, natural killer cells and B cells to protect against viral infections and produce proteins to help you fight infection (antibodies).
+  \item \textbf{Eosinophils:} Identify and destroy parasites, cancer cells and assists basophils with your allergic response.
+  \item \textbf{Basophils:} Produces an allergic response like coughing, sneezing or a runny nose.
+  \item \textbf{Monocytes:} Defend against infection by cleaning up damaged cells.
 \end{itemize}
 
-Tran, Thanh and Minh et al. \textsuperscript{\cite{tran2019blood}} have developed a method for segmenting and counting RBC and WBCs by using the SegNet model initialised with weights from a pre-trained VGG-16 model, for the counting they first apply Distance transform with 4 different distance metrics, then they apply binary dilation. At the End, they apply the connected component labeling algorithm to count the number of separated cells in images mask. for the training they used 42 images from ALL-IDB1 \textsuperscript{\cite{labati2011all}} after they cropped them to decrease the computation time and
-memory usage and reduce the number of RBC compared to WBC the result images have a resolution of 360*480*3 (RGB), they used 29 images for training and 13 for testing ,the model had a segmentation accuracy of 89\% and counting accuracy of 93.3\% on RBC and accuracy of 100\% on WBC with the testing database which has the cropped images of RBC and WBC.\\
-On the first database with cropped images they had only few WBC but in this second database they have more WBC , the database 2 contains 108 only WBC images with the same size of database 1 360*480*3, they augmented the training dataset from 76 to 380 and used 32 images for testing, this second model focus only on the WBC which will increase the segmentation accuracy to 98.5\%, and have a counting accuracy of 97.29\%. The counting accuracy have decreased because of the clumped cells which is the weakness of this model.\\
+\newpage
 
-Yan Kong et al. \textsuperscript{\cite{Kong:20}} have developed a two-stage framework using parallel modified U-Nets together with seed guided water-mesh algorithm for automatic segmentation and yeast cells counting which is used to observe the living conditions and survival of yeast cells under experimental conditions.
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\fbox{\includegraphics[width = 3.1in, height = 2.5in]{../images/white_blood_cells.jpg}}}
+    \caption{The five types of White blood cells}
+\end{figure}
 
-The cell images used in this study were captured by Olympus IX83 (Olympus Life Sciences, Tokyo, Japan) inverted microscope. They manually selected 20 raw DIC (differential interference contrast) images which contained a number of yeast cells and the annotations were done manually by laboratory technicians, they then obtain 40 images, 20 masked annotation images and the other 20 is center annotation images of yeast cells.
+\subsection{Platelets}
 
-After spliting images into tiles of size 224x224 with a step stride of 65 and 33 pixels for the horizontal and vertical direction, respectively. They got 4360 raw image tiles and the corresponding center annotation and masked annotation images, from that set 3310 tiles were randomly selected as the training data set and rest was a validation set.
+Platelets help prevent blood loss at sites of vascular injury. To do this, they adhere, aggregate and form a procoagulant surface favorizing thrombin generation and fibrin formation. In addition, platelets express and release substances that promote tissue repair and influence processes such as angiogenesis, inflammation and the immune response. They contain large secretable pools of biologically active proteins, while newly synthesized active metabolites are also released. \textsuperscript{\cite{nurden2008platelets}}
 
-The raw test DIC images used in this study were sized approximately 1002x1998 pixels, but they were resized into 1092x2084 pixels so that each DIC image could be split into a grid of 8x16 image blocks. The image blocks were then fed into modified U-Net.
+\vspace{0.2in}
 
-This method achieved a precision of over 99.74\% and an average recall rate of 99.35\%. however, there is a limitation using this approach, which is the detection of small objects.\\
+\begin{figure}[h]
+\centering
+  \vspace{-0.1in}
+    \centerline{\fbox{\includegraphics[width = 3.1in, height = 2.5in]{../images/platelets.jpg}}}
+    \caption{Platelets}
+\end{figure}
 
-Overton, Toyah and Tucker, Allan \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} have developed a method which segments and counts IDP (Internally Displaced people) and erythrocytes (red blood cells) using DO-U-Net (Dual Output U-Net) which outputs a segmentation mask and an edge mask then they substract them to get rid of the overlapping and the touching problem, the model trains on extremely small datasets (10 images) and gives a high segmentation accuracy, They selected 10 images of 108 from ALL-IDB dataset for training the model, the model takes images with a resolution of 188x188 and outputs a segmentation mask and edge mask of lower resolution 100x100, the experiments results have given an accuracy of 98.31\% on a 5 randomly selected images from ALL-IDB, for the IDP they had 98.69\% for fixed resolution images and 94.66\% for scale-invariant satellite images.\\
+\section{Complete blood count}
+\subsection{Definition}
 
-\section{Comparative study}
+A complete blood count (CBC) is a set of tests that gives information about the cells in a person's blood. A scientist or lab technician performs the requested testing and provides the requesting medical professional with the results of the CBC. In the past, counting the cells in a patient's blood was performed manually, by viewing a slide prepared with a sample of the patient's blood under a microscope. Today, this process is generally automated by use of an automated analyzer, with only approximately 10-20\% of samples now being examined manually. Abnormally high or low counts may indicate the presence of a disease.
 
-\input{tables/table1.tex}
+\subsection{Purpose of a complete blood count}
 
-\section{Conclusion}
-\vspace{0.1in}
-\hspace*{0.16in}
+A complete blood count is a common blood test that is done for a variety of reasons:
+
+\begin{itemize}
+  \item \textbf{To review the overall health:} A doctor may recommend a complete blood count as part of a routine medical examination to monitor your general health and to screen for a variety of disorders, such as anemia or leukemia.
+  \item \textbf{To diagnose a medical condition:} A doctor may suggest a complete blood count if you're experiencing weakness, fatigue, fever, inflammation, bruising or bleeding. A complete blood count may help diagnose the cause of these signs and symptoms. If a doctor suspects someone with an infection, the CBC test can help confirm that diagnosis.
+  \item \textbf{To monitor a medical condition:} If you've been diagnosed with a blood disorder that affects blood cell counts, the doctor may use complete blood counts to monitor your condition.
+  \item \textbf{To monitor medical treatment:} A complete blood count may be used to monitor your health if you're taking medications that may affect blood cell counts. \textsuperscript{\cite{Clicking_On_2022_mayoclinic}}
+\end{itemize}
+
+\subsection{Diseases identified by a complete blood count}
+
+Abnormal test results could be an indication of a serious health problem or a simple one that can be remedied by eating better or taking supplements.\\
+These are some of the health problems that can be identified by a CBC:
+
+\begin{itemize}
+  \item Anemia (low iron)
+  \item Autoimmune disorders
+  \item Bone marrow problems
+  \item Leukemia (Cancer)
+  \item Dehydration
+  \item Heart disease
+  \item Infection
+  \item Inflammation
+  \item Vitamin and mineral deficiencies
+\end{itemize}
+
+\section{Artificial intelligence}
