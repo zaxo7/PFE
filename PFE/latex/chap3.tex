@@ -196,7 +196,30 @@ The class labels of each image in Dataset 1 and Dataset 2 are stored in csv file
 
 \subsection{A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm}
 
+The database is provided by \href{https://raabindata.com/free-data/#double-labeled-cropped-cells}{RabinData} and \textsuperscript{\cite{Kouzehkanan2022}} which devides on two separate datasets:
+\subsubsection{Raabin-WBC Data}
+Contains 4 sub-Datasets:
+\begin{itemize}
+    \item \textbf{Double-labeled cropped cells} : Double-labeled cropped cells are also provided containing only five main classes including mature neutrophils, lymphocytes (small and large), eosinophils, monocytes, and basophils. 
+    \item \textbf{Nucleus\_cytoplasm\_Ground truths} : in this sub-Dataset they prepared the ground truths of the cytoplasm and the nucleus for a proper number of cropped white blood cells. For this purpose, 1145 cropped images including 242 lymphocytes, 242 monocytes, 242 neutrophils, 201 eosinophils, and 218 basophils were randomly selected, and their ground truths were extracted by an expert.
+    \item \textbf{Microscopic images were taken by the Olympus CX18 microscope and the Samsung Galaxy S5 camera and the 4th database with contain images taken by Zeiss microscope and the LG G3 camera } : in these two sub-Datasets. Corresponding to each microscopic image, a dictionary (.json format) file containing the following information about that image was provided:
+    \begin{itemize}
+        \item Information about the blood elements in the image including their coordinates and labels.
+        \item Information about the blood smears including staining method and the type of the disease.
+        \item Information about the microscope includes the type of microscope and its magnification size.
+        \item The type of camera used.
+    \end{itemize}
+\end{itemize}
 
+\subsubsection{Raabin-Leukemia Data}
+Contains 4 sub-Datasets:
+\begin{itemize}
+    \item \textbf{Acute Lymphoblastic Leukemia}  
+    \item \textbf{Acute Myeloblastic Leukemia} 
+    \item \textbf{Chronic Lymphocytic Leukemia}
+    \item \textbf{Chronic Myelogenous Leukemia}
+\end{itemize}
+In each of these sub-Dataset, All samples were taken from patients who had referred to our collaborator medical laboratory (Takht-e Tavous Laboratory in Tehran, Iran). It should be notices Zeiss microscope and LG J3 smartphone camera had been used for imaging.
 \subsection{BCCD}
 BCCD Dataset is a small-scale dataset for blood cells detection. The original data and annotations are from \href{https://github.com/cosmicad/dataset}{cosmicad}  and \href{https://github.com/akshaylamba/all_CELL_data}{akshaylamba}. \\
 In this project, the Faster R-CNN algorithm from keras-frcnn for Object Detection is used. From this dataset, nicolaschen1 developed two Python scripts to make preparation data (CSV file and images) for recognition of abnormalities in blood cells on medical images.
@@ -208,7 +231,7 @@ In this project, the Faster R-CNN algorithm from keras-frcnn for Object Detectio
 \label{fig:BBCD1}
 \end{figure}
 
-In this database they use bounding boxes to locate the cells and each bounding box has the type of cell RBC or WBC and platlets 
+In this database they use bounding boxes to locate the cells and each bounding box has the type of cell RBC or WBC and platlets. they are using the VOC format as a database architecture.
 
 \newpage
 \section{Conclusion}

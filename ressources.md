@@ -111,6 +111,9 @@ abnormalities.
 
 > the dataset has masks of white blood cells
 
+### [Updated ALL-IDB](https://drive.google.com/drive/folders/1F7kZ1SRWUD9R6aHLMkj3wsjcHnvlGuwP)
+they added RBC, Platlets Masks
+
 ## Slides
 
 ### [NIST-FDA Cell Counting Workshop:Challenges in Cell Counting](https://www.nist.gov/system/files/documents/2017/06/09/nist_fda_cc_workshop_welcome_cell_counting_overview_sarkar.pdf)
