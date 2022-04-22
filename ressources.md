@@ -99,5 +99,22 @@ abnormalities.
 ### [A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm](https://www.nature.com/articles/s41598-021-04426-x)
 >
 > [citation](ressources/bibtex/Kouzehkanan2022;bib)
+>
+> [link](https://raabindata.com/free-data/)
 
 ### [BCCD dataset](https://github.com/Shenggan/BCCD_Dataset)
+
+> the dataset has bounding boxes around the WBC with their respective type Monocyte ...
+> the data and annotations was from [akshaylamba](https://github.com/akshaylamba/all_CELL_data) and [cosmicad](https://github.com/cosmicad/dataset)
+
+### [FULL-BLOOD-ANNO-DATASET](https://github.com/akshaylamba/FULL-BLOOD-ANNO-DATASET)
+
+> the dataset has masks of white blood cells
+
+## Slides
+
+### [NIST-FDA Cell Counting Workshop:Challenges in Cell Counting](https://www.nist.gov/system/files/documents/2017/06/09/nist_fda_cc_workshop_welcome_cell_counting_overview_sarkar.pdf)
+
+## Videos
+
+### [denovixvideos Eliminate Costs | Automate Cell Counting](https://www.youtube.com/watch?v=1FjhRcHBs78)
