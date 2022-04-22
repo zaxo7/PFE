@@ -198,8 +198,17 @@ The class labels of each image in Dataset 1 and Dataset 2 are stored in csv file
 
 
 \subsection{BCCD}
-BCCD Dataset is a small-scale dataset for blood cells detection. The original data and annotations are from cosmicad  and akshaylamba
+BCCD Dataset is a small-scale dataset for blood cells detection. The original data and annotations are from \href{https://github.com/cosmicad/dataset}{cosmicad}  and \href{https://github.com/akshaylamba/all_CELL_data}{akshaylamba}. \\
+In this project, the Faster R-CNN algorithm from keras-frcnn for Object Detection is used. From this dataset, nicolaschen1 developed two Python scripts to make preparation data (CSV file and images) for recognition of abnormalities in blood cells on medical images.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{../images/BBCD1.jpg}
+\caption{Sample data from BBCD}
+\label{fig:BBCD1}
+\end{figure}
+
+In this database they use bounding boxes to locate the cells and each bounding box has the type of cell RBC or WBC and platlets 
 
 \newpage
 \section{Conclusion}
