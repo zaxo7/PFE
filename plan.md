@@ -9,7 +9,7 @@
 
 ## Deep Learning
 ### Neural Network
-### Convulutional Neural Network
+### Convolutional Neural Network
 
 # CNN architectures
 
