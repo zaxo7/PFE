@@ -16,12 +16,12 @@
 \subsection{Deep Learning}
 \subsubsection{Neural Networks}
 \subsubsection{Convolutional Neural Networks}
-CNNs or ConvNets are among the most successful and widely used architectures in the deep learning community, especially for computer vision tasks. CNNs were initially proposed by Fukushima in his seminal paper on the “Neocognitron” \textsuperscript{\cite{fukushima_Neocognitron}}.
+CNNs or ConvNets are among the most successful and widely used architectures in the deep learning community, especially for computer vision tasks . CNNs were initially proposed by Fukushima in his seminal paper on the “Neocognitron” \textsuperscript{\cite{fukushima_Neocognitron}}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{../images/CNN.png}
-\caption{CNN}
+\caption{Architecture of convolutional neural networks. From \textsuperscript{\cite{minaee2021image}}}
 \label{fig:CNN}
 \end{figure}
 
@@ -33,12 +33,12 @@ Convolutional neural networks are distinguished from other neural networks by th
     \item Fully-connected (FC) layer
 \end{itemize}
 
-The convolutional layer is the first layer of a convolutional network. While convolutional layers can chained by additional convolutional layers or pooling layers, the fully-connected layer is the final layer. With each layer, the CNN increases in its complexity, identifying greater portions of the image. Earlier layers focus on simple features, such as colors and edges. As the image data progresses through the layers of the CNN, it starts to recognize larger elements or shapes of the object until it finally identifies the intended object.
+The convolutional layer is the first layer of a convolutional network. While convolutional layers can chained by additional convolutional layers or pooling layers, the fully-connected layer is the final layer. With each layer, the CNN increases in its complexity, identifying greater portions of the image. Earlier layers focus on simple features, such as colors and edges. As the image data progresses through the layers of the CNN, it starts to recognize larger elements or shapes of the object until it finally identifies the intended object. 
     
     
 \begin{enumerate}
     \item \textbf{Convolutional layer} : \\
-        The convolutional layer is the core building block of a CNN, and it is where the majority of computation occurs. It requires a few components, which are input data, a filter, and will output a feature map. Let’s assume that the input will be a color image, which is made up of a matrix of pixels in 3D. This means that the input will have three dimensions—a height, width, and depth—which correspond to RGB in an image. We also have a feature detector, also known as a kernel or a filter, which will move across the receptive fields of the image, checking if the feature is present. This process is known as a convolution. \\
+        The convolutional layer is the core building block of a CNN, and it is where the majority of computation occurs. It requires a few components, which are input data, a filter, and will output a feature map. Let’s assume that the input will be a color image, which is made up of a matrix of pixels in 3D. This means that the input will have three dimensions—a height, width, and depth—which correspond to RGB in an image. We also have a feature detector, also known as a kernel or a filter, which will move across the receptive fields of the image, checking if the feature is present. This process is known as a convolution. \textsuperscript{\cite{CNN-IBM}} \\
         The feature detector is a two-dimensional (2-D) array of weights, which represents part of the image. While they can vary in size, the filter size is typically a 3x3 matrix; this also determines the size of the receptive field. The filter is then applied to an area of the image, and a dot product is calculated between the input pixels and the filter. This dot product is then fed into an output array. Afterwards, the filter shifts by a stride, repeating the process until the kernel has swept across the entire image. The final output from the series of dot products from the input and the filter is known as a feature map, activation map, or a convolved feature.
         \begin{figure}[H]
             \centering
