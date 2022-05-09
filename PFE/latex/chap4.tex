@@ -15,6 +15,46 @@
 
 \subsection{Deep Learning}
 \subsubsection{Neural Networks}
+Artificial neural networks (ANNs) are comprised of a node layers, containing an input layer, one or more hidden layers, and an output layer. Each node, or artificial neuron, connects to another and has an associated weight and threshold. If the output of any individual node is above the specified threshold value, that node is activated, sending data to the next layer of the network. Otherwise, no data is passed along to the next layer of the network.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{../images/neural-network-diagram.png}
+\caption{Architecture of Neural Network}
+\label{fig:NN}
+\end{figure}
+
+Neural networks rely on training data to learn and improve their accuracy over time. However, once these learning algorithms are fine-tuned for accuracy, they are powerful tools in computer science and artificial intelligence, allowing us to classify and cluster data at a high velocity. Tasks in speech recognition or image recognition can take minutes versus hours when compared to the manual identification by human experts. One of the most well-known neural networks is Google’s search algorithm.
+
+if we dive into the details, we can consider that each node has it's linear regression model, composed of input data, weights, a bias (or threshold), and an output. The formula would look something like equation \ref{eq:NN-Node-Activation}:
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=\linewidth]{../images/NN-Node-equation.png}
+%\caption{Architecture of Neural Network}
+%\label{fig:NN}
+%\end{figure}
+
+\begin{equation}
+    \sum_{i=1}^{m} W_{i}X_{i} + bias = W_{1}X_{1} + W_{2}X_{2} + W_{3}X_{3} + bias
+    \label{eq:NN-Node-Activation}
+\end{equation}
+
+\begin{equation}
+    output = f(x) = 
+    \begin{cases}
+        1 & if \sum_{i=1}^{m} W_{1}X_{1} + b \leq 0 \\
+        0 & if \sum_{i=1}^{m} W_{1}X_{1} + b < 0
+    \end{cases}
+    \label{eq:NN-Node-Activation2}
+\end{equation}
+
+Once an input layer is determined, weights are assigned. These weights help determine the importance of any given variable, with larger ones contributing more significantly to the output compared to other inputs. All inputs are then multiplied by their respective weights and then summed (similar to eaquation \ref{eq:NN-Node-Activation}). Afterward, the output is passed through an activation function as we can see in equation \ref{eq:NN-Node-Activation2}, which determines the output. If that output exceeds a given threshold, it “fires” (or activates) the node, passing data to the next layer in the network. This results in the output of one node becoming in the input of the next node. This process of passing data from one layer to the next layer defines this neural network as a feedforward network.
+
+
+
+
 \subsubsection{Convolutional Neural Networks}
 CNNs or ConvNets are among the most successful and widely used architectures in the deep learning community, especially for computer vision tasks . CNNs were initially proposed by Fukushima in his seminal paper on the “Neocognitron” \textsuperscript{\cite{fukushima_Neocognitron}}.
 
@@ -88,6 +128,12 @@ The convolutional layer is the first layer of a convolutional network. While con
 \section{CNN architectures}
 \vspace{0.2in}
 \hspace*{0.16in}
+
+\subsection{U-Net}
+
+\subsection{SegNet}
+
+\subsection{VGG}
 
 \section{Image Processing Methods}
 \vspace{0.2in}
