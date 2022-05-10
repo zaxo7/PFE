@@ -21,15 +21,24 @@ Artificial intelligence algorithms can be categorised into these four main types
 \begin{itemize}
     \item \textbf{Supervised learning:}
         Supervised learning, as the name indicates, has the presence of a supervisor as a teacher. Basically supervised learning is when we teach or train the machine using data that is well labeled. Which means some data is already tagged with the correct answer. After that, the machine is provided with a new set of examples (data) so that the supervised learning algorithm analyses the training data (set of training examples) and produces a correct outcome from labeled data. \textsuperscript{\cite{AITypes-GeeksForGeeks}}
+
     \item \textbf{Unsupervised learning:}
         Unsupervised learning is the training of a machine using information that is neither classified nor labeled and allowing the algorithm to act on that information without guidance. Here the task of the machine is to group unsorted information according to similarities, patterns, and differences without any prior training of data. \textsuperscript{\cite{AITypes-GeeksForGeeks}}
+
+    \vspace{0.2in}
+
+    \input{tables/table3.tex}
+
     \item \textbf{Semi Supervised learning:}
+        Semi-supervised learning sits somewhere between Supervised and Unsupervised learning algorithms. It employs a mix of labeled and unlabeled datasets. It works with data that has only a few labels; it usually works with unlabeled data. Labels are expensive, yet for corporate purposes, a few labels may suffice.
     \item \textbf{Reinforcement learning:}
+        Reinforcement learning is just a machine learning approach that rewards positive behavior while penalizing poor behavior. In general, a reinforcement learning agent is capable of sensing and interpreting its environment, acting, and learning via trial and error. Developers of reinforcement learning propose a way of rewarding desired behaviors and punishing negative behaviors. \textsuperscript{\cite{SSLvsRL-askanydifference}}
+
+    \vspace{0.2in}
+
+    \input{tables/table4.tex}
 \end{itemize}
 
-\vspace{0.2in}
-
-\input{tables/table3.tex}
 
 \subsection{Machine Learning}
 Machine learning is a branch of artificial intelligence (AI) and computer science which focuses on the use of data and algorithms to imitate the way that humans learn, gradually improving its accuracy. \textsuperscript{\cite{ML-IBM}}
@@ -82,11 +91,8 @@ if we dive into the details, we can consider that each node has it's linear regr
 
 Once an input layer is determined, weights are assigned. These weights help determine the importance of any given variable, with larger ones contributing more significantly to the output compared to other inputs. All inputs are then multiplied by their respective weights and then summed (similar to eaquation \ref{eq:NN-Node-Activation}). Afterward, the output is passed through an activation function as we can see in equation \ref{eq:NN-Node-Activation2}, which determines the output. If that output exceeds a given threshold, it “fires” (or activates) the node, passing data to the next layer in the network. This results in the output of one node becoming in the input of the next node. This process of passing data from one layer to the next layer defines this neural network as a feedforward network.
 
-
-
-
 \subsubsection{Convolutional Neural Networks}
-CNNs or ConvNets are among the most successful and widely used architectures in the deep learning community, especially for computer vision tasks . CNNs were initially proposed by Fukushima in his seminal paper on the “Neocognitron” \textsuperscript{\cite{fukushima_Neocognitron}}.
+CNNs or ConvNets are among the most successful and widely used architectures in the deep learning community, especially for computer vision tasks. CNNs were initially proposed by Fukushima in his seminal paper on the “Neocognitron” \textsuperscript{\cite{fukushima_Neocognitron}}.
 
 \begin{figure}[H]
 \centering
