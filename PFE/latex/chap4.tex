@@ -163,6 +163,12 @@ The convolutional layer is the first layer of a convolutional network. While con
 \vspace{0.2in}
 \hspace*{0.16in}
 
+In this section we are going to present some CNN architectures, CNN architectures are preDesigned models targeting a spcial task like image segmentation, feature extraction, classification ..., all the architectures can be an encoder or decoder and it can be both.
+\begin{itemize}
+    \item \textbf{encoder:} also called contracting path which consist of the downsampling of the feature map by using multiple convolutional and max pooling layers and it differs between model architectures.
+    \item \textbf{decoder:} also called expansive path wich consist of an upsampling of the feature map by using up-convolution (which concatenates the feature map from the upper parallel encoder layers)
+\end{itemize}
+
 \begin{figure}[h]
     \centering
       \vspace{-0.1in}
