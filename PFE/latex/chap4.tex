@@ -233,6 +233,15 @@ The u-net is fast and precise model for segmentation of images. Up to now it has
 
 \subsection{SegNet}
 
+SegNet is a semantic segmentation model designed in 2017. This core trainable segmentation architecture consists of an encoder network, a corresponding decoder network followed by a pixel-wise classification layer. The architecture of the encoder network is topologically identical to the 13 convolutional layers in the VGG16 network. The role of the decoder network is to map the low resolution encoder feature maps to full input resolution feature maps for pixel-wise classification. The novelty of SegNet lies is in the manner in which the decoder upsamples its lower resolution input feature maps. Specifically, the decoder uses pooling indices computed in the max-pooling step of the corresponding encoder to perform non-linear upsampling. \textsuperscript{\cite{badrinarayanan2017segnet}}
+
+\begin{figure}[h]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 4in, height = 2.2in]{../images/segnet.png}}
+    \caption{SegNet architecture}
+\end{figure}
+
 \section{Image Processing Methods}
 \vspace{0.2in}
 \hspace*{0.16in}
