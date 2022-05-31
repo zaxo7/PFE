@@ -248,6 +248,25 @@ SegNet is a semantic segmentation model designed in 2017. This core trainable se
 
 \subsection{Watershed}
 
+Watershed segmentation is a region-based method that has its origins in mathematical morphology, The general concept was introduced by \textsuperscript{\cite{digabel1978iterative}}.
+In watershed segmentation an image is regarded as a topographic landscape with ridges and valleys. The elevation values of the landscape are typically defined by the gray values of the respective pixels or their gradient magnitude. Based on such a 3D representation the watershed transform decomposes an image into catchment basins. For each local minimum, a catchment basin comprises all points whose path of steepest descent terminates at this minimum. Watersheds separate basins from each other. The watershed transform decomposes an image completely and thus assigns each pixel either to a region or a watershed. With noisy medical image data, a large number of small regions arises. This is known as the “over-segmentation” problem. \textsuperscript{\cite{Vincent_And_Soille_2022_sciencedirect}}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.33\textwidth}
+  \centering
+  \centerline{\includegraphics[width = 4in, height = 2.2in]{../images/watershed_example.jpg}}
+    \subcaption{example Image}
+\end{minipage}
+
+\begin{minipage}{.33\textwidth}
+  \centering
+  \centerline{\includegraphics[width = 4in, height = 2.2in]{../images/watershed_relief.png}}
+    \subcaption{watershed reliefs}
+\end{minipage}
+  \caption{Watershed algorithm from \textsuperscript{\cite{Steve_Eddins_2022_mathworks}}}
+\end{figure}
+
 \subsection{Discrete cosine transform}
 A discrete cosine transform (DCT) expresses a finite sequence of data points in terms of a sum of cosine functions oscillating at different frequencies. The DCT, first proposed by Nasir Ahmed in 1972 \textsuperscript{\cite{ahmed1974discrete}}, is a widely used transformation technique in signal processing and data compression. It is used in most digital media, including digital images, digital video, digital audio, digital television, digital radio, and speech coding. DCTs are also important to numerous other applications in science and engineering, such as digital signal processing, telecommunication devices, reducing network bandwidth usage, and spectral methods for the numerical solution of partial differential equations.
 the equation for the discrete cosine transform is represented as:
