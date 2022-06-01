@@ -282,6 +282,27 @@ the equation for the discrete cosine transform is represented as:
     \caption{Inverse DCT of Trees; (a) DCT(100\%); (b) DCT(75\%); (c) DCT(50\%); (d) DCT(25\%).}
 \end{figure}
 
+\subsection{Circular Hough Transform}
 
+The general Hough transform can be used on any kind of shape, although the complexity of the transformation increase with the number of parameters needed to describing the shape. \textsuperscript{\cite{pedersen2007circular}}
+The circle Hough Transform (CHT) is a basic feature extraction technique used in digital image processing for detecting circles in imperfect images.
+
+In a two-dimensional space, a circle can be described by:
+
+\begin{equation}
+    (x - a)^2 + (y - b)^2 = r^2
+\end{equation}
+
+where (a,b) is the center of the circle, and r is the radius. If a 2D point (x,y) is fixed, then the parameters can be found according to (1). The parameter space would be three dimensional, (a, b, r). And all the parameters that satisfy (x, y) would lie on the surface of an inverted right-angled cone whose apex is at (x, y, 0). In the 3D space, the circle parameters can be identified by the intersection of many conic surfaces that are defined by points on the 2D circle. This process can be divided into two stages. The first stage is fixing radius then find the optimal center of circles in a 2D parameter space. The second stage is to find the optimal radius in a one dimensional parameter space.
+
+This is the Circular Hough Transform algorithm:
+
+\begin{enumerate}
+    \item For each A[a,b,r] = 0;
+    \item Process the filtering algorithm on image Gaussian Blurring, convert the image to grayscale ( grayScaling), make Canny operator, The Canny operator gives the edges on image.
+    \item Vote the all possible circles in accumulator.
+    \item The local maximum voted circles of Accumulator A gives the circle Hough space.
+    \item The maximum voted circle of Accumulator gives the circle. \textsuperscript{\cite{circle-hough-transform}}
+\end{enumerate}
 
 \newpage
