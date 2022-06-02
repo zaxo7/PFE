@@ -313,5 +313,27 @@ Distance fields can also be signed, in the case where it is important to disting
 
 The map labels each pixel of the image with the distance to the nearest obstacle pixel. A most common type of obstacle pixel is a boundary pixel in a binary image.
 
+\subsection{Marching Squares Algorithm}
+
+Marching squares is a computer graphics algorithm that generates contours for a two-dimensional scalar field (rectangular array of individual numerical values). A similar method can be used to contour 2D triangle meshes.
+
+The contours can be of two kinds:
+
+\begin{itemize}
+    \item Isolines – lines following a single data level, or isovalue.
+    \item Isobands – filled areas between isolines.
+\end{itemize}
+
+Typical applications include the contour lines on topographic maps or the generation of isobars for weather maps.
+
+Marching squares takes a similar approach to the 3D marching cubes algorithm:
+
+\begin{itemize}
+    \item Process each cell in the grid independently.
+    \item Calculate a cell index using comparisons of the contour level(s) with the data values at the cell corners.
+    \item Use a pre-built lookup table, keyed on the cell index, to describe the output geometry for the cell.
+    \item Apply linear interpolation along the boundaries of the cell to calculate the exact contour position. \textsuperscript{\cite{maple2003geometric}}
+\end{itemize}
+
 
 \newpage
