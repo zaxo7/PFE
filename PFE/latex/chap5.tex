@@ -44,3 +44,6 @@ This soft-max classifies each pixel independently. The output of the soft-max cl
 For the segnet model, we have decided to test th ALL-IDB1 dataset, which contains 108 blood cell images, of which 10 images with their perspective masks and edge masks were chosen for red blood cell training and 3 as a test dataset, for white blood cells 73 images with their masks, and 33 as a test dataset.
 For platelets, we used 71 for training and 31 as a test dataset.
 Only red blood cells have edge masks, because we need to get rid of overlapped cells, white blood cells and platelets dont need the edge masks, using masks only can retrieve all the necessary features, because both white blood cells and platelets rarely overlap.
+
+\subsection{Dataset augmentation}
+
