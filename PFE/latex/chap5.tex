@@ -11,7 +11,8 @@ We will also explore different machine learning algorithms for both preprocessin
 \hspace*{0.16in}
 From all of the intel we have gathered, and previously read articles, all of cell segmentation (blood cell segmentation in particular) are mostly using U-Net and Segnet archtectures for segmenting blood cell images.
 We have implemented both the U-Net and Segnet models.
-In the following sections, a brief study analyzing and comparing both models with their perspective results.
+In the following sections, we will briefly analyze and compare both convolutional neural network (CNN) models with their perspective results.
+And explain all the postprocessing methods we used for the counting of blood cells (red, white and platelets)
 
 \section{U-Net}
 \subsection{Definition}
@@ -104,6 +105,8 @@ Therefore, this method is useless when it comes to white blood cells counting.
 
 \subsection{Connected Component Labeling}
 Connected Component Labeling (CCL) is machine learning algorithm used to detect connected regions in a binary image.
+Before applying the connected component labeling, we convert the images to grayscale. Then, a binary threshold is applied to the images to get binary values.
+Finally, we apply the connected component labeling to get the labels and map component labels to the resulting image.
 
 \section{Conclusion}
 \vspace{0.2in}
