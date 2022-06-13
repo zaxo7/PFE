@@ -5,20 +5,22 @@ In our case study, and from multiple articles, we can see that U-Net and Segnet 
 In this chapter, we test out both U-Net and Segnet models, and analyse the results by comparing the two architectures.
 We will also explore different machine learning algorithms for both preprocessing and postprocessing.
 
-\section{Models}
+\section{Our approach}
 \vspace{0.2in}
 \hspace*{0.16in}
-\lipsum[3-3]
+From all of the intel we have gathered, and previously read articles, all of cell segmentation (blood cell segmentation in particular) are mostly using U-Net and Segnet archtectures for segmenting blood cell images.
+We have implemented both the U-Net and Segnet models.
+In the following sections, a brief study analyzing and comparing both models with their perspective results.
 
-\subsection{U-Net}
-\subsubsection{Introduction}
+\section{U-Net}
+\subsection{Definition}
 \lipsum[2-2]
 
-\subsection{Segnet}
-\subsubsection{Definition}
+\section{Segnet}
+\subsection{Definition}
 The SegNet neural network, developed by Alex Kendall, Vijay Badrinarayanan, and Roberto Cipolla, all from the University of Cambridge, is a convolutional neural network used for semantic pixel wise labeling. This problem is more commonly called semantic segmentation. \textsuperscript{\cite{badrinarayanan2017segnet}}
 
-\subsubsection{Architecture}
+\subsection{Architecture}
 SegNet has an encoder network and a corresponding decoder network, followed by a final pixelwise classification layer. This architecture is illustrated in the below figure.
 With 13 encoder layers obtained from the VGG16 network, and 13 decoder layers to match the same number of encoder layers. The final decoder output is fed to a multi-class soft-max classifier to produce class probabilities for each pixel independently (pixelwise).
 
