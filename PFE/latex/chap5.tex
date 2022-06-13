@@ -45,6 +45,10 @@ For the segnet model, we have decided to test th ALL-IDB1 dataset, which contain
 For platelets, we used 71 for training and 31 as a test dataset.
 Only red blood cells have edge masks, because we need to get rid of overlapped cells, white blood cells and platelets dont need the edge masks, using masks only can retrieve all the necessary features, because both white blood cells and platelets rarely overlap.
 
+\vspace{0.1in}
+
+\input{tables/table5.tex}
+
 \subsection{Dataset augmentation}
 We used the same dataset augmention on all cells (red, white blood cells, and platelets).
 The augmentation we used was custom which involves the following steps:
@@ -60,3 +64,5 @@ The augmentation we used was custom which involves the following steps:
     \item Randomly augment the colors (luminosity and saturation).
     \item Rescale the chip back to normal.
 \end{enumerate}
+
+\newpage
