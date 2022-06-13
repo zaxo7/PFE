@@ -44,6 +44,11 @@ This soft-max classifies each pixel independently. The output of the soft-max cl
 For the segnet model, we have decided to test th ALL-IDB1 dataset, which contains 108 blood cell images, of which 10 images with their perspective masks and edge masks were chosen for red blood cell training and 3 as a test dataset, for white blood cells 73 images with their masks, and 33 as a test dataset.
 For platelets, we used 71 for training and 31 as a test dataset.
 Only red blood cells have edge masks, because we need to get rid of overlapped cells, white blood cells and platelets dont need the edge masks, using masks only can retrieve all the necessary features, because both white blood cells and platelets rarely overlap.
+The images will be sliced and rescaled to 128x128 to match the input shape of the Segnet model.
+The resulting train dataset will be 3916 image, mask, and edge tiles (a total of 11748 tiles).
+For the test dataset 1072 image, mask, and edge tiles (a total of 3216 tiles) for red blood cells.
+As for white blood cells, 28126 image and mask tiles were used for training (a total of 56252 tiles), and 15892 image and mask tiles were used as a test dataset for white blood cells (a total of 31784 tiles).
+Finally, for platelets we used 27650 image and mask tiles were used for training (a total of 55300), and 14410 image and mask tiles as a test dataset for platelets (a total of 28820).
 
 \vspace{0.1in}
 
@@ -59,7 +64,7 @@ The augmentation we used was custom which involves the following steps:
     \item Find the edges of a box around the image chip and the mask chip.
     \item Take a slice of the image and mask accordingly.
     \item Skip empty image chips (masks, and edge chips for red blood cells).
-    \item Resize the image and mask chip.
+    \item Resize the image and mask chip to 128x128.
     \item Randomly rotate and flip the image chip.
     \item Randomly augment the colors (luminosity and saturation).
     \item Rescale the chip back to normal.
