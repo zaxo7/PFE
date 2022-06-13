@@ -15,7 +15,26 @@ In the following sections, a brief study analyzing and comparing both models wit
 
 \section{U-Net}
 \subsection{Definition}
-\lipsum[2-2]
+The U-Net is a convolutional neural network that was developed for biomedical image segmentation at the Computer Science Department of the University of Freiburg. The network is based on the fully convolutional network and its architecture was modified and extended to work with fewer training images and to yield more precise segmentations. In our case we are using DO-UNet from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} which is a modified U-Net to produce dual outputs, which also known as contour aware network was first demonstrated by the DCAN architecture \textsuperscript{\cite{chen2016dcan}}.  Based on a simple FCN, DCAN was trained to use the outer
+contours of the areas of interest to guide the training of the segmentation masks. This led to improved semantic and instance segmentation of the model, which in their case, looked at non-overlapping features in biomedical imaging.
+With the aim of counting closely co-located and overlapping cells, we are predominantly interested in the correct detection of individual objects as
+opposed to the exact precision of the segmentation mask itself. An examination
+of the hidden convolutional layers of the classical U-Net showed that the penultimate layer of the network extracts information about the edges of the cells, so the idea is to output the cell mask + edge mask then do a substraction to break the overlapping cells.
+
+\subsection{Architecture}
+They Started with the classical U-Net then reduced the number of
+convolutional layers and skip connections in the model. Simultaneously, they minimised the complexity of the model by looking at smaller input regions of the images, thus minimising the memory footprint of the model. They follow the approach of Ronneberger et. al. \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} by using unpadded convolutions throughout the network, resulting in a model with smaller output edge and mask (100 × 100 px) corresponding to a central region of a larger (188 × 188 px) input image region. DO-U-Net uses two, independently trained, output layers of identical size. Figure \ref{fig:DO-UNET} shows the DO-U-Net architecture.
+
+
+
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = \linewidth]{../images/DO-UNET.png}}
+    \caption{DO-UNet architecture}
+    \label{fig:DO-UNET}
+\end{figure}
+
 
 \section{Segnet}
 \subsection{Definition}
@@ -34,7 +53,7 @@ This soft-max classifies each pixel independently. The output of the soft-max cl
 
 \vspace{0.2in}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
   \vspace{-0.1in}
     \centerline{\includegraphics[width = 4in, height = 2.2in]{../images/segnet.png}}
