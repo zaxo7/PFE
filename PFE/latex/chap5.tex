@@ -70,4 +70,19 @@ The augmentation we used was custom which involves the following steps:
     \item Rescale the chip back to normal.
 \end{enumerate}
 
+\section{Counting}
+After having segmented blood cell images (red, white blood cells and platelets), we use many postprocessing methods (machine learning algorithms) to get the coordinates of circles and count them.
+Here are all the algorithms we used to get an relatively accurate blood cell count:
+
+\subsection{Circle Hough Transform}
+Circle Hough Transform (CHT) is machine learning algorithm used to extract features (circles) from imperfect images.
+We modified its parameters (Minimum distribution, Minimum and Maximum radius...) for each type of blood cells (red, white and platelets).
+Note that we do not rely on this approach to count white blood cells, because most white blood cells have different shapes.
+Therefore, this method is useless when it comes to white blood cells counting.
+
+
+
+\section{Conclusion}
+
+
 \newpage
