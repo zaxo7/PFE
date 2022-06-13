@@ -46,4 +46,17 @@ For platelets, we used 71 for training and 31 as a test dataset.
 Only red blood cells have edge masks, because we need to get rid of overlapped cells, white blood cells and platelets dont need the edge masks, using masks only can retrieve all the necessary features, because both white blood cells and platelets rarely overlap.
 
 \subsection{Dataset augmentation}
-
+We used the same dataset augmention on all cells (red, white blood cells, and platelets).
+The augmentation we used was custom which involves the following steps:
+\begin{enumerate}
+    \item Pick a random image from the train dataset.
+    \item Get the x and y coordinates randomly from the chosen image.
+    \item Rescale the image randomly.
+    \item Find the edges of a box around the image chip and the mask chip.
+    \item Take a slice of the image and mask accordingly.
+    \item Skip empty image chips (masks, and edge chips for red blood cells).
+    \item Resize the image and mask chip.
+    \item Randomly rotate and flip the image chip.
+    \item Randomly augment the colors (luminosity and saturation).
+    \item Rescale the chip back to normal.
+\end{enumerate}
