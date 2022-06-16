@@ -108,6 +108,43 @@ Connected Component Labeling (CCL) is machine learning algorithm used to detect 
 Before applying the connected component labeling, we convert the images to grayscale. Then, a binary threshold is applied to the images to get binary values.
 Finally, we apply the connected component labeling to get the labels and map component labels to the resulting image.
 
+\subsection{Watershed}
+Watershed algorithms (also called drainage divide) are used in image processing primarily for object segmentation purposes, that is, for separating different objects in an image. the main purpose of using watershed in this phase is to segment the touching and overlapping cells, the watershed takes two inputs, first i takes an image with different intensity levels in our-case the distance transform of our mask where the intensity levels represents reliefs. the second input is the water sources in our-case we extracted local maxima from the distance transform image. we can see below the steps we used to count the cells.
+
+\begin{enumerate}
+    \item \textbf{Compute the Euclidean distance}: we compute euclidean distance from every binary pixel to the nearest zero pixel, this map will be used as our relief map in the watershed algorithm.
+    \item \textbf{We find peaks in the distance map}: we search for peaks in our euclidean distance map which is the local maxima in each region, which are the highest points in the map (higher intensity levels), which we will use as water sources in the watershed algorithm.
+    \item \textbf{apply connected component labeling on the peak map}: we apply CCL algorithm which is also called 8-connectivity algorithm to label the peaks (label each water source).
+    \item \textbf{apply the Watershed algorithm on the reversed distance map using the labeled peaks}: at the end we feed the reversed distance map and the water sources map (local maxima) to the watershed algorithm to get the segmented image. 
+\end{enumerate}
+
+\section{Metrics}
+%TODO explain briefly each metric and how it works
+\subsection{IOU}
+
+\subsection{Dice}
+
+\subsection{Tversky}
+
+\subsection{Accuracy}
+
+
+\section{Loss Functions}
+%TODO explain briefly each loss function and how it works
+%it's always related to the metric for example IOU_Loss is 1 - IOU_Metric samething for all of them
+\subsection{BinaryCrossEntrophy}
+
+\subsection{Tversky}
+
+\subsection{Focal Tversky}
+
+\subsection{IOU}
+
+\subsection{Dice Loss}
+
+
+
+
 \section{Conclusion}
 \vspace{0.2in}
 \hspace*{0.16in}
