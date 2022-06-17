@@ -26,8 +26,6 @@ of the hidden convolutional layers of the classical U-Net showed that the penult
 They Started with the classical U-Net then reduced the number of
 convolutional layers and skip connections in the model. Simultaneously, they minimised the complexity of the model by looking at smaller input regions of the images, thus minimising the memory footprint of the model. They follow the approach of Ronneberger et. al. \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} by using unpadded convolutions throughout the network, resulting in a model with smaller output edge and mask (100 × 100 px) corresponding to a central region of a larger (188 × 188 px) input image region. DO-U-Net uses two, independently trained, output layers of identical size. Figure \ref{fig:DO-UNET} shows the DO-U-Net architecture.
 
-
-
 \begin{figure}[H]
 \centering
   \vspace{-0.1in}
@@ -35,7 +33,6 @@ convolutional layers and skip connections in the model. Simultaneously, they min
     \caption{DO-UNet architecture}
     \label{fig:DO-UNET}
 \end{figure}
-
 
 \section{Segnet}
 \subsection{Definition}
@@ -121,6 +118,23 @@ Watershed algorithms (also called drainage divide) are used in image processing 
 \section{Metrics}
 %TODO explain briefly each metric and how it works
 \subsection{IOU}
+The Jaccard Index or Intersection Over Union, also known as the Jaccard similarity coefficient, is a statistic (metric) used for gauging the similarity and diversity of sample sets. It was developed by Grove Karl Gilbert in 1884 as his ratio of verification (v),\textsuperscript{\cite{murphy1996finley}} and now is frequently referred to as the Critical Success Index in meteorology. It was later developed independently by Paul Jaccard, originally giving the French name coefficient de communauté.\textsuperscript{\cite{jaccard1912distribution}} The Jaccard coefficient measures similarity between finite sample sets, and is defined as the size of the intersection divided by the size of the union of the sample sets, here is the formula:
+
+\begin{equation}
+    J(A,B) = \frac{Area\; of\; Overlap}{Area\; of\; Union} = \frac{|A \cap B|}{|A \cup B|}
+\end{equation}
+
+Here is an example of using IOU on a stop sign, where the green bounding box is the ground truth (the right prediction) and the red bounding box is what the model predicted.
+
+\vspace{0.1in}
+
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 4in, height = 2.5in]{../images/exampleIOU.jpg}}
+    \caption{Example of IOU applied on a stop sign image}
+\end{figure}
+
 
 \subsection{Dice}
 
