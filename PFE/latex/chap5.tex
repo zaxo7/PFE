@@ -115,8 +115,18 @@ Watershed algorithms (also called drainage divide) are used in image processing 
     \item \textbf{apply the Watershed algorithm on the reversed distance map using the labeled peaks}: at the end we feed the reversed distance map and the water sources map (local maxima) to the watershed algorithm to get the segmented image. 
 \end{enumerate}
 
-\section{Metrics}
-In this section, we will discuss the metrics that we used to evaluate our models.
+\section{Metrics And Loss Functions}
+Loss functions are one of the important ingredients in deep learning-based medical image segmentation methods. In the past four years, more than 20 loss functions have been proposed for various segmentation tasks. Most of them can be used in any segmentation tasks in a plug-and-play way, we can see in (fig \ref{fig:LossFunctions}) the relations between the most used  Loss Functions, we will present below the used Loss Functions in our paper.
+
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = \linewidth]{../images/LossFunctions.png}}
+    \caption{Loss Functions}
+    \label{fig:LossFunctions}
+\end{figure}
+
+In this section, we will discuss the loss functions and metrics that we used to train and evaluate our models.
 
 When performing classification predictions (pixel-wise classification in our case) there's four types of outcomes that could occur.
 
@@ -229,18 +239,6 @@ The function ranges between zero and one, like Jaccard. the corresponding loss f
 \subsection{Tversky}
 
 
-\section{Loss Functions}
-%TODO explain briefly each loss function and how it works
-%it's always related to the metric for example IOU_Loss is 1 - IOU_Metric samething for all of them
-\subsection{BinaryCrossEntrophy}
-
-\subsection{Tversky}
-
-\subsection{Focal Tversky}
-
-\subsection{IOU}
-
-\subsection{Dice Loss}
 
 
 
