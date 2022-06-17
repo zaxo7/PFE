@@ -137,25 +137,39 @@ The three main metrics used to evaluate a classification model are accuracy, pre
 
 Accuracy is defined as the percentage of correct predictions for the test data. It can be calculated easily by dividing the number of correct predictions by the number of total predictions.
 
-accuracy=correctpredictionsallpredictions
+\begin{equation}
+    Accuracy = \frac{Correct\; Predictions}{All\; Predictions}
+\end{equation}
 
 Precision is defined as the fraction of relevant examples (true positives) among all of the examples which were predicted to belong in a certain class.
 
-precision=truepositivestruepositives+falsepositives
+\begin{equation}
+    Precision = \frac{True\; Positives}{True\; Positives + False\; Positives}
+\end{equation}
 
 Recall is defined as the fraction of examples which were predicted to belong to a class with respect to all of the examples that truly belong in the class.
 
-recall=truepositivestruepositives+falsenegatives
+\begin{equation}
+    Recall = \frac{True\; Positives}{True\; Positives + False\; Negatives}
+\end{equation}
 
 We have a semantic segmentation problem. Therefore, we use the following metrics:
 
 \subsection{Pixel Accuracy}
-Pixel accuracy is perhaps the easiest to understand conceptually. It is the percent of pixels in the input image that are classified correctly.
+Pixel accuracy is perhaps the easiest to understand conceptually. It is the percent of pixels in the input image that are classified correctly.\\
 
+We don't rely on this metric because it is susceptible to class-imbalance, which is when the classes are extremely imbalanced, it means that a class or some classes dominate the image, while some other classes make up only a small portion of the image. Unfortunately, class imbalance is prevalent in many real world data sets, so it can’t be ignored.\\
 
-We don't rely on this metric because it is susceptible to class-imbalance, which is when the classes are extremely imbalanced, it means that a class or some classes dominate the image, while some other classes make up only a small portion of the image. Unfortunately, class imbalance is prevalent in many real world data sets, so it can’t be ignored. To further illustrate this, if an input image was 100\% black, the output prediction would be above 90\% accurate, which is a totally false prediction.
+To further illustrate this, if an input image was 100\% black, the output prediction would be above 90\% accurate, which is a totally false prediction as presented in the figure below.
 
+\vspace{0.1in}
 
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 3.4in, height = 1.6in]{../images/class_imbalance.png}}
+    \caption{Example class imbalance}
+\end{figure}
 
 \subsection{IOU}
 The Jaccard Index or Intersection Over Union, also known as the Jaccard similarity coefficient, is a statistic (metric) used for gauging the similarity and diversity of sample sets. It was developed by Grove Karl Gilbert in 1884 as his ratio of verification (v),\textsuperscript{\cite{murphy1996finley}} and now is frequently referred to as the Critical Success Index in meteorology. It was later developed independently by Paul Jaccard, originally giving the French name coefficient de communauté.\textsuperscript{\cite{jaccard1912distribution}} The Jaccard coefficient measures similarity between finite sample sets, and is defined as the size of the intersection divided by the size of the union of the sample sets, here is the formula:
@@ -174,7 +188,6 @@ Here is an example of using IOU on a stop sign, where the green bounding box is 
     \centerline{\includegraphics[width = 4in, height = 2.5in]{../images/exampleIOU.jpg}}
     \caption{Example of IOU applied on a stop sign image}
 \end{figure}
-
 
 \subsection{Dice}
 The Sørensen–Dice coefficient is a statistic used to measure the similarity of two samples, It was developed by the botanists (scientific study of plants) Thorvald Sørensen and Lee Raymond Dice, who published in 1948 and 1945 respectively.\\
