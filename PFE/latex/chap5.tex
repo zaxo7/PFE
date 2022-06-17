@@ -219,7 +219,6 @@ When applied to Boolean data, using the definition of true positive (TP), false 
     \label{fig:DSC_EX}
 \end{figure}
 
-
 This coefficient is not very different in form from the Jaccard index (IOU). In fact, both are equivalent in the sense that given a value for the Sørensen–Dice coefficient $S$ , one can calculate the respective Jaccard index value $J$  and vice versa, using the equations : 
 \begin{equation}
     J = \frac{DSC}{( 2 − DSC )}
@@ -261,6 +260,10 @@ The cross-entropy for a single example in a binary classification task can be st
     H(X, Y) = - (X(class0) * log(Y(class0)) + X(class1) * log(Y(class1)))
 \end{equation}
 
+\subsection{Mean Squared Error}
+Mean squared error is simply defined as the average of squared differences between the predicted output and the true output. Squared error is commonly used because it is agnostic to whether the prediction was too high or too low, it just reports that the prediction was incorrect.
+
+We used this as a loss function for our red and white blood cells both in DO-SegNet and DO-U-Net models.
 
 \section{Conclusion}
 \vspace{0.2in}
