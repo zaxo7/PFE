@@ -137,6 +137,41 @@ Here is an example of using IOU on a stop sign, where the green bounding box is 
 
 
 \subsection{Dice}
+The Sørensen–Dice coefficient is a statistic used to measure the similarity of two samples, It was developed by the botanists (scientific study of plants) Thorvald Sørensen and Lee Raymond Dice, who published in 1948 and 1945 respectively.\\
+Sørensen's original formula was intended to be applied to discrete data. Given two sets, X and Y, it is defined as :
+\begin{equation}
+    DSC(X, Y) = \frac{2 | X \cap Y |}{| X |  +  | Y |}
+\end{equation}
+where |X| and |Y| are the cardinalities of the two sets . The Sørensen index equals twice the number of elements common to both sets divided by the sum of the number of elements in each set as we can see in fig \ref{fig:DSC_EX}. 
+When applied to Boolean data, using the definition of true positive (TP), false positive (FP), and false negative (FN), it can be written as :
+\begin{equation}
+    DSC = \frac{2 TP}{2 TP + FN + FP}
+\end{equation}
+
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 4in, height = 2.5in]{../images/DSC.png}}
+    \caption{Example explaining Dice coefficient}
+    \label{fig:DSC_EX}
+\end{figure}
+
+
+This coefficient is not very different in form from the Jaccard index (IOU). In fact, both are equivalent in the sense that given a value for the Sørensen–Dice coefficient $S$ , one can calculate the respective Jaccard index value $J$  and vice versa, using the equations : 
+\begin{equation}
+    J = \frac{DSC}{( 2 − DSC )}
+\end{equation}
+
+and 
+
+\begin{equation}
+    DSC = \frac{2 J  }{( 1 + J )}
+\end{equation}
+
+The function ranges between zero and one, like Jaccard. the corresponding loss function:
+\begin{equation}
+    DSC = 1 - \frac{2 TP}{2 TP + FN + FP}
+\end{equation}
 
 \subsection{Tversky}
 
