@@ -148,19 +148,19 @@ The three main metrics used to evaluate a classification model are accuracy, pre
 Accuracy is defined as the percentage of correct predictions for the test data. It can be calculated easily by dividing the number of correct predictions by the number of total predictions.
 
 \begin{equation}
-    Accuracy = \frac{Correct\; Predictions}{All\; Predictions}
+  Accuracy = \frac{Correct\; Predictions}{All\; Predictions}
 \end{equation}
 
 Precision is defined as the fraction of relevant examples (true positives) among all of the examples which were predicted to belong in a certain class.
 
 \begin{equation}
-    Precision = \frac{True\; Positives}{True\; Positives + False\; Positives}
+  Precision = \frac{True\; Positives}{True\; Positives + False\; Positives}
 \end{equation}
 
 Recall is defined as the fraction of examples which were predicted to belong to a class with respect to all of the examples that truly belong in the class.
 
 \begin{equation}
-    Recall = \frac{True\; Positives}{True\; Positives + False\; Negatives}
+  Recall = \frac{True\; Positives}{True\; Positives + False\; Negatives}
 \end{equation}
 
 We have a semantic segmentation problem. Therefore, we use the following metrics:
@@ -233,14 +233,33 @@ and
 
 The function ranges between zero and one, like Jaccard. the corresponding loss function:
 \begin{equation}
-    DSC = 1 - \frac{2 TP}{2 TP + FN + FP}
+    DSC\_LOSS = 1 - \frac{2 TP}{2 TP + FN + FP}
 \end{equation}
 
 \subsection{Tversky}
 
+The Tversky index, named after Amos Tversky, is an asymmetric similarity measure on sets that compares a variant to a prototype. The Tversky index can be seen as a generalization of the Sørensen–Dice coefficient and the Dice coefficient (aka Jaccard index).
+For sets X and Y the Tversky index is a number between 0 and 1 given by :
+\begin{equation}
+    S(X, Y) = \frac{| X \cap Y |}{| X \cap Y | + \alpha|X  ∖ Y| + \beta | Y  ∖  X|}
+\end{equation}
+Here, $X ∖ Y$ denotes the relative complement of Y in X. 
+Further, $\alpha , \beta \geq 0$  are parameters of the Tversky index. Setting $\alpha = \beta = 1$ produces the Jaccard coefficient; setting $\alpha = \beta = 0.5$  produces the Sørensen–Dice coefficient. 
 
+The function ranges between zero and one, the corresponding loss function:
 
+\begin{equation}
+    S\_LOSS(X, Y) =  1 - \frac{| X \cap Y |}{| X \cap Y | + \alpha|X  ∖ Y| + \beta | Y  ∖  X|}
+\end{equation}
 
+\subsection{Cross-entropy}
+Cross-entropy loss, or log loss, measures the performance of a classification model whose output is a probability value between 0 and 1. Cross-entropy loss increases as the predicted probability diverges from the actual label. So predicting a probability of .012 when the actual observation label is 1 would be bad and result in a high loss value. A perfect model would have a log loss of 0.
+
+The cross-entropy for a single example in a binary classification task can be stated by unrolling the sum operation as follows:
+
+\begin{equation}
+    H(X, Y) = - (X(class0) * log(Y(class0)) + X(class1) * log(Y(class1)))
+\end{equation}
 
 
 \section{Conclusion}
