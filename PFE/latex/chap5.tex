@@ -26,8 +26,6 @@ of the hidden convolutional layers of the classical U-Net showed that the penult
 They Started with the classical U-Net then reduced the number of
 convolutional layers and skip connections in the model. Simultaneously, they minimised the complexity of the model by looking at smaller input regions of the images, thus minimising the memory footprint of the model. They follow the approach of Ronneberger et. al. \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} by using unpadded convolutions throughout the network, resulting in a model with smaller output edge and mask (100 × 100 px) corresponding to a central region of a larger (188 × 188 px) input image region. DO-U-Net uses two, independently trained, output layers of identical size. Figure \ref{fig:DO-UNET} shows the DO-U-Net architecture.
 
-
-
 \begin{figure}[H]
 \centering
   \vspace{-0.1in}
@@ -35,7 +33,6 @@ convolutional layers and skip connections in the model. Simultaneously, they min
     \caption{DO-UNet architecture}
     \label{fig:DO-UNET}
 \end{figure}
-
 
 \section{Segnet}
 \subsection{Definition}
@@ -107,6 +104,60 @@ Therefore, this method is useless when it comes to white blood cells counting.
 Connected Component Labeling (CCL) is machine learning algorithm used to detect connected regions in a binary image.
 Before applying the connected component labeling, we convert the images to grayscale. Then, a binary threshold is applied to the images to get binary values.
 Finally, we apply the connected component labeling to get the labels and map component labels to the resulting image.
+
+\subsection{Watershed}
+Watershed algorithms (also called drainage divide) are used in image processing primarily for object segmentation purposes, that is, for separating different objects in an image. the main purpose of using watershed in this phase is to segment the touching and overlapping cells, the watershed takes two inputs, first i takes an image with different intensity levels in our-case the distance transform of our mask where the intensity levels represents reliefs. the second input is the water sources in our-case we extracted local maxima from the distance transform image. we can see below the steps we used to count the cells.
+
+\begin{enumerate}
+    \item \textbf{Compute the Euclidean distance}: we compute euclidean distance from every binary pixel to the nearest zero pixel, this map will be used as our relief map in the watershed algorithm.
+    \item \textbf{We find peaks in the distance map}: we search for peaks in our euclidean distance map which is the local maxima in each region, which are the highest points in the map (higher intensity levels), which we will use as water sources in the watershed algorithm.
+    \item \textbf{apply connected component labeling on the peak map}: we apply CCL algorithm which is also called 8-connectivity algorithm to label the peaks (label each water source).
+    \item \textbf{apply the Watershed algorithm on the reversed distance map using the labeled peaks}: at the end we feed the reversed distance map and the water sources map (local maxima) to the watershed algorithm to get the segmented image. 
+\end{enumerate}
+
+\section{Metrics}
+%TODO explain briefly each metric and how it works
+\subsection{IOU}
+The Jaccard Index or Intersection Over Union, also known as the Jaccard similarity coefficient, is a statistic (metric) used for gauging the similarity and diversity of sample sets. It was developed by Grove Karl Gilbert in 1884 as his ratio of verification (v),\textsuperscript{\cite{murphy1996finley}} and now is frequently referred to as the Critical Success Index in meteorology. It was later developed independently by Paul Jaccard, originally giving the French name coefficient de communauté.\textsuperscript{\cite{jaccard1912distribution}} The Jaccard coefficient measures similarity between finite sample sets, and is defined as the size of the intersection divided by the size of the union of the sample sets, here is the formula:
+
+\begin{equation}
+    J(A,B) = \frac{Area\; of\; Overlap}{Area\; of\; Union} = \frac{|A \cap B|}{|A \cup B|}
+\end{equation}
+
+Here is an example of using IOU on a stop sign, where the green bounding box is the ground truth (the right prediction) and the red bounding box is what the model predicted.
+
+\vspace{0.1in}
+
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 4in, height = 2.5in]{../images/exampleIOU.jpg}}
+    \caption{Example of IOU applied on a stop sign image}
+\end{figure}
+
+
+\subsection{Dice}
+
+\subsection{Tversky}
+
+\subsection{Accuracy}
+
+
+\section{Loss Functions}
+%TODO explain briefly each loss function and how it works
+%it's always related to the metric for example IOU_Loss is 1 - IOU_Metric samething for all of them
+\subsection{BinaryCrossEntrophy}
+
+\subsection{Tversky}
+
+\subsection{Focal Tversky}
+
+\subsection{IOU}
+
+\subsection{Dice Loss}
+
+
+
 
 \section{Conclusion}
 \vspace{0.2in}
