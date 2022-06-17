@@ -116,7 +116,47 @@ Watershed algorithms (also called drainage divide) are used in image processing 
 \end{enumerate}
 
 \section{Metrics}
-%TODO explain briefly each metric and how it works
+In this section, we will discuss the metrics that we used to evaluate our models.
+
+When performing classification predictions (pixel-wise classification in our case) there's four types of outcomes that could occur.
+
+\begin{enumerate}
+    \item \textbf{True positives} are when you predict an observation belongs to a class and it actually does belong to that class.
+    \item \textbf{True negatives} are when you predict an observation does not belong to a class and it actually does not belong to that class.
+    \item \textbf{False positives} occur when you predict an observation belongs to a class when in reality it does not.
+    \item \textbf{False negatives} occur when you predict an observation does not belong to a class when in fact it does.
+\end{enumerate}
+
+These four outcomes are often plotted on a confusion matrix. The following confusion matrix is an example for the case of binary classification. This matrix should be generated making predictions on the test data and then identifying each prediction as one of the four possible outcomes described above.
+
+\vspace{0.1in}
+
+\input{tables/table6.tex}
+
+The three main metrics used to evaluate a classification model are accuracy, precision, and recall.
+
+Accuracy is defined as the percentage of correct predictions for the test data. It can be calculated easily by dividing the number of correct predictions by the number of total predictions.
+
+accuracy=correctpredictionsallpredictions
+
+Precision is defined as the fraction of relevant examples (true positives) among all of the examples which were predicted to belong in a certain class.
+
+precision=truepositivestruepositives+falsepositives
+
+Recall is defined as the fraction of examples which were predicted to belong to a class with respect to all of the examples that truly belong in the class.
+
+recall=truepositivestruepositives+falsenegatives
+
+We have a semantic segmentation problem. Therefore, we use the following metrics:
+
+\subsection{Pixel Accuracy}
+Pixel accuracy is perhaps the easiest to understand conceptually. It is the percent of pixels in the input image that are classified correctly.
+
+
+We don't rely on this metric because it is susceptible to class-imbalance, which is when the classes are extremely imbalanced, it means that a class or some classes dominate the image, while some other classes make up only a small portion of the image. Unfortunately, class imbalance is prevalent in many real world data sets, so it can’t be ignored. To further illustrate this, if an input image was 100\% black, the output prediction would be above 90\% accurate, which is a totally false prediction.
+
+
+
 \subsection{IOU}
 The Jaccard Index or Intersection Over Union, also known as the Jaccard similarity coefficient, is a statistic (metric) used for gauging the similarity and diversity of sample sets. It was developed by Grove Karl Gilbert in 1884 as his ratio of verification (v),\textsuperscript{\cite{murphy1996finley}} and now is frequently referred to as the Critical Success Index in meteorology. It was later developed independently by Paul Jaccard, originally giving the French name coefficient de communauté.\textsuperscript{\cite{jaccard1912distribution}} The Jaccard coefficient measures similarity between finite sample sets, and is defined as the size of the intersection divided by the size of the union of the sample sets, here is the formula:
 
@@ -174,8 +214,6 @@ The function ranges between zero and one, like Jaccard. the corresponding loss f
 \end{equation}
 
 \subsection{Tversky}
-
-\subsection{Accuracy}
 
 
 \section{Loss Functions}
