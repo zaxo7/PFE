@@ -115,7 +115,15 @@ Watershed algorithms (also called drainage divide) are used in image processing 
     \item \textbf{apply the Watershed algorithm on the reversed distance map using the labeled peaks}: at the end we feed the reversed distance map and the water sources map (local maxima) to the watershed algorithm to get the segmented image. 
 \end{enumerate}
 
-\section{Metrics}
+\section{Metrics And Loss Functions}
+Loss functions are one of the important ingredients in deep learning-based medical image segmentation methods. In the past four years, more than 20 loss functions have been proposed for various segmentation tasks. Most of them can be used in any segmentation tasks in a plug-and-play way, we can see in fig \ref{fig:LossFunctions} the relations between the most used  Loss Functions, we will present below the used Loss Functions in our paper.
+
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = \linewidth]{../images/LossFunctions.png}}
+    \caption{Loss Functions}
+\end{figure}
 In this section, we will discuss the metrics that we used to evaluate our models.
 
 When performing classification predictions (pixel-wise classification in our case) there's four types of outcomes that could occur.
@@ -154,7 +162,6 @@ Pixel accuracy is perhaps the easiest to understand conceptually. It is the perc
 
 
 We don't rely on this metric because it is susceptible to class-imbalance, which is when the classes are extremely imbalanced, it means that a class or some classes dominate the image, while some other classes make up only a small portion of the image. Unfortunately, class imbalance is prevalent in many real world data sets, so it can’t be ignored. To further illustrate this, if an input image was 100\% black, the output prediction would be above 90\% accurate, which is a totally false prediction.
-
 
 
 \subsection{IOU}
@@ -216,18 +223,6 @@ The function ranges between zero and one, like Jaccard. the corresponding loss f
 \subsection{Tversky}
 
 
-\section{Loss Functions}
-%TODO explain briefly each loss function and how it works
-%it's always related to the metric for example IOU_Loss is 1 - IOU_Metric samething for all of them
-\subsection{BinaryCrossEntrophy}
-
-\subsection{Tversky}
-
-\subsection{Focal Tversky}
-
-\subsection{IOU}
-
-\subsection{Dice Loss}
 
 
 
