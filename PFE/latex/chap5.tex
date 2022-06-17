@@ -116,15 +116,17 @@ Watershed algorithms (also called drainage divide) are used in image processing 
 \end{enumerate}
 
 \section{Metrics And Loss Functions}
-Loss functions are one of the important ingredients in deep learning-based medical image segmentation methods. In the past four years, more than 20 loss functions have been proposed for various segmentation tasks. Most of them can be used in any segmentation tasks in a plug-and-play way, we can see in fig \ref{fig:LossFunctions} the relations between the most used  Loss Functions, we will present below the used Loss Functions in our paper.
+Loss functions are one of the important ingredients in deep learning-based medical image segmentation methods. In the past four years, more than 20 loss functions have been proposed for various segmentation tasks. Most of them can be used in any segmentation tasks in a plug-and-play way, we can see in (fig \ref{fig:LossFunctions}) the relations between the most used  Loss Functions, we will present below the used Loss Functions in our paper.
 
 \begin{figure}[H]
 \centering
   \vspace{-0.1in}
     \centerline{\includegraphics[width = \linewidth]{../images/LossFunctions.png}}
     \caption{Loss Functions}
+    \label{fig:LossFunctions}
 \end{figure}
-In this section, we will discuss the metrics that we used to evaluate our models.
+
+In this section, we will discuss the loss functions and metrics that we used to train and evaluate our models.
 
 When performing classification predictions (pixel-wise classification in our case) there's four types of outcomes that could occur.
 
