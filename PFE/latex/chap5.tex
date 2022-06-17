@@ -261,9 +261,17 @@ The cross-entropy for a single example in a binary classification task can be st
 \end{equation}
 
 \subsection{Mean Squared Error}
-Mean squared error is simply defined as the average of squared differences between the predicted output and the true output. Squared error is commonly used because it is agnostic to whether the prediction was too high or too low, it just reports that the prediction was incorrect.
+Mean squared error (MSE) is simply defined as the average of squared differences between the predicted output and the true output. Squared error is commonly used because it is agnostic to whether the prediction was too high or too low, it just reports that the prediction was incorrect.
 
-We used this as a loss function for our red and white blood cells both in DO-SegNet and DO-U-Net models.
+This is the Mean Squared Error formula:
+
+\begin{equation}
+    MSE = \frac{1}{n} \sum_{i=1}^{n} (Y_{i} - \hat{Y}_{i})^{2}
+\end{equation}
+
+We used this loss function in both our DO-U-Net and DO-SegNet models for predicting red and white blood cells.\\
+
+There is however a slight problem, the Mean Squared Error has the disadvantage of heavily weighting outliers.[11] This is a result of the squaring of each term, which effectively weights large errors more heavily than small ones.
 
 \section{Conclusion}
 \vspace{0.2in}
