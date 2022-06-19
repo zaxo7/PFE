@@ -1,0 +1,4 @@
+Image Real_Count CCL Watershed CHT
+Im001_0 21 23 19 17
+Im002_1 11 13 19 10
+Im003_0 20 17 13 11
