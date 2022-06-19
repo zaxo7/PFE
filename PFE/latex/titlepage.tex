@@ -1,0 +1,93 @@
+% For the box (theme)
+\mdfdefinestyle{MyFrame}{%
+    linecolor=black,
+    outerlinewidth=2pt,
+    roundcorner=0pt,
+    innertopmargin=13pt,
+    innerbottommargin=13pt,
+    innerrightmargin=20pt,
+    innerleftmargin=20pt,
+    backgroundcolor=gray!10!white}
+
+\begin{titlepage}
+
+   \begin{tikzpicture}[remember picture, overlay]
+      \draw[line width = 2pt] ($(current page.north west) + (0.25in,-0.25in)$) rectangle ($(current page.south east) + (-0.25in,0.25in)$);
+   \end{tikzpicture}
+
+   \begin{center}
+       \vspace*{-0.4in}
+
+       \begin{large}
+
+           République Algérienne Démocratique et Populaire
+
+           Ministère de l'Enseignement Supérieur et de la Recherche Scientifique
+
+           Université M'Hamed Bougara de Boumerdès
+
+       \end{large}
+
+       \vspace{0.1in}
+
+    \begin{figure}[h]
+    \centering
+        \includegraphics[width = 1.5in, height = 1in]{../images/UnivUMBB.jpg}
+    \end{figure}
+     \vspace*{-0.1in}
+    \large{Faculté des Sciences}
+    \\
+    \vspace*{-0.1in}
+    \large{Département d'informatique}
+   \end{center}
+
+    \hspace{0.2in}
+    \large{\textbf{Domaine \,\; :}  Mathématiques Informatique}
+    \kern 1in
+    \large{\textbf{Année universitaire :}}
+
+    \hspace{0.2in}
+    \large{\textbf{Filière \quad\,\,\, :}  Informatique}
+    \kern 2.65in
+    2021 / 2022
+
+    \hspace{0.2in}
+    \large{\textbf{Spécialité \, :}  Technologie de l'information}
+
+    \begin{center}
+        \begin{large}
+
+            \vspace{0.1in}
+
+            \textit{\textbf{\uline{Projet fin d'étude}}}
+        
+        \end{large}
+
+        \vspace{0.3in}
+
+        \textit{\Huge{\textbf{\uline{Thème}}}}
+
+        \vspace{0.2in}
+
+        \begin{mdframed}[style=MyFrame]
+            \begin{center}
+            \color{Black}
+              \Large{\textbf{La segmentation et Comptage des cellules biologiques}}
+
+              \Large{\textbf{dans images de microscope par apprentissage profond}}
+            \end{center}
+        \end{mdframed}
+    \end{center}
+
+    \vspace{0.4in}
+
+    \hspace{0.2in}
+    \textit{\textbf{Présenté par :}}
+
+    \hspace{0.2in}
+    Gharbi Aghiles
+
+    \hspace{0.2in}
+    Neggazi Mohamed Lamine
+
+\end{titlepage}

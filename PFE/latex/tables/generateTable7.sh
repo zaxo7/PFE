@@ -1,16 +1,6 @@
 #!/usr/bin/env bash
 
 
-# # read from data file and get length of words
-# while read -r line; do
-#   words=($line)
-#   for word in "${words[@]}"; do
-#     echo -n '\textbf{'$word'} & '
-#   done
-#   echo '\\ \hline'
-#   len=$(echo $line | wc -w)
-# done < data.txt
-
 # read from data file and get length of words
 while read -r line; do
   words=($line)
