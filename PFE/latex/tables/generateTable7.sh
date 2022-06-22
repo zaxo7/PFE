@@ -10,7 +10,7 @@ while read -r line; do
   data=$(echo $data | sed 's|.$||g')
   data+="\\\\\ \\hline\n"
   len=$(echo $line | wc -w)
-done < data.txt
+done < ${$1}.txt
 data=$(echo $data | sed 's|_|\\\_|g')
 
 columns=''
@@ -30,4 +30,4 @@ echo -ne '\\begin{table}[H]
 \\caption{Results of each algorithm}
 \\label{Results of each algorithm}
 \\end{table}
-' > table7.tex
+' > ${$1}.tex
