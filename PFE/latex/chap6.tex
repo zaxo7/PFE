@@ -45,11 +45,11 @@ Paperspace is a high-performance cloud computing and ML development platform for
 In this Section we will detail the different experiments and we will discuss the evaluation results obtained from the two segmentation models DO-UNet and DO-SegNet both with the BinaryCrossEnropy Loss Function. And we also discuss the evaluation results of the three counting algorithms Watershed, Circle Hough Transform and Connected Component Labeling for the three blood elements RBCs and WBCs and Platelets.
 
 \subsection{Red Blood Cells}
-The Red Blood Cells are the most difficult to detect because of the overlapping, where in some samples we can't notice the overlapping by eyes, in this experiment we are comparing DO-U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} and the SegNet model.
-In the DO-UNet we updated the data augmentation phase. and applied transfer Learning to get better edge mask. we can see in the dataset that we have only 13 images of 108 that contains edge and 108 masks, so the problem here is the lack of the edge label. we ended up with the method below as the best fit to our problem:
+The Red Blood Cells are the most difficult to detect because of the overlapping, where in some samples we can't notice the overlapping by eyes, in this experiment we are comparing do-U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} and the SegNet model.
+In the do-U-Net we updated the data augmentation phase. and applied Transfer Learning to get better edge mask. we can see in the dataset that we have only 13 images out of 108 from ALL-IDB1 that contains edge-masks and 108 masks, so the problem here is the lack of the edge label. we ended up with the method below as the best fit to our problem:
 \begin{enumerate}
-    \item Train the DO-Unet outputs on the big dataset (108 maks) which will output two identical masks.
-    \item Continue Training the DO-Unet with the small dataset (13 masks, 13 edges), and Freeze the Mask Output
+    \item Train the DO-Unet outputs on the big dataset (108 masks) which will output two identical masks.
+    \item Continue Training the DO-Unet with the small dataset (13 masks, 13 edges), and Freeze the Mask Output.
 \end{enumerate}
 
 \input{tables/DO-UNet-Training.tex}
