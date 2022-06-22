@@ -63,7 +63,6 @@ In the SegNet ... %TODOAMINE
 
 \subsubsection{DO-U-Net}
 After training the model we did a benchmark on the 13 images to calculate the counting accuracy of the three methods, we ended up with the table \ref{table:DOUNET-RBC} below where we can see that the Circle hough transform method is the best for RBC counting with 95.36 accuracy, because all the RBCs have a similar shape and size.
->>>>>>> 168bdfc369689911a52a3bc69196321e3cec91a4
 
 \input{tables/RBC_DOUNET.tex}
 
@@ -82,10 +81,8 @@ The segmented output of do-SegNet is thresholded using a binary threshold, and t
 \input{tables/rbc_segnet.tex}
 
 \subsection{White Blood Cells}
-<<<<<<< HEAD
 %TODO Same
 \subsubsection{do-U-Net}
-=======
 The White Blood Cells are also difficult to detect because of the non stable shape and in some cases they overlap, in this experiment we are comparing single output U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} and the single output SegNet model.
 In the UNet we removed the edge output because we don't have the edge annotation. then trained the model for 15 epochs with the binaryCrossEntropy Loss function on (74 + 34) images. 
 We ended up with a very high accuracy and IOU score as we can see in table \ref{table:unet-wbc-training}.
@@ -93,11 +90,7 @@ We ended up with a very high accuracy and IOU score as we can see in table \ref{
 \input{tables/UNet-WBC-Training.tex}
 
 \subsubsection{DO-U-Net}
-<<<<<<< HEAD
 After training the model we did a benchmark on the 13 images then on the complete database (108 images) to calculate the counting accuracy of the three methods, we ended up with the table \ref{table:UNet-WBC} below where we can see that the watershed method is the best for WBC counting with 97.94 accuracy on the 13 images and 95.64 on the complete database, because the white blood cells always slightly overlap each other where it's easy to the watershed to segment them.
-=======
->>>>>>> 0df38c429d9634e52c041df6ee31e6f471b0bf04
->>>>>>> 168bdfc369689911a52a3bc69196321e3cec91a4
 
 \input{tables/WBC_DOUNET.tex}
 
