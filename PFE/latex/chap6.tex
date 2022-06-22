@@ -57,19 +57,35 @@ In the DO-UNet we updated the data augmentation phase. and applied transfer Lear
 The table \ref{table:do-unet-transfer} compares between the normal trained model A on the small dataset which contains 13 masks and edges and the model be which is trained on two phases, first with the big dataset (108 mask without edge) for 60 epochs, in the second phase we continued training with the small dataset (13 masks + edges) for 400 epochs.
 We can see that this method pushed the edge accuracy which is really important to get rid of the overlapping.
 
+\subsubsection{do-U-Net}
+After training the dual-output U-Net model we did a benchmark on the 13 images to calculate the counting accuracy of the three methods, we ended up with the table below where we can see that the Circle hough transform method is the best for RBC counting with 95.36 accuracy, because all the RBCs have a similar shape and size.
 In the SegNet ... %TODOAMINE
 
 \subsubsection{DO-U-Net}
 After training the model we did a benchmark on the 13 images to calculate the counting accuracy of the three methods, we ended up with the table \ref{table:DOUNET-RBC} below where we can see that the Circle hough transform method is the best for RBC counting with 95.36 accuracy, because all the RBCs have a similar shape and size.
+>>>>>>> 168bdfc369689911a52a3bc69196321e3cec91a4
 
 \input{tables/RBC_DOUNET.tex}
 
+\subsubsection{do-SegNet}
+For the dual-output SegNet model, the resulting segmented images were very good, sometimes better than the do-U-Net, though it is not as optimized when training and also predicting images, but it gets the job done with 95.86\% mask and 93.99\% edge accuracies. The segmented output images also had some noise which affected Connected Component Labeling (CCL) when counting.
+As for Circle Hough Transform (CHT), the noise did not affect the result.
+Red Blood Cells detection and counting is by far the hardest, because it is the only cell that overlaps and that makes it hard for counting.
+The segmented output of do-SegNet is thresholded using a binary threshold, and then sent to 3 algorithms:
 
-\subsubsection{DO-SegNet}
-%TODO we will do the same thing as DO-UNET and at the end we draw a resume table wich will compare between both/ or we can do both in the same table 
+\begin{itemize}
+  \item \textbf{Circle Hough Transform}: CHT was our best result for red blood cells counting, which achieved an accuracy of 94.03\% on the same dataset used for training the model (13 images with their respective masks and edge-masks).
+  \item \textbf{Connected Component Labeling}: CCL was applied directly on the thresholded output edge, this method was far from accurate because the do-SegNet output had some noise (even when removing most of it), and also the overlapped nature of red blood cells which makes it very hard for this algorithm to count correctly. CCL achived an accuracy of 76.49\% counting red blood cells.
+  \item \textbf{Euclidean Distance Transform}: EDT is used to get rid of the overlapped cells, also peak local max was applied on the EDT output for finding local maxima(s), the result of this approach is 84.64\% accuracy.
+\end{itemize}
+
 \input{tables/rbc_segnet.tex}
 
 \subsection{White Blood Cells}
+<<<<<<< HEAD
+%TODO Same
+\subsubsection{do-U-Net}
+=======
 The White Blood Cells are also difficult to detect because of the non stable shape and in some cases they overlap, in this experiment we are comparing single output U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} and the single output SegNet model.
 In the UNet we removed the edge output because we don't have the edge annotation. then trained the model for 15 epochs with the binaryCrossEntropy Loss function on (74 + 34) images. 
 We ended up with a very high accuracy and IOU score as we can see in table \ref{table:unet-wbc-training}.
@@ -77,18 +93,22 @@ We ended up with a very high accuracy and IOU score as we can see in table \ref{
 \input{tables/UNet-WBC-Training.tex}
 
 \subsubsection{DO-U-Net}
+<<<<<<< HEAD
 After training the model we did a benchmark on the 13 images then on the complete database (108 images) to calculate the counting accuracy of the three methods, we ended up with the table \ref{table:UNet-WBC} below where we can see that the watershed method is the best for WBC counting with 97.94 accuracy on the 13 images and 95.64 on the complete database, because the white blood cells always slightly overlap each other where it's easy to the watershed to segment them.
+=======
+>>>>>>> 0df38c429d9634e52c041df6ee31e6f471b0bf04
+>>>>>>> 168bdfc369689911a52a3bc69196321e3cec91a4
 
 \input{tables/WBC_DOUNET.tex}
 
-\subsubsection{DO-SegNet}
+\subsubsection{do-SegNet}
 
 % \input{tables/wbc_segnet}
 
 \subsection{Platlets}
 %TODO Same
-\subsubsection{DO-U-Net}
-\subsubsection{DO-SegNet}
+\subsubsection{do-U-Net}
+\subsubsection{do-SegNet}
 
 % \input{tables/plt_segnet}
 
