@@ -42,25 +42,37 @@ Paperspace is a high-performance cloud computing and ML development platform for
     \end{figure}
 
 \section{Experiments and Results}
+In this Section we will detail the different experiments and we will discuss the evaluation results obtained from the two segmentation models DO-UNet and SegNet both with the BinaryCrossEnropy Loss Function. And we also discuss the evaluation results of the three counting algorithms Watershed, Circle Hough Transform and Connected Component Labeling for the three blood elements RBCs and WBCs and Platelets.
 
 \subsection{Red Blood Cells}
-\subsubsection{DO-U-Net}
-%TODO we will have a table which has accuracy and metrics for example 10 images and their real and predicted count with the 3 methods
-%example of table columns
-% Image Results(Metrics IOU ...) Real-Count CHT CCL Watershed
+The Red Blood Cells are the most difficult to detect because of the overlapping, where in some samples we can't notice the overlapping by eyes, in this experiment we are comparing DO-U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} and the SegNet model
+In the DO-UNet we updated the data augmentation phase. and applied transfer Learning to get better edge mask. we can see in the dataset that we have only 13 images of 108 that contains edge and 108 masks, so the problem here is the lack of the edge label. we ended up with the method below as the best fit to our problem:
+\begin{enumerate}
+    \item Train the DO-Unet outputs on the big dataset (108 maks) which will output two identical masks.
+    \item Continue Training the DO-Unet with the small dataset (13 masks, 13 edges), and Freeze the Mask Output
+\end{enumerate}
 
-% \input{tables/RBC_DOUNET}
+\input{tables/DO-UNet-Training.tex}
+
+The table \ref{table:do-unet-transfer} compares between the normal trained model A on the small dataset which contains 13 masks and edges and the model be which is trained on two phases, first with the big dataset (108 mask without edge) for 60 epochs, in the second phase we continued training with the small dataset (13 masks + edges) for 400 epochs.
+We can see that this method pushed the edge accuracy which is really important to get rid of the overlapping.
+
+
+\subsubsection{DO-U-Net}
+After training the model we did a benchmark on the 13 images to calculate the counting accuracy of the three methods, we ended up with the table below where we can see that the Circle hough transform method is the best for RBC counting with 95.36 accuracy, because all the RBCs have a similar shape and size.
+
+\input{tables/RBC_DOUNET.tex}
+
 
 \subsubsection{DO-SegNet}
 %TODO we will do the same thing as DO-UNET and at the end we draw a resume table wich will compare between both/ or we can do both in the same table 
-
 \input{tables/rbc_segnet.tex}
 
 \subsection{White Blood Cells}
 %TODO Same
 \subsubsection{DO-U-Net}
 
-% \input{tables/WBC_DOUNET}
+\input{tables/WBC_DOUNET.tex}
 
 \subsubsection{DO-SegNet}
 
@@ -78,4 +90,6 @@ Paperspace is a high-performance cloud computing and ML development platform for
 \section{Results}
 \vspace{0.2in}
 \hspace*{0.16in}
+
+\input{tables/table7.tex}
 
