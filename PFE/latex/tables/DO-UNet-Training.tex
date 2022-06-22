@@ -4,15 +4,15 @@
 \resizebox{\textwidth}{!}{
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|} 
 \hline
-Model              & Output & training phases   & Dataset                                                                                    & Epochs               & Loss   & Mean IOU  & Dice   & Tversky & Accuracy  \\ 
+\textbf{Model}              & \textbf{Output} & \textbf{training phases}   & \textbf{Dataset}                                                                                    & \textbf{Epochs}               & \textbf{Loss}   & \textbf{Mean IOU}  & \textbf{Dice}   & \textbf{Tversky} & \textbf{Accuracy}  \\ 
 \hline
-\multirow{2}{*}{A} & mask   & \multirow{2}{*}{} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}small Dataset\\(mask + edge) * 13\end{tabular}} & \multirow{2}{*}{800} & 0.3615 & 0.6365    & 0.8304 & 0.8232  & 0.8754    \\ 
+\multirow{2}{*}{A} & \textbf{mask}   & \multirow{2}{*}{} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}small Dataset\\(mask + edge) * 13\end{tabular}} & \multirow{2}{*}{800} & 0.3615 & 0.6365    & 0.8304 & 0.8232  & 0.8754    \\ 
 \cline{2-2}\cline{6-10}
-                   & edge   &                   &                                                                                            &                      & 0.1816 & 0.0663    & 0.3582 & 0.3475  & 0.9343    \\ 
+                   & \textbf{edge}   &                   &                                                                                            &                      & 0.1816 & 0.0663    & 0.3582 & 0.3475  & 0.9343    \\ 
 \hline
-\multirow{2}{*}{B} & mask   & phase 1           & \begin{tabular}[c]{@{}l@{}}big dataset \\mask * (73 + 35)\end{tabular}                     & 60                   & 0.0713 & 0.7751    & 0.9528 & 0.9567  & 0.9716    \\ 
+\multirow{2}{*}{B} & \textbf{mask}   & phase 1           & \begin{tabular}[c]{@{}l@{}}big dataset \\mask * (73 + 35)\end{tabular}                     & 60                   & 0.0713 & 0.7751    & 0.9528 & 0.9567  & 0.9716    \\ 
 \cline{2-10}
-                   & edge   & phase 2           & \begin{tabular}[c]{@{}l@{}}small Dataset\\(mask + edge) * 13\end{tabular}                  & 400                  & 0.1465 & 0.0759    & 0.4127 & 0.4015  & 0.9385    \\
+                   & \textbf{edge}   & phase 2           & \begin{tabular}[c]{@{}l@{}}small Dataset\\(mask + edge) * 13\end{tabular}                  & 400                  & 0.1465 & 0.0759    & 0.4127 & 0.4015  & 0.9385    \\
 \hline
 \end{tabular}
 }
