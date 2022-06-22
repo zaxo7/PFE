@@ -57,16 +57,12 @@ In the do-U-Net we updated the data augmentation phase. and applied Transfer Lea
 The table \ref{table:do-unet-transfer} compares between the normal trained model A on the small dataset which contains 13 masks and edges and the model be which is trained on two phases, first with the big dataset (108 mask without edge) for 60 epochs, in the second phase we continued training with the small dataset (13 masks + edges) for 400 epochs.
 We can see that this method pushed the edge accuracy which is really important to get rid of the overlapping.
 
-\subsubsection{do-U-Net}
-After training the dual-output U-Net model we did a benchmark on the 13 images to calculate the counting accuracy of the three methods, we ended up with the table below where we can see that the Circle hough transform method is the best for RBC counting with 95.36 accuracy, because all the RBCs have a similar shape and size.
-In the SegNet ... %TODOAMINE
-
 \subsubsection{DO-U-Net}
-After training the model we did a benchmark on the 13 images to calculate the counting accuracy of the three methods, we ended up with the table \ref{table:DOUNET-RBC} below where we can see that the Circle hough transform method is the best for RBC counting with 95.36 accuracy, because all the RBCs have a similar shape and size.
+After training the dual-output U-Net model we did a benchmark on the 13 images to calculate the counting accuracy of the three methods, we ended up with the table \ref{table:DOUNET-RBC} below where we can see that the Circle hough transform method is the best for RBC counting with 95.36 accuracy, because all the RBCs have a similar shape and size.
 
 \input{tables/RBC_DOUNET.tex}
 
-\subsubsection{do-SegNet}
+\subsubsection{DO-SegNet}
 For the dual-output SegNet model, the resulting segmented images were very good, sometimes better than the do-U-Net, though it is not as optimized when training and also predicting images, but it gets the job done with 95.86\% mask and 93.99\% edge accuracies. The segmented output images also had some noise which affected Connected Component Labeling (CCL) when counting.
 As for Circle Hough Transform (CHT), the noise did not affect the result.
 Red Blood Cells detection and counting is by far the hardest, because it is the only cell that overlaps and that makes it hard for counting.
