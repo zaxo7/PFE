@@ -14,7 +14,7 @@ We have implemented both the U-Net and Segnet models.
 In the following sections, we will briefly analyze and compare both convolutional neural network (CNN) models with their perspective results.
 And explain all the postprocessing methods we used for the counting of blood cells (red, white and platelets)
 
-\section{U-Net}
+\section{DO-UNet}
 \subsection{Definition}
 The U-Net is a convolutional neural network that was developed for biomedical image segmentation at the Computer Science Department of the University of Freiburg. The network is based on the fully convolutional network and its architecture was modified and extended to work with fewer training images and to yield more precise segmentations. In our case we are using DO-UNet from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} which is a modified U-Net to produce dual outputs, which also known as contour aware network was first demonstrated by the DCAN architecture \textsuperscript{\cite{chen2016dcan}}.  Based on a simple FCN, DCAN was trained to use the outer
 contours of the areas of interest to guide the training of the segmentation masks. This led to improved semantic and instance segmentation of the model, which in their case, looked at non-overlapping features in biomedical imaging.
