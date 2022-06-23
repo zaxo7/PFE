@@ -27,6 +27,7 @@ while read -r line; do
   lineNumber=$((lineNumber + 1))
 done < $fileName.txt
 data=$(echo $data | sed 's|_|\\\_|g')
+file=$(echo $fileName | sed 's|_|\ |g')
 
 columns=''
 # generate the number of columns
@@ -43,7 +44,7 @@ echo -ne '\\begin{table}[H]
 \\hline\n '$(echo $data)'
 \\hline
 \\end{tabular}
-\\caption{Results of each algorithm}
-\\label{Results of each algorithm}
+\\caption{Results of '$file'}
+\\label{Results of '$file'}
 \\end{table}
 ' > $fileName.tex
