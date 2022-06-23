@@ -76,6 +76,8 @@ After training the model we did a benchmark on the 13 images then on the complet
 \section{SegNet}
 % TODO do-U-net definition, how many layers, concatenation and number of paramters, also the benefits...
 
+\input{tables/segnet.tex}
+
 \subsection{Red Blood Cells}
 For the dual-output SegNet model, the resulting segmented images were very good, sometimes better than the do-U-Net, though it is not as optimized when training and also predicting images, but it gets the job done with 95.86\% mask and 93.99\% edge accuracies. The segmented output images also had some noise which affected Connected Component Labeling (CCL) when counting.
 As for Circle Hough Transform (CHT), the noise did not affect the result.
