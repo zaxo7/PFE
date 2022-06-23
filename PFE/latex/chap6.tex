@@ -74,10 +74,7 @@ After training the model we did a benchmark on the 13 images then on the complet
 \input{tables/WBC_DOUNET.tex}
 
 \section{SegNet Results}
-SegNet segmentation results were pretty accurate for white blood cells and platelets, as for red blood cells, the segmentation was done using dual output (mask and edge-mask) to get rid of overlapped cells.\\
-Here are the results of the Mean Squared Error (MSE) loss function on each type of cell:
-
-\input{tables/segnet.tex}
+% TODO do-U-net definition, how many layers, concatenation and number of paramters, also the benefits...
 
 \subsection{Red Blood Cells}
 For the dual-output SegNet model, the resulting segmented images were very good, sometimes better than the do-U-Net, though it is not as optimized when training and also predicting images, but it gets the job done with 95.86\% mask and 93.99\% edge accuracies. The segmented output images also had some noise which affected Connected Component Labeling (CCL) when counting.
@@ -94,28 +91,14 @@ The segmented output of do-SegNet is thresholded using a binary threshold, and t
 \input{tables/rbc_segnet.tex}
 
 \subsection{White Blood Cells}
-The results of white blood cells segmentation and counting using the SegNet model was very accurate achieving 99.72\% when segmenting.
-White blood cells are the easiest out of the three, and the most accurate results.
-However, white blood cells are different from the other cells because they come in different shapes and sizes, which made it hard to adapt each counting algorithm to every cell.\
-The same counting methods are applied CHT, CCL and EDT. And each method had some drawbacks.\\
-here are the results:
-
-\begin{itemize}
-  \item \textbf{Circle Hough Transform}: Due to the different shapes of white blood cells, CHT achieved the lowest result which is 79.9\% counting accuracy, because some of the cells don't even look like circles and also their differet size which made it harder to count.
-  \item \textbf{Connected Component Labeling}: CCL is similiar to CHT when it comes to white blood cells. And, because of the noisy outputs of SegNet the binary threshold can only do so much (it thresholdes some of the noise generated when predicting).\\
-    CCl achieved an average counting accuracy of 82.89\%.
-  \item \textbf{Euclidean Distance Transform}: EDT is the contender of white blood cells counting, because the distance transform gets rid of the noise completely and peak local max was very helpfull in eliminating that noise and getting an accurate count.\\
-    This method achived a counting accuracy of 96.43\%.
-\end{itemize}
-
-Here are the results of the 13 images:
+%TODO Same
 
 \input{tables/wbc_segnet.tex}
 
 \subsection{Platlets}
 %TODO Same
 
-\input{tables/plt_segnet.tex}
+% \input{tables/plt_segnet}
 
 %TODO at the end we draw some tables that will contain the 3 
 
