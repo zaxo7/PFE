@@ -106,11 +106,27 @@ The augmentation we used was custom which involves the following steps:
     \item Randomly augment the colors (luminosity and saturation).
 \end{enumerate}
 
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 7in]{../images/Diag_RBC_DOUNET_SegNet.png}}
+    \caption{Schema of the segmentation and counting steps of the RBC's}
+    \label{fig:scheme_RBC}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 7in]{../images/Diag_WBC_PLT_UNET_SegNet.png}}
+    \caption{Schema of the segmentation and counting steps of the WBC's and platlets}
+    \label{fig:scheme_WBC_PLT}
+\end{figure}
+
 \section{Counting}
 \vspace{0.2in}
 \hspace{\parindent}
-After having segmented blood cell images (red, white blood cells and platelets), we use many postprocessing methods (machine learning algorithms) to get the coordinates of circles and count them.
-Here are all the algorithms we used to get an relatively accurate blood cell count:
+After having segmented blood cell images (red, white blood cells and platelets), we use multiple post-processing methods (machine learning algorithms) to get the coordinates of circles and count them. as we can see in fig \ref{fig:scheme_RBC} and  \ref{fig:scheme_WBC_PLT}.\\
+We can see below are all the algorithms we used to get an relatively accurate blood cell count:
 
 \subsection{Circle Hough Transform}
 \hspace{\parindent}
