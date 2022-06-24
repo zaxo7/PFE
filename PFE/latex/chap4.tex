@@ -2,23 +2,24 @@
 \begin{center}
     {\color{Black} \rule{\linewidth}{1.2mm} }\\
 \vspace{0.25in}
-    {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapter IV : }}}}}
+    {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapter IV : Artificial Intelligence}}}}}
 \vspace{0.35in}\\
     {\color{Black} \rule{\linewidth}{1.2mm} }
 \end{center}
 \vspace*{\fill}
-\addcontentsline{toc}{chapter}{\color{Black}{Chapter IV : }}
+\addcontentsline{toc}{chapter}{\color{Black}{Chapter IV : Artificial Intelligence}}
 \setcounter{section}{0}
 
 \newpage
 
 \section{Introduction}
 \vspace{0.2in}
-\hspace*{0.16in}
+\hspace{\parindent}
 In this chapter, we will present artificial intelligence with all of its branches, and then dive deeper into convolutional neural networks (CNNs) and their layers. Finally, we will present some CNN architectures and image processing methods.
 
 \section{Artificial Intelligence}
 \subsection{Definition}
+\hspace{\parindent}
 It is the science and engineering of making intelligent machines, especially intelligent computer programs. It is related to the similar task of using computers to understand human intelligence, but AI does not have to confine itself to methods that are biologically observable. \textsuperscript{\cite{mccarthy2004artificial}}
 
 \vspace{0.2in}
@@ -54,6 +55,7 @@ Artificial intelligence algorithms can be categorised into these four main types
 \end{itemize}
 
 \subsection{Machine Learning}
+\hspace{\parindent}
 Machine learning is a branch of artificial intelligence (AI) and computer science which focuses on the use of data and algorithms to imitate the way that humans learn, gradually improving its accuracy. \textsuperscript{\cite{ML-IBM}}
 
 \begin{itemize}
@@ -67,8 +69,8 @@ Machine learning is a branch of artificial intelligence (AI) and computer scienc
 
 \subsection{Deep Learning}
 \subsubsection{Neural Networks}
+\hspace{\parindent}
 Artificial neural networks (ANNs) are comprised of a node layers, containing an input layer, one or more hidden layers, and an output layer. Each node, or artificial neuron, connects to another and has an associated weight and threshold. If the output of any individual node is above the specified threshold value, that node is activated, sending data to the next layer of the network. Otherwise, no data is passed along to the next layer of the network.
-
 
 \begin{figure}[H]
 \centering
@@ -105,6 +107,7 @@ if we dive into the details, we can consider that each node has it's linear regr
 Once an input layer is determined, weights are assigned. These weights help determine the importance of any given variable, with larger ones contributing more significantly to the output compared to other inputs. All inputs are then multiplied by their respective weights and then summed (similar to eaquation \ref{eq:NN-Node-Activation}). Afterward, the output is passed through an activation function as we can see in equation \ref{eq:NN-Node-Activation2}, which determines the output. If that output exceeds a given threshold, it “fires” (or activates) the node, passing data to the next layer in the network. This results in the output of one node becoming in the input of the next node. This process of passing data from one layer to the next layer defines this neural network as a feedforward network.
 
 \subsubsection{Convolutional Neural Networks}
+\hspace{\parindent}
 CNNs or ConvNets are among the most successful and widely used architectures in the deep learning community, especially for computer vision tasks. CNNs were initially proposed by Fukushima in his seminal paper on the “Neocognitron” \textsuperscript{\cite{fukushima_Neocognitron}}.
 
 \begin{figure}[H]
@@ -172,11 +175,9 @@ The convolutional layer is the first layer of a convolutional network. While con
         
 \end{enumerate}
 
-
 \section{CNN architectures}
 \vspace{0.2in}
-\hspace*{0.16in}
-
+\hspace{\parindent}
 In this section we are going to present some CNN architectures, CNN architectures are preDesigned models targeting a spcial task like image segmentation, feature extraction, classification ..., all the architectures can be an encoder or decoder and it can be both.
 \begin{itemize}
     \item \textbf{encoder:} also called contracting path which consist of the downsampling of the feature map by using multiple convolutional and max pooling layers and it differs between model architectures.
@@ -192,11 +193,13 @@ In this section we are going to present some CNN architectures, CNN architecture
 
 
 \subsection{VGG}
+\hspace{\parindent}
 VGG stands for Visual Geometry Group; it is a standard deep Convolutional Neural Network (CNN) architecture with multiple layers. The “deep” refers to the number of layers with VGG-16 or VGG-19 consisting of 16 and 19 convolutional layers.\\
 
 The VGG architecture is the basis of ground-breaking object recognition models. Developed as a deep neural network, the VGGNet also surpasses baselines on many tasks and datasets beyond ImageNet. Moreover, it is now still one of the most popular image recognition architectures. 
 
 \subsubsection{VGG16}
+\hspace{\parindent}
 The VGG model, or VGGNet, that supports 16 layers is also referred to as VGG16, which is a convolutional neural network model proposed by A. Zisserman and K. Simonyan from the University of Oxford in 2014. These researchers published their model in the research paper titled, “Very Deep Convolutional Networks for Large-Scale Image Recognition.” \textsuperscript{\cite{simonyan2014very}} 
 
 The VGG16 model achieves almost 92.7\% top-5 test accuracy in ImageNet. ImageNet is a dataset consisting of more than 14 million images belonging to nearly 1000 classes. Moreover, it was one of the most popular models submitted to ILSVRC-2014. It replaces the large kernel-sized filters with several 3×3 kernel-sized filters one after the other, thereby making significant improvements over AlexNet. The VGG16 model was trained using Nvidia Titan Black GPUs for multiple weeks.
@@ -204,9 +207,11 @@ The VGG16 model achieves almost 92.7\% top-5 test accuracy in ImageNet. ImageNet
 As mentioned above, the VGGNet-16 supports 16 layers and can classify images into 1000 object categories, including keyboard, animals, pencil, mouse, etc. Additionally, the model has an image input size of 224-by-224.
 
 \subsubsection{VGG19}
+\hspace{\parindent}
 The concept of the VGG19 model (also VGGNet-19) is the same as the VGG16 except that it supports 19 layers. The “16” and “19” stand for the number of weight layers in the model (convolutional layers). This means that VGG19 has three more convolutional layers than VGG16. 
 
 \subsubsection{VGG Architecture}
+\hspace{\parindent}
 VGGNets are based on the most essential features of convolutional neural networks (CNN).
 The VGG network is constructed with very small convolutional filters. The VGG-16 consists of 13 convolutional layers and three fully connected layers.
 To sum it all up, VGG architecture consists of:
@@ -219,6 +224,7 @@ To sum it all up, VGG architecture consists of:
 \end{itemize}
 
 \subsubsection{VGG16 architecture}
+\hspace{\parindent}
 The number 16 in the name VGG refers to the fact that it is 16 layers deep neural network (VGGnet). This means that VGG16 is a pretty extensive network and has a total of around 138 million parameters. Even according to modern standards, it is a huge network. However, VGGNet16 architecture’s simplicity is what makes the network more appealing. Just by looking at its architecture, it can be said that it is quite uniform.
 
 There are a few convolution layers followed by a pooling layer that reduces the height and the width. If we look at the number of filters that we can use, around 64 filters are available that we can double to about 128 and then to 256 filters. In the last layers, we can use 512 filters.
@@ -230,6 +236,7 @@ There are a few convolution layers followed by a pooling layer that reduces the 
 \end{figure}
 
 \subsubsection{Performance of VGG Models}
+\hspace{\parindent}
 VGG16 highly surpasses the previous versions of models in the ILSVRC-2012 and ILSVRC-2013 competitions. Moreover, the VGG16 result is competing for the classification task winner (GoogLeNet with 6.7\% error) and considerably outperforms the ILSVRC-2013 winning submission Clarifai. It obtained 11.2\% with external training data and around 11.7\% without it. In terms of the single-net performance, the VGGNet-16 model achieves the best result with about 7.0\% test error, thereby surpassing a single GoogLeNet by around 0.9\%. \textsuperscript{\cite{VGG-Gaudenz_Boesch}}
 
 \subsection{U-Net}
@@ -243,10 +250,11 @@ U-Net is a CNN architecture built for biomedical image segmentation in 2015 \tex
 \end{figure}
 
 \subsubsection{Performance}
+\hspace{\parindent}
 The u-net is fast and precise model for segmentation of images. Up to now it has outperformed the prior best method (a sliding-window convolutional network) on the ISBI challenge for segmentation of neuronal structures in electron microscopic stacks. It has won the Grand Challenge for Computer-Automated Detection of Caries in Bitewing Radiography at ISBI 2015, and it has won the Cell Tracking Challenge at ISBI 2015 on the two most challenging transmitted light microscopy categories (Phase contrast and DIC microscopy) by a large margin.
 
 \subsection{SegNet}
-
+\hspace{\parindent}
 SegNet is a semantic segmentation model designed in 2017. This core trainable segmentation architecture consists of an encoder network, a corresponding decoder network followed by a pixel-wise classification layer. The architecture of the encoder network is topologically identical to the 13 convolutional layers in the VGG16 network. The role of the decoder network is to map the low resolution encoder feature maps to full input resolution feature maps for pixel-wise classification. The novelty of SegNet lies is in the manner in which the decoder upsamples its lower resolution input feature maps. Specifically, the decoder uses pooling indices computed in the max-pooling step of the corresponding encoder to perform non-linear upsampling. \textsuperscript{\cite{badrinarayanan2017segnet}}
 
 \begin{figure}[h]
@@ -261,7 +269,7 @@ SegNet is a semantic segmentation model designed in 2017. This core trainable se
 \hspace*{0.16in}
 
 \subsection{Watershed}
-
+\hspace{\parindent}
 Watershed segmentation is a region-based method that has its origins in mathematical morphology, The general concept was introduced by \textsuperscript{\cite{digabel1978iterative}}.
 In watershed segmentation an image is regarded as a topographic landscape with ridges and valleys. The elevation values of the landscape are typically defined by the gray values of the respective pixels or their gradient magnitude. Based on such a 3D representation the watershed transform decomposes an image into catchment basins. For each local minimum, a catchment basin comprises all points whose path of steepest descent terminates at this minimum. Watersheds separate basins from each other. The watershed transform decomposes an image completely and thus assigns each pixel either to a region or a watershed. With noisy medical image data, a large number of small regions arises. This is known as the “over-segmentation” problem. \textsuperscript{\cite{Vincent_And_Soille_2022_sciencedirect}}
 
@@ -269,19 +277,20 @@ In watershed segmentation an image is regarded as a topographic landscape with r
 \centering
 \begin{minipage}{.33\textwidth}
   \centering
-  \centerline{\includegraphics[width = 4in, height = 2.2in]{../images/watershed_example.jpg}}
+  \centerline{\includegraphics[width = 3in, height = 1.8in]{../images/watershed_example.jpg}}
     \subcaption{example Image}
 \end{minipage}
 
 \begin{minipage}{.33\textwidth}
   \centering
-  \centerline{\includegraphics[width = 4in, height = 2.2in]{../images/watershed_relief.png}}
+  \centerline{\includegraphics[width = 3in, height = 1.8in]{../images/watershed_relief.png}}
     \subcaption{watershed reliefs}
 \end{minipage}
   \caption{Watershed algorithm from \textsuperscript{\cite{Steve_Eddins_2022_mathworks}}}
 \end{figure}
 
 \subsection{Connected Component Labeling}
+\hspace{\parindent}
 Connected component labeling (also known as connected component analysis, blob extraction, or region labeling) is an algorithmic application of graph theory used to determine the connectivity of “blob”-like regions in a binary image.
 
 When using contour analysis, we are often restricted by the hierarchy of the outlines (i.e., one contour contained within another). With connected component analysis, we can more easily segment and analyze these structures.
@@ -292,13 +301,13 @@ A great example of connected component Labeling is that we are using this algori
 \centering
 \begin{minipage}{\textwidth}
   \centering
-  \centerline{\includegraphics[width = 5in]{../images/Im0001_1_substraction.jpg}}
+  \centerline{\includegraphics[width = 4in]{../images/Im0001_1_substraction.jpg}}
     \subcaption{example Image}
 \end{minipage}
 
 \begin{minipage}{\textwidth}
   \centering
-  \centerline{\includegraphics[width = 5in]{../images/Im0001_1_connected_compounent_labeling.jpg}}
+  \centerline{\includegraphics[width = 4in]{../images/Im0001_1_connected_compounent_labeling.jpg}}
     \subcaption{result image}
 \end{minipage}
   \caption{Example of connected component labeling}
@@ -306,6 +315,7 @@ A great example of connected component Labeling is that we are using this algori
 
 
 \subsection{Discrete cosine transform}
+\hspace{\parindent}
 A discrete cosine transform (DCT) expresses a finite sequence of data points in terms of a sum of cosine functions oscillating at different frequencies. The DCT, first proposed by Nasir Ahmed in 1972 \textsuperscript{\cite{ahmed1974discrete}}, is a widely used transformation technique in signal processing and data compression. It is used in most digital media, including digital images, digital video, digital audio, digital television, digital radio, and speech coding. DCTs are also important to numerous other applications in science and engineering, such as digital signal processing, telecommunication devices, reducing network bandwidth usage, and spectral methods for the numerical solution of partial differential equations.
 the equation for the discrete cosine transform is represented as:
 
@@ -321,7 +331,7 @@ the equation for the discrete cosine transform is represented as:
 \end{figure}
 
 \subsection{Circular Hough Transform}
-
+\hspace{\parindent}
 The general Hough transform can be used on any kind of shape, although the complexity of the transformation increase with the number of parameters needed to describing the shape. \textsuperscript{\cite{pedersen2007circular}}
 The circle Hough Transform (CHT) is a basic feature extraction technique used in digital image processing for detecting circles in imperfect images.
 
@@ -331,9 +341,8 @@ In a two-dimensional space, a circle can be described by:
     (x - a)^2 + (y - b)^2 = r^2
 \end{equation}
 
-where (a,b) is the center of the circle, and r is the radius. If a 2D point (x,y) is fixed, then the parameters can be found according to (1). The parameter space would be three dimensional, (a, b, r). And all the parameters that satisfy (x, y) would lie on the surface of an inverted right-angled cone whose apex is at (x, y, 0). In the 3D space, the circle parameters can be identified by the intersection of many conic surfaces that are defined by points on the 2D circle. This process can be divided into two stages. The first stage is fixing radius then find the optimal center of circles in a 2D parameter space. The second stage is to find the optimal radius in a one dimensional parameter space.
-
-This is the Circular Hough Transform algorithm:
+where (a,b) is the center of the circle, and r is the radius. If a 2D point (x,y) is fixed, then the parameters can be found according to (1). The parameter space would be three dimensional, (a, b, r). And all the parameters that satisfy (x, y) would lie on the surface of an inverted right-angled cone whose apex is at (x, y, 0). In the 3D space, the circle parameters can be identified by the intersection of many conic surfaces that are defined by points on the 2D circle. This process can be divided into two stages. The first stage is fixing radius then find the optimal center of circles in a 2D parameter space. The second stage is to find the optimal radius in a one dimensional parameter space.\\
+This is the CHT algorithm:
 
 \begin{enumerate}
     \item For each A[a,b,r] = 0;
@@ -344,7 +353,7 @@ This is the Circular Hough Transform algorithm:
 \end{enumerate}
 
 \subsection{Distance Transform}
-
+\hspace{\parindent}
 A Distance Transform, also known as distance map or distance field, is a derived representation of a digital image. The choice of the term depends on the point of view on the object in question: whether the initial image is transformed into another representation, or it is simply endowed with an additional map or field.
 
 Distance fields can also be signed, in the case where it is important to distinguish whether the point is inside or outside of the shape. \textsuperscript{\cite{frisken2000adaptively}}
@@ -352,7 +361,7 @@ Distance fields can also be signed, in the case where it is important to disting
 The map labels each pixel of the image with the distance to the nearest obstacle pixel. A most common type of obstacle pixel is a boundary pixel in a binary image.
 
 \subsection{Marching Squares Algorithm}
-
+\hspace{\parindent}
 Marching squares is a computer graphics algorithm that generates contours for a two-dimensional scalar field (rectangular array of individual numerical values). A similar method can be used to contour 2D triangle meshes.
 
 The contours can be of two kinds:
@@ -373,5 +382,6 @@ Marching squares takes a similar approach to the 3D marching cubes algorithm:
     \item Apply linear interpolation along the boundaries of the cell to calculate the exact contour position. \textsuperscript{\cite{maple2003geometric}}
 \end{itemize}
 
+\section{Conclusion}
 
 \newpage
