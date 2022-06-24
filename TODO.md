@@ -10,6 +10,6 @@
 - [ ] Verify chapter 4 duplicate informations
 - [ ] Verify chapter 5 duplicate informations
 - [x] Chapter 5 Conclusion
-- [ ] Chapter 6 result images, maybe another schema
-- [ ] Chapter 6 Conclusion
+- [x] Chapter 6 result images, maybe another schema
+- [x] Chapter 6 Conclusion
 - [ ] Fix bibliography page style
