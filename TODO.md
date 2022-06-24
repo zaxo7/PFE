@@ -3,6 +3,7 @@
 - [ ] Complete memoir verification
 - [ ] Check indentations, paper format, tables, figures...
 - [ ] Add to chapter 1 (Data from touazi's email)
+- [x] Chapter 1 conclusion
 - [ ] Check chapter 2 (State of the Art)
 - [ ] Chapter 2 conclusion
 - [ ] Chapter 3 (Dataset collection) Introduction and Conclusion
