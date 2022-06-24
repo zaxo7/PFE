@@ -14,11 +14,12 @@
 
 \section{Introduction}
 \vspace{0.2in}
-\hspace*{0.16in}
+\hspace{\parindent}
 In this Section we will detail the different experiments and we will discuss the evaluation results obtained from the two segmentation models DO-UNet and DO-SegNet both with the BinaryCrossEnropy Loss Function. And we also discuss the evaluation results of the three counting algorithms Watershed, Circle Hough Transform and Connected Component Labeling for the three blood elements RBCs and WBCs and Platelets.
 
 \section{Used Tools}
 \subsection{TensorFlow}
+\hspace{\parindent}
 In our work we used TensorFlow which is an open source library developed by Google Brain Team for Artificial Intelligence, it contains multiple pre-defined models and algorithms for Deep Learning and Machine Learning, tensorFlow can be used in multiple languages as python, C++, Java and JavaScript.\\
 Tensorflow can be used to Create, Train, Deploy Models. And when we talk about complicated models we can use Keras.
 Keras is a high level API for Neural Networks which helps with experiments on the models and extensibility.
@@ -32,6 +33,7 @@ Keras is a high level API for Neural Networks which helps with experiments on th
     \end{figure}
 
 \subsection{Colab}
+\hspace{\parindent}
 Google Colab or Colaboratory is a free Jupyter notebook environment running on Google's cloud servers for machine learning training and research. This platform allows the user to leverage backend hardware such as GPUs and TPUs and train Machine Learning and Deep Learning models directly in the cloud. Without the need to install anything on our computer at the anything on our computer except a browser.
 but it has some disadvantages where we have a limit on the GPU usage
 and non presistant storage.
@@ -45,6 +47,7 @@ and non presistant storage.
 \end{figure}
 
 \subsection{PaperSpace}
+\hspace{\parindent}
 Paperspace is a high-performance cloud computing and ML development platform for building, training and deploying machine learning models. It has a complete jupyter notebook environement which has a persistent storage and 6 hours limit for each execution.
 
 \begin{figure}[H]
@@ -56,9 +59,8 @@ Paperspace is a high-performance cloud computing and ML development platform for
     \end{figure}
 
 \section{do-U-Net Results}
-% TODO do-U-net definition, how many layers, concatenation and number of paramters, also the benefits...
-
 \subsection{Red Blood Cells}
+\hspace{\parindent}
 The Red Blood Cells are the most difficult to detect because of the overlapping, where in some samples we can't notice the overlapping by eyes, in this experiment we are comparing do-U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} and the SegNet model.
 In the do-U-Net we updated the data augmentation phase. and applied Transfer Learning to get better edge mask. we can see in the dataset that we have only 13 images out of 108 from ALL-IDB1 that contains edge-masks and 108 masks, so the problem here is the lack of the edge label. we ended up with the method below as the best fit to our problem:
 
@@ -77,6 +79,7 @@ After training the dual-output-U-Net model we did a benchmark on the 13 images t
 \input{tables/RBC_DOUNET.tex}
 
 \subsection{White Blood Cells}
+\hspace{\parindent}
 The White Blood Cells are also difficult to detect because of the non stable shape and in some cases they overlap, in this experiment we are comparing single output U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} and the single output SegNet model.
 In the UNet we removed the edge output because we don't have the edge annotation. then trained the model for 15 epochs with the binaryCrossEntropy Loss function on (74 + 34) images. 
 We ended up with a very high accuracy and IOU score as we can see in table \ref{table:unet-wbc-training}.
@@ -88,16 +91,20 @@ After training the model we did a benchmark on the 13 images then on the complet
 \input{tables/WBC_DOUNET.tex}
 
 \subsection{Platlets}
+\hspace{\parindent}
+
 
 \input{tables/PLT_DOUnet.tex}
 
 \section{SegNet Results}
+\hspace{\parindent}
 SegNet segmentation results were pretty accurate for white blood cells and platelets, as for red blood cells, the segmentation was done using dual output (mask and edge-mask) to get rid of overlapped cells.\\
 Here are the results of the Mean Squared Error (MSE) loss function on each type of cell:
 
 \input{tables/segnet.tex}
 
 \subsection{Red Blood Cells}
+\hspace{\parindent}
 For the dual-output SegNet model, the resulting segmented images were very good, sometimes better than the do-U-Net, though it is not as optimized when training and also predicting images, but it gets the job done with 95.86\% mask and 93.99\% edge accuracies. The segmented output images also had some noise which affected Connected Component Labeling (CCL) when counting.
 As for Circle Hough Transform (CHT), the noise did not affect the result.
 Red Blood Cells detection and counting is by far the hardest, because it is the only cell that overlaps and that makes it hard for counting.
@@ -112,6 +119,7 @@ The segmented output of do-SegNet is thresholded using a binary threshold, and t
 \input{tables/rbc_segnet.tex}
 
 \subsection{White Blood Cells}
+\hspace{\parindent}
 The results of white blood cells segmentation and counting using the SegNet model was very accurate achieving 99.72\% when segmenting.
 White blood cells are the easiest out of the three, and the most accurate results.
 However, white blood cells are different from the other cells because they come in different shapes and sizes, which made it hard to adapt each counting algorithm to every cell.\
@@ -131,6 +139,7 @@ Here are the results of the 13 images:
 \input{tables/wbc_segnet.tex}
 
 \subsection{Platlets}
+\hspace{\parindent}
 The platelets segmentation result we achieved is not the best compared to the do-U-Net model. Segnet extracts the platelets but with some noise which made it very hard to count accurately.
 It achieved a segmetation accuracy of xx.xx\% and the highest counting accuracy is 71.56\% which is not very good.\\
 Here are all the counting accuracies for each approach:
@@ -139,4 +148,8 @@ Here are all the counting accuracies for each approach:
 
 \section{Results}
 \vspace{0.2in}
-\hspace*{0.16in}
+\hspace{\parindent}
+
+\section{Conclusion}
+
+\newpage
