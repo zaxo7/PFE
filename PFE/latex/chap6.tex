@@ -60,8 +60,12 @@ Paperspace is a high-performance cloud computing and ML development platform for
 
 \section{do-U-Net Results}
 \subsection{Red Blood Cells}
+<<<<<<< HEAD
 \hspace{\parindent}
 The Red Blood Cells are the most difficult to detect because of the overlapping, where in some samples we can't notice the overlapping by eyes, in this experiment we are comparing do-U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} and the SegNet model.
+=======
+The Red Blood Cells are the most difficult to detect because of the overlapping, where in some samples we can't notice the overlapping by eyes, in this experiment we are testing do-U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}}.
+>>>>>>> 6238c93974b28d238a2f296c7535ecc37cf9573e
 In the do-U-Net we updated the data augmentation phase. and applied Transfer Learning to get better edge mask. we can see in the dataset that we have only 13 images out of 108 from ALL-IDB1 that contains edge-masks and 108 masks, so the problem here is the lack of the edge label. we ended up with the method below as the best fit to our problem:
 
 \begin{enumerate}
@@ -86,14 +90,26 @@ We ended up with a very high accuracy and IOU score as we can see in table \ref{
 
 \input{tables/UNet-WBC-Training.tex}
 
-After training the model we did a benchmark on the 13 images then on the complete database (108 images) to calculate the counting accuracy of the three methods, we ended up with the table \ref{table:UNet-WBC} below where we can see that the watershed method is the best for WBC counting with 97.94 accuracy on the 13 images and 95.64 on the complete database, because the white blood cells always slightly overlap each other where it's easy to the watershed to segment them.
+After training the model we did a benchmark on the 13 images then on the complete database (108 images) to calculate the counting accuracy of the three methods.  \\ 
+The real count of the 108 images is calculated manually because the original database dosn't have the count information. We ended up with the table \ref{table:UNet-WBC} below where we can see that the watershed method is the best for WBC counting with 97.94 accuracy on the 13 images and 95.64 on the complete database, because the white blood cells always slightly overlap each other where it's easy to the watershed to segment them.
 
 \input{tables/WBC_DOUNET.tex}
 
 \subsection{Platlets}
+<<<<<<< HEAD
 \hspace{\parindent}
+=======
+The Platlets are easy to count because of the rare overlapping but they are a bit difficult to segment because of their small size.\\
+In this experiment we are testing single output U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}}. In the UNet we removed the edge output because we don’t have the edge annotation.
+then trained the model for 50 epochs with the BinaryCrossEntropy Loss function on (74 + 34) images.
+We ended up with a very high accuracy and IOU score as we can see in table \ref{table:PLT_DOUNET_TRAIN}.
+>>>>>>> 6238c93974b28d238a2f296c7535ecc37cf9573e
 
 \input{tables/PLT_UNET_Train.tex}
+
+After training the model we did a benchmark on the 13 images to calculate the counting accuracy of the three methods.
+We are comparing to the real count wich is calculated by feeding the ground truth platlets masks to  the CCL algorithm. because the original database dosn't have the count information.\\
+We ended up with the table \ref{table:PLT_UNET_RESULT} below where we can see that the CCL method is the best for WBC counting with 98.58 accuracy, because of the rare overlapping on each other where it’s easy to the CCL to segment them.
 
 \input{tables/PLT_DOUnet.tex}
 
