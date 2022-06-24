@@ -14,7 +14,7 @@
 
 \section{Introduction}
 \vspace{0.2in}
-\hspace*{0.16in}
+\hspace{\parindent}
 As part of our research, we have treated the case of segmenting and counting Red, White blood cells and platelets which also known as CBC (Complete Blood Count), we are using the ALL-IDB\textsuperscript{\cite{pm77-2n23-20}} Dataset to train and evaluate our models.
 In our case study, and from multiple articles, we can see that U-Net and Segnet models are dominating the field of cell segmentation and Medical Computer vision in general.
 In this chapter, we test out both U-Net and Segnet models, and analyse the results by comparing results of the two architectures.
@@ -22,7 +22,7 @@ We will also explore different machine learning algorithms for both preprocessin
 
 \section{Our approach}
 \vspace{0.2in}
-\hspace*{0.16in}
+\hspace{\parindent}
 From all of the intel we have gathered, and previously read articles, all of cell segmentation (blood cell segmentation in particular) are mostly using U-Net and Segnet archtectures for segmenting blood cell images.
 We have implemented both the U-Net and Segnet models.
 In the following sections, we will briefly analyze and compare both convolutional neural network (CNN) models with their perspective results.
@@ -30,6 +30,7 @@ And explain all the postprocessing methods we used for the counting of blood cel
 
 \section{DO-UNet}
 \subsection{Definition}
+\hspace{\parindent}
 The U-Net is a convolutional neural network that was developed for biomedical image segmentation at the Computer Science Department of the University of Freiburg. The network is based on the fully convolutional network and its architecture was modified and extended to work with fewer training images and to yield more precise segmentations. In our case we are using DO-UNet from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} which is a modified U-Net to produce dual outputs, which also known as contour aware network was first demonstrated by the DCAN architecture \textsuperscript{\cite{chen2016dcan}}.  Based on a simple FCN, DCAN was trained to use the outer
 contours of the areas of interest to guide the training of the segmentation masks. This led to improved semantic and instance segmentation of the model, which in their case, looked at non-overlapping features in biomedical imaging.
 With the aim of counting closely co-located and overlapping cells, we are predominantly interested in the correct detection of individual objects as
@@ -37,6 +38,7 @@ opposed to the exact precision of the segmentation mask itself. An examination
 of the hidden convolutional layers of the classical U-Net showed that the penultimate layer of the network extracts information about the edges of the cells, so the idea is to output the cell mask + edge mask then do a substraction to break the overlapping cells.
 
 \subsection{Architecture}
+\hspace{\parindent}
 They Started with the classical U-Net then reduced the number of
 convolutional layers and skip connections in the model. Simultaneously, they minimised the complexity of the model by looking at smaller input regions of the images, thus minimising the memory footprint of the model. They follow the approach of Ronneberger et. al. \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} by using unpadded convolutions throughout the network, resulting in a model with smaller output edge and mask (100 × 100 px) corresponding to a central region of a larger (188 × 188 px) input image region. DO-U-Net uses two, independently trained, output layers of identical size. Figure \ref{fig:DO-UNET} shows the DO-U-Net architecture.
 
@@ -50,9 +52,11 @@ convolutional layers and skip connections in the model. Simultaneously, they min
 
 \section{Segnet}
 \subsection{Definition}
+\hspace{\parindent}
 The SegNet neural network, developed by Alex Kendall, Vijay Badrinarayanan, and Roberto Cipolla, all from the University of Cambridge, is a convolutional neural network used for semantic pixel wise labeling. This problem is more commonly called semantic segmentation. \textsuperscript{\cite{badrinarayanan2017segnet}}
 
 \subsection{Architecture}
+\hspace{\parindent}
 SegNet has an encoder network and a corresponding decoder network, followed by a final pixelwise classification layer. This architecture is illustrated in the below figure.
 With 13 encoder layers obtained from the VGG16 network, and 13 decoder layers to match the same number of encoder layers. The final decoder output is fed to a multi-class soft-max classifier to produce class probabilities for each pixel independently (pixelwise).
 
@@ -73,7 +77,8 @@ This soft-max classifies each pixel independently. The output of the soft-max cl
 \end{figure}
 
 \subsection{Dataset}
-For the segnet model, we have decided to test th ALL-IDB1 dataset, which contains 108 blood cell images, of which 10 images with their perspective masks and edge masks were chosen for red blood cell training and 3 as a test dataset, for white blood cells 73 images with their masks, and 33 as a test dataset.
+\hspace{\parindent}
+For the segnet model, we have decided to test the ALL-IDB1 dataset, which contains 108 blood cell images, of which 10 images with their perspective masks and edge masks were chosen for red blood cell training and 3 as a test dataset, for white blood cells 73 images with their masks, and 33 as a test dataset.
 For platelets, we used 71 for training and 31 as a test dataset.
 Only red blood cells have edge masks, because we need to get rid of overlapped cells, white blood cells and platelets dont need the edge masks, using masks only can retrieve all the necessary features, because both white blood cells and platelets rarely overlap.
 The images will be sliced and rescaled to 128x128 to match the input shape of the Segnet model.
@@ -87,6 +92,7 @@ Finally, for platelets we used 27650 image and mask tiles were used for training
 \input{tables/table5.tex}
 
 \subsection{Dataset augmentation}
+\hspace{\parindent}
 We used the same dataset augmention on all cells (red, white blood cells, and platelets).
 The augmentation we used was custom which involves the following steps:
 \begin{enumerate}
@@ -104,22 +110,25 @@ The augmentation we used was custom which involves the following steps:
 
 \section{Counting}
 \vspace{0.2in}
-\hspace*{0.16in}
+\hspace{\parindent}
 After having segmented blood cell images (red, white blood cells and platelets), we use many postprocessing methods (machine learning algorithms) to get the coordinates of circles and count them.
 Here are all the algorithms we used to get an relatively accurate blood cell count:
 
 \subsection{Circle Hough Transform}
+\hspace{\parindent}
 Circle Hough Transform (CHT) is machine learning algorithm used to extract features (circles) from imperfect images.
 We modified its parameters (Minimum distribution, Minimum and Maximum radius...) for each type of blood cells (red, white and platelets).\\
 Note that we do not rely on this approach to count white blood cells, because most white blood cells have different shapes.
 Therefore, this method is useless when it comes to white blood cells counting.
 
 \subsection{Connected Component Labeling}
+\hspace{\parindent}
 Connected Component Labeling (CCL) is machine learning algorithm used to detect connected regions in a binary image.
 Before applying the connected component labeling, we convert the images to grayscale. Then, a binary threshold is applied to the images to get binary values.
 Finally, we apply the connected component labeling to get the labels and map component labels to the resulting image.
 
 \subsection{Watershed}
+\hspace{\parindent}
 Watershed algorithms (also called drainage divide) are used in image processing primarily for object segmentation purposes, that is, for separating different objects in an image. the main purpose of using watershed in this phase is to segment the touching and overlapping cells, the watershed takes two inputs, first i takes an image with different intensity levels in our-case the distance transform of our mask where the intensity levels represents reliefs. the second input is the water sources in our-case we extracted local maxima from the distance transform image. we can see below the steps we used to count the cells.
 
 \begin{enumerate}
@@ -139,6 +148,7 @@ Here is a schema presenting the previously mentioned steps:
 \end{figure}
 
 \section{Metrics And Loss Functions}
+\hspace{\parindent}
 Loss functions are one of the important ingredients in deep learning-based medical image segmentation methods. In the past four years, more than 20 loss functions have been proposed for various segmentation tasks. Most of them can be used in any segmentation tasks in a plug-and-play way, we can see in (fig \ref{fig:LossFunctions}) the relations between the most used  Loss Functions, we will present below the used Loss Functions in our paper.
 
 \begin{figure}[H]
@@ -189,9 +199,10 @@ Recall is defined as the fraction of examples which were predicted to belong to 
 We have a semantic segmentation problem. Therefore, we use the following metrics:
 
 \subsection{Pixel Accuracy}
-Pixel accuracy is perhaps the easiest to understand conceptually. It is the percent of pixels in the input image that are classified correctly.\\
+\hspace{\parindent}
+Pixel accuracy is perhaps the easiest to understand conceptually. It is the percent of pixels in the input image that are classified correctly.\
 
-We don't rely on this metric because it is susceptible to class-imbalance, which is when the classes are extremely imbalanced, it means that a class or some classes dominate the image, while some other classes make up only a small portion of the image. Unfortunately, class imbalance is prevalent in many real world data sets, so it can’t be ignored.\\
+We don't rely on this metric because it is susceptible to class-imbalance, which is when the classes are extremely imbalanced, it means that a class or some classes dominate the image, while some other classes make up only a small portion of the image. Unfortunately, class imbalance is prevalent in many real world data sets, so it can’t be ignored.\
 
 To further illustrate this, if an input image was 100\% black, the output prediction would be above 90\% accurate, which is a totally false prediction as presented in the figure below.
 
@@ -205,6 +216,7 @@ To further illustrate this, if an input image was 100\% black, the output predic
 \end{figure}
 
 \subsection{IOU}
+\hspace{\parindent}
 The Jaccard Index or Intersection Over Union, also known as the Jaccard similarity coefficient, is a statistic (metric) used for gauging the similarity and diversity of sample sets. It was developed by Grove Karl Gilbert in 1884 as his ratio of verification (v),\textsuperscript{\cite{murphy1996finley}} and now is frequently referred to as the Critical Success Index in meteorology. It was later developed independently by Paul Jaccard, originally giving the French name coefficient de communauté.\textsuperscript{\cite{jaccard1912distribution}} The Jaccard coefficient measures similarity between finite sample sets, and is defined as the size of the intersection divided by the size of the union of the sample sets, here is the formula:
 
 \begin{equation}
@@ -218,11 +230,12 @@ Here is an example of using IOU on a stop sign, where the green bounding box is 
 \begin{figure}[H]
 \centering
   \vspace{-0.1in}
-    \centerline{\includegraphics[width = 4in, height = 2.5in]{../images/exampleIOU.jpg}}
+    \centerline{\fbox{\includegraphics[width = 3.5in]{../images/exampleIOU.jpg}}}
     \caption{Example of IOU applied on a stop sign image}
 \end{figure}
 
 \subsection{Dice}
+\hspace{\parindent}
 The Sørensen–Dice coefficient is a statistic used to measure the similarity of two samples, It was developed by the botanists (scientific study of plants) Thorvald Sørensen and Lee Raymond Dice, who published in 1948 and 1945 respectively.\\
 Sørensen's original formula was intended to be applied to discrete data. Given two sets, X and Y, it is defined as :
 \begin{equation}
@@ -259,7 +272,7 @@ The function ranges between zero and one, like Jaccard. the corresponding loss f
 \end{equation}
 
 \subsection{Tversky}
-
+\hspace{\parindent}
 The Tversky index, named after Amos Tversky, is an asymmetric similarity measure on sets that compares a variant to a prototype. The Tversky index can be seen as a generalization of the Sørensen–Dice coefficient and the Dice coefficient (aka Jaccard index).
 For sets X and Y the Tversky index is a number between 0 and 1 given by :
 \begin{equation}
@@ -275,6 +288,7 @@ The function ranges between zero and one, the corresponding loss function:
 \end{equation}
 
 \subsection{Cross-entropy}
+\hspace{\parindent}
 Cross-entropy loss, or log loss, measures the performance of a classification model whose output is a probability value between 0 and 1. Cross-entropy loss increases as the predicted probability diverges from the actual label. So predicting a probability of .012 when the actual observation label is 1 would be bad and result in a high loss value. A perfect model would have a log loss of 0.
 
 The cross-entropy for a single example in a binary classification task can be stated by unrolling the sum operation as follows:
@@ -284,6 +298,7 @@ The cross-entropy for a single example in a binary classification task can be st
 \end{equation}
 
 \subsection{Mean Squared Error}
+\hspace{\parindent}
 Mean squared error (MSE) is simply defined as the average of squared differences between the predicted output and the true output. Squared error is commonly used because it is agnostic to whether the prediction was too high or too low, it just reports that the prediction was incorrect.
 
 This is the Mean Squared Error formula:
@@ -292,12 +307,12 @@ This is the Mean Squared Error formula:
     MSE = \frac{1}{n} \sum_{i=1}^{n} (Y_{i} - \hat{Y}_{i})^{2}
 \end{equation}
 
-We used this loss function in both our DO-U-Net and DO-SegNet models for predicting red and white blood cells.\\
+We used this loss function in both our DO-U-Net and DO-SegNet models for predicting red and white blood cells.\
 
 There is however a slight problem, the Mean Squared Error has the disadvantage of heavily weighting outliers.[11] This is a result of the squaring of each term, which effectively weights large errors more heavily than small ones.
 
 \section{Conclusion}
 \vspace{0.2in}
-\hspace*{0.16in}
+\hspace{\parindent}
 
 \newpage
