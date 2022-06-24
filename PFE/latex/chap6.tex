@@ -91,9 +91,9 @@ The real count of the 108 images is calculated manually because the original dat
 
 \input{tables/WBC_DOUNET.tex}
 
-\subsection{Platlets}
+\subsection{platelets}
 \hspace{\parindent}
-The Platlets are easy to count because of the rare overlapping but they are a bit difficult to segment because of their small size.\\
+The platelets are easy to count because of the rare overlapping but they are a bit difficult to segment because of their small size.\\
 In this experiment we are testing single output U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}}. In the UNet we removed the edge output because we don’t have the edge annotation.
 then trained the model for 50 epochs with the BinaryCrossEntropy Loss function on (74 + 34) images.
 We ended up with a very high accuracy and IOU score as we can see in table \ref{table:PLT_DOUNET_TRAIN}.
@@ -101,7 +101,7 @@ We ended up with a very high accuracy and IOU score as we can see in table \ref{
 \input{tables/PLT_UNET_Train.tex}
 
 After training the model we did a benchmark on the 13 images to calculate the counting accuracy of the three methods.
-We are comparing to the real count wich is calculated by feeding the ground truth platlets masks to  the CCL algorithm. because the original database dosn't have the count information.\\
+We are comparing to the real count wich is calculated by feeding the ground truth platelets masks to  the CCL algorithm. because the original database dosn't have the count information.\\
 We ended up with the table \ref{table:PLT_UNET_RESULT} below where we can see that the CCL method is the best for WBC counting with 98.58 accuracy, because of the rare overlapping on each other where it’s easy to the CCL to segment them.
 
 \input{tables/PLT_DOUnet.tex}
@@ -148,7 +148,7 @@ Here are the results of the 13 images:
 
 \input{tables/wbc_segnet.tex}
 
-\subsection{Platlets}
+\subsection{Platelets}
 \hspace{\parindent}
 The platelets segmentation result we achieved is not the best compared to the do-U-Net model. Segnet extracts the platelets but with some noise which made it very hard to count accurately.
 It achieved a segmetation accuracy of xx.xx\% and the highest counting accuracy is 71.56\% which is not very good.\\
