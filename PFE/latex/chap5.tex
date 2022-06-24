@@ -115,15 +115,34 @@ Here are all the algorithms we used to get an relatively accurate blood cell cou
 \subsection{Circle Hough Transform}
 \hspace{\parindent}
 Circle Hough Transform (CHT) is machine learning algorithm used to extract features (circles) from imperfect images.
-We modified its parameters (Minimum distribution, Minimum and Maximum radius...) for each type of blood cells (red, white and platelets).\\
+We modified its parameters (Minimum distance, Minimum and Maximum radius...) for each type of blood cells (red, white and platelets).\\
 Note that we do not rely on this approach to count white blood cells, because most white blood cells have different shapes.
 Therefore, this method is useless when it comes to white blood cells counting.
+
+We Modified this method by adding a loss function which will help us to eliminate False Positives circles by calculating the percentage of the intersection between the circle and the cell mask. we improved the counting accuracy by more than 20\% with a threshold intersection percentage of 60\%.
+
+%TODO Graph
 
 \subsection{Connected Component Labeling}
 \hspace{\parindent}
 Connected Component Labeling (CCL) is machine learning algorithm used to detect connected regions in a binary image.
-Before applying the connected component labeling, we convert the images to grayscale. Then, a binary threshold is applied to the images to get binary values.
-Finally, we apply the connected component labeling to get the labels and map component labels to the resulting image.
+Before applying the connected component labeling, we convert the images to gray-scale. Then, a binary threshold is applied to the images to get binary values.
+Finally, we apply the connected component labeling to get the labels and map component labels to the resulting image, and the number of labels is the cell count accordingly.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \centerline{\includegraphics[width = 77mm]{../images/Im0001_1_substraction.jpg}}
+    \subcaption{input Image}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \centerline{\includegraphics[width = 77mm]{../images/Im0001_1_connected_compounent_labeling.jpg}}
+    \subcaption{output image}
+\end{minipage}
+  \caption{Example of connected component labeling}
+\end{figure}
 
 \subsection{Watershed}
 \hspace{\parindent}
