@@ -61,7 +61,6 @@ Paperspace is a high-performance cloud computing and ML development platform for
 \section{do-U-Net Results}
 \subsection{Red Blood Cells}
 \hspace{\parindent}
-The Red Blood Cells are the most difficult to detect because of the overlapping, where in some samples we can't notice the overlapping by eyes, in this experiment we are comparing do-U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} and the SegNet model.
 The Red Blood Cells are the most difficult to detect because of the overlapping, where in some samples we can't notice the overlapping by eyes, in this experiment we are testing do-U-Net from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}}.
 In the do-U-Net we updated the data augmentation phase. and applied Transfer Learning to get better edge mask. we can see in the dataset that we have only 13 images out of 108 from ALL-IDB1 that contains edge-masks and 108 masks, so the problem here is the lack of the edge label. we ended up with the method below as the best fit to our problem:
 

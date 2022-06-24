@@ -91,21 +91,19 @@ Finally, for platelets we used 27650 image and mask tiles were used for training
 
 \input{tables/table5.tex}
 
-\subsection{Dataset augmentation}
+\section{Dataset augmentation}
 \hspace{\parindent}
-We used the same dataset augmention on all cells (red, white blood cells, and platelets).
+We used the same dataset augmention on all cells (red, white blood cells, and platelets) in both models UNet and SegNet.
 The augmentation we used was custom which involves the following steps:
 \begin{enumerate}
     \item Pick a random image from the train dataset.
     \item Get the x and y coordinates randomly from the chosen image.
-    \item Rescale the image randomly.
-    \item Find the edges of a box around the image chip and the mask chip.
-    \item Take a slice of the image and mask accordingly.
-    \item Skip empty image chips (masks, and edge chips for red blood cells).
-    \item Resize the image and mask chip to 128x128.
+    \item Rescale the image randomly to a smaller size then scale it back to the original size to reduce quality.
+    \item Take a slice of the image and mask accordingly and also edge if available.
+    \item Skip the image if it dosn't contain out object of interest
+    \item Resize the image and mask to the model input.
     \item Randomly rotate and flip the image chip.
     \item Randomly augment the colors (luminosity and saturation).
-    \item Rescale the chip back to normal.
 \end{enumerate}
 
 \section{Counting}
