@@ -1,0 +1,13 @@
+- [ ] Add dedication -- Aghiles
+- [ ] Verify abstract, intro and conclusion together
+- [ ] Complete memoir verification
+- [ ] Check indentations, paper format, tables, figures...
+- [ ] Add to chapter 1 (Data from touazi's email)
+- [ ] Check chapter 2 (State of the Art)
+- [ ] Chapter 2 conclusion
+- [ ] Chapter 3 (Dataset collection) Introduction and Conclusion
+- [ ] Verify chapter 4 duplicate informations
+- [ ] Verify chapter 5 duplicate informations
+- [ ] Chapter 5 Conclusion
+- [ ] Chapter 6 result images, maybe another schema
+- [ ] Chapter 6 Conclusion
