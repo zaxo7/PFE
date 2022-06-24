@@ -1,21 +1,23 @@
 % 
+% \usepackage{multirow}
+
+
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|} 
+\resizebox{\textwidth}{!}{\begin{tabular}{|c|l|c|c|c|c|c|c|c|} 
 \hline
-\textbf{Model}              & \textbf{Output} & \textbf{training phases}   & \textbf{Dataset}                                                                                    & \textbf{Epochs}               & \textbf{Loss}   & \textbf{Mean IOU}  & \textbf{Dice}   & \textbf{Tversky} & \textbf{Accuracy}  \\ 
+\textbf{RBC\_Model}  & \textbf{Dataset}                                                                                                                                & \textbf{Epochs}                                                                      & \textbf{Output}      & \textbf{Loss}        & \textbf{Mean IOU}    & \textbf{Dice}        & \textbf{Tversky}     & \textbf{Accuracy}     \\ 
 \hline
-\multirow{2}{*}{A} & \textbf{mask}   & \multirow{2}{*}{} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}small Dataset\\(mask + edge) * 13\end{tabular}} & \multirow{2}{*}{800} & 0.3615 & 0.6365    & 0.8304 & 0.8232  & 0.8754    \\ 
-\cline{2-2}\cline{6-10}
-                   & \textbf{edge}   &                   &                                                                                            &                      & 0.1816 & 0.0663    & 0.3582 & 0.3475  & 0.9343    \\ 
+\multirow{2}{*}{A}   & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}small Dataset\\(mask + edge) * (10 + 3)\end{tabular}}                                                & \multirow{2}{*}{800}                                                                 & Mask                 & 0.3615               & 0.6365               & 0.8304               & 0.8232               & 0.8754                \\ 
+\cline{4-9}
+                     &                                                                                                                                                 &                                                                                      & Edge                 & 0.1816               & 0.0663               & 0.3582               & 0.3475               & 0.9343                \\ 
 \hline
-\multirow{2}{*}{B} & \textbf{mask}   & phase 1           & \begin{tabular}[c]{@{}l@{}}big dataset \\mask * (73 + 35)\end{tabular}                     & 60                   & 0.0713 & 0.7751    & 0.9528 & 0.9567  & 0.9716    \\ 
-\cline{2-10}
-                   & \textbf{edge}   & phase 2           & \begin{tabular}[c]{@{}l@{}}small Dataset\\(mask + edge) * 13\end{tabular}                  & 400                  & 0.1465 & 0.0759    & 0.4127 & 0.4015  & 0.9385    \\
+\multirow{2}{*}{B}   & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}\makecell{Phase 1: big dataset mask*108\\Phase 2: small Dataset (mask + edge)*13}\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Phase 1: 120 \\Phase 2: 400\end{tabular}} & Mask                 & 0.0713               & 0.7751               & 0.9528               & 0.9567               & 0.9716                \\ 
+\cline{4-9}
+                     &                                                                                                                                                 &                                                                                      & Edge                 & 0.1465               & 0.0759               & 0.4127               & 0.4015               & 0.9385                \\ 
 \hline
-\end{tabular}
-}
-\caption{Table represents the Normal trained model vs Transfer Learning model}
+\multicolumn{1}{l}{} & \multicolumn{1}{l}{}                                                                                                                            & \multicolumn{1}{l}{}                                                                 & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} 
+\end{tabular}}
 \label{table:do-unet-transfer}
+\caption{Normal trained modes compared to transfer learning model}
 \end{table}
