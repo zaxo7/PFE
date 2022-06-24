@@ -6,7 +6,7 @@
 - [x] Chapter 1 conclusion
 - [ ] Check chapter 2 (State of the Art)
 - [x] Chapter 2 conclusion
-- [X] Chapter 3 (Dataset collection) Introduction and Conclusion
+- [x] Chapter 3 (Dataset collection) Introduction and Conclusion
 - [ ] Verify chapter 4 duplicate informations
 - [ ] Verify chapter 5 duplicate informations
 - [ ] Chapter 5 Conclusion
