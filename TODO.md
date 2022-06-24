@@ -1,4 +1,4 @@
-- [ ] Add dedication -- Aghiles
+- [x] Add dedication -- Aghiles
 - [ ] Verify abstract, intro and conclusion together
 - [ ] Complete memoir verification
 - [ ] Check indentations, paper format, tables, figures...
