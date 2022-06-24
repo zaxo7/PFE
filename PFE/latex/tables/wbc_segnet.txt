@@ -1,4 +1,4 @@
-Image Real_Count CHT CCL EDT CHT_Accuracy CCL_Accuracy EDT_Accuracy
+Image Real_Count CHT CCL EDT CHT_acc CCL_acc EDT_acc
 Im001_1 18 13 13 16 72.22 72.22 88.89
 Im004_1 12 11 9 12 91.67 75.0 100.0
 Im015_1 22 18 15 21 81.82 68.18 95.45
