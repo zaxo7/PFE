@@ -22,7 +22,7 @@ ALL-IDB (Acute Lymphoblastic Leukemia Image Database for Image Processing) \text
 
 Each image in the dataset, Contains classification/position of ALL lymphoblasts is provided by expert oncologists. A lymphoblast is a modified naive lymphocyte with altered cell morphology. It occurs when the lymphocyte is activated by an antigen.\
 
-The images of the dataset has been captured with an optical laboratory microscope coupled with a Canon PowerShot G5 camera. All images are in JPG format with 24 bit color depth, resolution 2592 x 1944. the ALL-IDB devides on two Datasets ALL-IDB1 and ALL-IDB2.\
+The images of the dataset has been captured with an optical laboratory microscope coupled with a Canon PowerShot G5 camera. All images are in JPG format with 24 bit color depth, resolution 2592 x 1944. the ALL-IDB divides on two Datasets ALL-IDB1 and ALL-IDB2.\
 
 \subsection{Dataset ALL-IDB1}
 \hspace{\parindent}
@@ -76,13 +76,13 @@ If we plot the coordinates in the Img006\_1.xyc (figure \ref{fig:Im006.jpg}) fil
 \begin{figure}[H]
 \centering
     \fbox{\includegraphics[width = 5in, height = 4in]{../images/img006.xyc.jpg}}
-\caption{coordinates from Img006\_1.xyc ploted on Img006\_1.jpg}
+\caption{coordinates from Img006\_1.xyc plotted on Img006\_1.jpg}
 \label{fig:Im006.xyc.jpg}
 \end{figure}
 
 \subsection{Dataset ALL-IDB1}
 \hspace{\parindent}
-This dataset has been created for testing the performances of classification systems. where the dataset has no segmentation information it contains only one information wich is the presence of ALL lymphoblasts, the dataset is a collection of cropped area of interest of normal and blast cells that belongs to the ALL-IDB1 dataset as we can see in figure \ref{fig:ALL-IDB2}
+This dataset has been created for testing the performances of classification systems. where the dataset has no segmentation information it contains only one information which is the presence of ALL lymphoblasts, the dataset is a collection of cropped area of interest of normal and blast cells that belongs to the ALL-IDB1 dataset as we can see in figure \ref{fig:ALL-IDB2}
 
 \begin{figure}[H]
 \centering
@@ -93,11 +93,11 @@ This dataset has been created for testing the performances of classification sys
 
 \vspace{-0.14in}
 
-The annotation of ALL-IDB2 is similar to the ALL-IDB1 but with no centroid coordinates. The ALL-IDB2 image files are named with the notation ImXXX\_Y.jpg where XXX is a progressive 3-digit integer and Y is a boolean digit equal to 0 if the cell placed in the center of the image is not a blast cell, and equal to 1 if the cell placed in the center of the image is a blast cell. all images labeled with Y=0 are from for healthy individuals, and all images labeled with Y=1 are from ALL patients. 
+The annotation of ALL-IDB2 is similar to the ALL-IDB1 but with no centroid coordinates. The ALL-IDB2 image files are named with the notation ImXXX\_Y.jpg where XXX is a progressive 3-digit integer and Y is a Boolean digit equal to 0 if the cell placed in the center of the image is not a blast cell, and equal to 1 if the cell placed in the center of the image is a blast cell. all images labeled with Y=0 are from for healthy individuals, and all images labeled with Y=1 are from ALL patients. 
 
-\section{Broad Bioimage Benchmark Collection}
+\section{Broad Bio-image Benchmark Collection}
 \hspace{\parindent}
-The Broad Bioimage Benchmark Collection (BBBC) is a collection of freely downloadable microscopy image sets, cited in 450+ studies. In addition to the images themselves, each set includes a description of the biological application and some type of "ground truth" (expected results) \textsuperscript{\cite{ljosa2012annotated}}. The BBBC is organized by the Broad Institute's Imaging Platform.\
+The Broad Bio-image Benchmark Collection (BBBC) is a collection of freely downloadable microscopy image sets, cited in 450+ studies. In addition to the images themselves, each set includes a description of the biological application and some type of "ground truth" (expected results) \textsuperscript{\cite{ljosa2012annotated}}. The BBBC is organized by the Broad Institute's Imaging Platform.\
 
 The dataset contains 54 image collections of various cell types, each collection has at least one of 6 ground truth types such as cell count, foreground / background, outlines of objects, biological labels, location and bounding boxes. in the sections below we describe each ground truth:
 
@@ -197,7 +197,7 @@ Was obtained from Jiangxi Tecom Science Corporation \textsuperscript{\cite{2022_
 \end{figure}
 
 \subsection{Dataset 2}
-Consists of one hundred 300×300 color images, which were collected from the CellaVision blog \textsuperscript{\cite{2022_cellavision}}. The cell images are generally purple and may contain many red blood cells around the white blood cells.
+Consists of one hundred 300×300 color images, which were collected from the Cella-Vision blog \textsuperscript{\cite{2022_cellavision}}. The cell images are generally purple and may contain many red blood cells around the white blood cells.
 
 \begin{figure}[H]
 \centering
@@ -213,7 +213,7 @@ The class labels of each image in Dataset 1 and Dataset 2 are stored in csv file
 
 \subsection{A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm}
 \hspace{\parindent}
-The database is provided by \href{https://raabindata.com/free-data/#double-labeled-cropped-cells}{RabinData} and \textsuperscript{\cite{Kouzehkanan2022}} which devides on two separate datasets:
+The database is provided by \href{https://raabindata.com/free-data/#double-labeled-cropped-cells}{RabinData} and \textsuperscript{\cite{Kouzehkanan2022}} which divides on two separate datasets:
 
 \subsubsection{Raabin-WBC Data}
 \hspace{\parindent}
@@ -221,7 +221,7 @@ Contains 4 sub-Datasets:
 \begin{itemize}
     \item \textbf{Double-labeled cropped cells} : Double-labeled cropped cells are also provided containing only five main classes including mature neutrophils, lymphocytes (small and large), eosinophils, monocytes, and basophils. 
     \item \textbf{Nucleus\_cytoplasm\_Ground truths} : in this sub-Dataset they prepared the ground truths of the cytoplasm and the nucleus for a proper number of cropped white blood cells. For this purpose, 1145 cropped images including 242 lymphocytes, 242 monocytes, 242 neutrophils, 201 eosinophils, and 218 basophils were randomly selected, and their ground truths were extracted by an expert.
-    \item \textbf{Microscopic images were taken by the Olympus CX18 microscope and the Samsung Galaxy S5 camera and the 4th database with contain images taken by Zeiss microscope and the LG G3 camera } : in these two sub-Datasets. Corresponding to each microscopic image, a dictionary (.json format) file containing the following information about that image was provided:
+    \item \textbf{Microscopic images were taken by the Olympus CX18 microscope and the Samsung Galaxy S5 camera and the 4th database with contain images taken by Zeiss microscope and the LG G3 camera } : in these two sub-Datasets. Corresponding to each microscopic image, a dictionary (json format) file containing the following information about that image was provided:
     \begin{itemize}
         \item Information about the blood elements in the image including their coordinates and labels.
         \item Information about the blood smears including staining method and the type of the disease.
@@ -262,6 +262,6 @@ In this database they use bounding boxes to locate the cells and each bounding b
 
 \section{Conclusion}
 \hspace{\parindent}
-In this chapter we explored all the available datasets and their annotations which can help us in our problem, we decided to work with the updated ALL-IDB1 dataset which has 13 RBC edges and masks, 108 WBC, Platelets Masks and 13 RBC images which has the count information, but the WBC and Platelets donthave the count information where we had to use manual count and algorithms to find the count informations for these images.
+In this chapter we explored all the available datasets and their annotations which can help us in our problem, we decided to work with the updated ALL-IDB1 dataset which has 13 RBC edges and masks, 108 WBC, Platelets Masks and 13 RBC images which has the count information, but the WBC and Platelets donthave the count information where we had to use manual count and algorithms to find the count information for these images.
 
 \newpage
