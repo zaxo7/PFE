@@ -135,9 +135,24 @@ We modified its parameters (Minimum distance, Minimum and Maximum radius...) for
 Note that we do not rely on this approach to count white blood cells, because most white blood cells have different shapes.
 Therefore, this method is useless when it comes to white blood cells counting.
 
-We Modified this method by adding a loss function which will help us to eliminate False Positives circles by calculating the percentage of the intersection between the circle and the cell mask. we improved the counting accuracy by more than 20\% with a threshold intersection percentage of 60\%.
+We Modified this method by adding a loss function which will help us to eliminate False Positives circles by calculating the percentage of the intersection between the circle and the cell mask. we improved the counting accuracy by more than 20\% with a threshold intersection percentage of 60\%.\\
+As we can see in fig \ref{fig:cht_scheme} the steps of the counting with the CHT method:
+\begin{itemize}
+    \item we first take the mask/edge from the model.
+    \item we apply a threshold on the mask to binarize it.
+    \item we apply our surface filter algorithm to filter object that are not in the size range of the cell that we are counting.
+    \item apply the circle hough transform to detect the circles in the cleaned image.
+    \item feed the binary mask and the obtained circles from CHT to calculate loss of each circle (percentage of intersection).
+    \item return the final number of circles that meet the threshold condition which is the circle count.
 
-%TODO Graph
+  \end{itemize} 
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 7in]{../images/CHT_scheme.png}}
+    \caption{CHT schema applied to count blood cells}
+    \label{fig:cht_scheme}
+\end{figure}
 
 \subsection{Connected Component Labeling}
 \hspace{\parindent}
