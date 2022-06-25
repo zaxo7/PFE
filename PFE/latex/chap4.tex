@@ -62,7 +62,7 @@ Machine learning is a branch of artificial intelligence (AI) and computer scienc
   \item \textbf{Linear Regression:}
       Linear Regression is a machine learning algorithm based on supervised learning. It performs a regression task. Regression models a target prediction value based on independent variables. It is mostly used for finding out the relationship between variables and forecasting. Different regression models differ based on – the kind of relationship between dependent and independent variables they are considering, and the number of independent variables getting used. \textsuperscript{\cite{LR-GeeksForGeeks}}
   \item \textbf{Support Vector Machines:}
-      Support Vector Machine (SVM) is a computer algorithm that learns by example to assign labels to objects. \textsuperscript{\cite{boser1992training}} For instance, an SVM can learn to recognize fraudulent credit card activity by examining hundreds or thousands of fraudulent and nonfraudulent credit card activity reports. Alternatively, an SVM can learn to recognize handwritten digits by examining a large collection of scanned images of handwritten zeroes, ones and so fourth. \textsuperscript{\cite{noble2006support}}
+      Support Vector Machine (SVM) is a computer algorithm that learns by example to assign labels to objects. \textsuperscript{\cite{boser1992training}} For instance, an SVM can learn to recognize fraudulent credit card activity by examining hundreds or thousands of fraudulent and non fraudulent credit card activity reports. Alternatively, an SVM can learn to recognize handwritten digits by examining a large collection of scanned images of handwritten zeroes, ones and so fourth. \textsuperscript{\cite{noble2006support}}
   \item \textbf{Gradient Descent:}
       Gradient descent is an optimization algorithm used to minimize some function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient. In machine learning, we use gradient descent to update the parameters of our model. Parameters refer to coefficients in Linear Regression and weights in neural networks. \textsuperscript{\cite{DG-ml-cheatsheet}}
 \end{itemize}
@@ -104,7 +104,7 @@ if we dive into the details, we can consider that each node has it's linear regr
     \label{eq:NN-Node-Activation2}
 \end{equation}
 
-Once an input layer is determined, weights are assigned. These weights help determine the importance of any given variable, with larger ones contributing more significantly to the output compared to other inputs. All inputs are then multiplied by their respective weights and then summed (similar to eaquation \ref{eq:NN-Node-Activation}). Afterward, the output is passed through an activation function as we can see in equation \ref{eq:NN-Node-Activation2}, which determines the output. If that output exceeds a given threshold, it “fires” (or activates) the node, passing data to the next layer in the network. This results in the output of one node becoming in the input of the next node. This process of passing data from one layer to the next layer defines this neural network as a feedforward network.
+Once an input layer is determined, weights are assigned. These weights help determine the importance of any given variable, with larger ones contributing more significantly to the output compared to other inputs. All inputs are then multiplied by their respective weights and then summed (similar to equation \ref{eq:NN-Node-Activation}). Afterward, the output is passed through an activation function as we can see in equation \ref{eq:NN-Node-Activation2}, which determines the output. If that output exceeds a given threshold, it “fires” (or activates) the node, passing data to the next layer in the network. This results in the output of one node becoming in the input of the next node. This process of passing data from one layer to the next layer defines this neural network as a feed-forward network.
 
 \subsubsection{Convolutional Neural Networks}
 \hspace{\parindent}
@@ -158,30 +158,30 @@ The convolutional layer is the first layer of a convolutional network. While con
         \end{figure}
         
         After each convolution operation, a CNN applies an activation function to the feature map, the most used activation function is the Rectified Linear Unit (ReLU).\\
-        As we mentioned earlier, when we chain convolutional layers, the structure of the CNN can become hierarchical as the later layers can see the pixels within the receptive fields of prior layers.  As an example, let’s assume that we’re trying to determine if an image contains a bicycle. You can think of the bicycle as a sum of parts. It is comprised of a frame, handlebars, wheels, pedals, et cetera. Each individual part of the bicycle makes up a lower-level pattern in the neural net, and the combination of its parts represents a higher-level pattern, creating a feature hierarchy within the CNN.
+        As we mentioned earlier, when we chain convolutional layers, the structure of the CNN can become hierarchical as the later layers can see the pixels within the receptive fields of prior layers.  As an example, let’s assume that we’re trying to determine if an image contains a bicycle. You can think of the bicycle as a sum of parts. It is comprised of a frame, handlebars, wheels, pedals, and cetera. Each individual part of the bicycle makes up a lower-level pattern in the neural net, and the combination of its parts represents a higher-level pattern, creating a feature hierarchy within the CNN.
     \item \textbf{Pooling Layer}:\\
-        Pooling layers, also known as downsampling, conducts dimensionality reduction, reducing the number of parameters in the input. Similar to the convolutional layer, the pooling operation sweeps a filter across the entire input, but the difference is that this filter does not have any weights. Instead, the kernel applies an aggregation function to the values within the receptive field, populating the output array. There are two main types of pooling:
+        Pooling layers, also known as down-sampling, conducts dimensionality reduction, reducing the number of parameters in the input. Similar to the convolutional layer, the pooling operation sweeps a filter across the entire input, but the difference is that this filter does not have any weights. Instead, the kernel applies an aggregation function to the values within the receptive field, populating the output array. There are two main types of pooling:
         \begin{itemize}
             \item \textbf{Max pooling}: As the filter moves across the input, it selects the pixel with the maximum value to send to the output array. As an aside, this approach tends to be used more often compared to average pooling.
             \item \textbf{Average pooling}: As the filter moves across the input, it calculates the average value within the receptive field to send to the output array.
         \end{itemize}
         
-        While a lot of information is lost in the pooling layer, it also has a number of benefits to the CNN. They help to reduce complexity, improve efficiency, and limit risk of overfitting.
+        While a lot of information is lost in the pooling layer, it also has a number of benefits to the CNN. They help to reduce complexity, improve efficiency, and limit risk of over-fitting.
     
     \item \textbf{Fully-Connected Layer}:\\
         The name of the fully-connected layer aptly describes itself. The pixel values of the input image are not directly connected to the output layer in partially connected layers. However, in the fully-connected layer, each node in the output layer connects directly to a node in the previous layer.
 
-        This layer performs the task of classification based on the features extracted through the previous layers and their different filters. While convolutional and pooling layers tend to use ReLu functions or other activation functions, FC layers usually leverage a softmax or sigmoid activation function to classify inputs appropriately, producing a probability from 0 to 1.
+        This layer performs the task of classification based on the features extracted through the previous layers and their different filters. While convolutional and pooling layers tend to use ReLu functions or other activation functions, fully connected layers usually leverage a softmax or sigmoid activation function to classify inputs appropriately, producing a probability from 0 to 1.
         
 \end{enumerate}
 
 \section{CNN architectures}
 \vspace{0.2in}
 \hspace{\parindent}
-In this section we are going to present some CNN architectures, CNN architectures are preDesigned models targeting a spcial task like image segmentation, feature extraction, classification ..., all the architectures can be an encoder or decoder and it can be both.
+In this section we are going to present some CNN architectures, CNN architectures are pre-Designed models targeting a spcial task like image segmentation, feature extraction, classification ..., all the architectures can be an encoder or decoder and it can be both.
 \begin{itemize}
-    \item \textbf{encoder:} also called contracting path which consist of the downsampling of the feature map by using multiple convolutional and max pooling layers and it differs between model architectures.
-    \item \textbf{decoder:} also called expansive path wich consist of an upsampling of the feature map by using up-convolution (which concatenates the feature map from the upper parallel encoder layers)
+    \item \textbf{encoder:} also called contracting path which consist of the down-sampling of the feature map by using multiple convolutional and max pooling layers and it differs between model architectures.
+    \item \textbf{decoder:} also called expansive path which consist of an up-sampling of the feature map by using up-convolution (which concatenates the feature map from the upper parallel encoder layers)
 \end{itemize}
 
 \begin{figure}[h]
@@ -218,7 +218,7 @@ To sum it all up, VGG architecture consists of:
 
 \begin{itemize}
     \item \textbf{Input:} The VGGNet takes in an image input size of 224×224. For the ImageNet competition, the creators of the model cropped out the center 224×224 patch in each image to keep the input size of the image consistent.
-    \item \textbf{Convolutional Layers:} VGG’s convolutional layers leverage a minimal receptive field, i.e., 3×3, the smallest possible size that still captures up/down and left/right. Moreover, there are also 1×1 convolution filters acting as a linear transformation of the input. This is followed by a ReLU unit, which is a huge innovation from AlexNet that reduces training time. ReLU stands for rectified linear unit activation function; it is a piecewise linear function that will output the input if positive; otherwise, the output is zero. The convolution stride is fixed at 1 pixel to keep the spatial resolution preserved after convolution (stride is the number of pixel shifts over the input matrix).
+    \item \textbf{Convolutional Layers:} VGG’s convolutional layers leverage a minimal receptive field, i.e., 3×3, the smallest possible size that still captures up/down and left/right. Moreover, there are also 1×1 convolution filters acting as a linear transformation of the input. This is followed by a ReLU unit, which is a huge innovation from AlexNet that reduces training time. ReLU stands for rectified linear unit activation function; it is a piece-wise linear function that will output the input if positive; otherwise, the output is zero. The convolution stride is fixed at 1 pixel to keep the spatial resolution preserved after convolution (stride is the number of pixel shifts over the input matrix).
     \item \textbf{Hidden Layers:} All the hidden layers in the VGG network use ReLU. VGG does not usually leverage Local Response Normalization (LRN) as it increases memory consumption and training time. Moreover, it makes no improvements to overall accuracy.
     \item \textbf{Fully-Connected Layers:} The VGGNet has three fully connected layers. Out of the three layers, the first two have 4096 channels each, and the third has 1000 channels, 1 for each class.
 \end{itemize}
@@ -240,7 +240,7 @@ There are a few convolution layers followed by a pooling layer that reduces the 
 VGG16 highly surpasses the previous versions of models in the ILSVRC-2012 and ILSVRC-2013 competitions. Moreover, the VGG16 result is competing for the classification task winner (GoogLeNet with 6.7\% error) and considerably outperforms the ILSVRC-2013 winning submission Clarifai. It obtained 11.2\% with external training data and around 11.7\% without it. In terms of the single-net performance, the VGGNet-16 model achieves the best result with about 7.0\% test error, thereby surpassing a single GoogLeNet by around 0.9\%. \textsuperscript{\cite{VGG-Gaudenz_Boesch}}
 
 \subsection{U-Net}
-U-Net is a CNN architecture built for biomedical image segmentation in 2015 \textsuperscript{\cite{ronneberger2015u}}. It consists of a contracting path (encoder) and an expansive path (decoder). The encoder follows the typical architecture of a convolutional network. It consists of the repeated application of two 3x3 convolutions (unpadded convolutions), each followed by a rectified linear unit (ReLU) and a 2x2 max pooling operation with stride 2 for downsampling. At each downsampling step we double the number of feature channels. Every step in the expansive path consists of an upsampling of the feature map followed by a 2x2 convolution (“up-convolution”) that halves the number of feature channels, a concatenation with the correspondingly cropped feature map from the contracting path, and two 3x3 convolutions, each followed by a ReLU. The cropping is necessary due to the loss of border pixels in every convolution. At the final layer a 1x1 convolution is used to map each 64-component feature vector to the desired number of classes. In total the network has 23 convolutional layers \textsuperscript{\cite{paperswithcode-U-Net}}.
+U-Net is a CNN architecture built for biomedical image segmentation in 2015 \textsuperscript{\cite{ronneberger2015u}}. It consists of a contracting path (encoder) and an expansive path (decoder). The encoder follows the typical architecture of a convolutional network. It consists of the repeated application of two 3x3 convolutions (unpadded convolutions), each followed by a rectified linear unit (ReLU) and a 2x2 max pooling operation with stride 2 for down-sampling. At each down-sampling step we double the number of feature channels. Every step in the expansive path consists of an up-sampling of the feature map followed by a 2x2 convolution (“up-convolution”) that halves the number of feature channels, a concatenation with the correspondingly cropped feature map from the contracting path, and two 3x3 convolutions, each followed by a ReLU. The cropping is necessary due to the loss of border pixels in every convolution. At the final layer a 1x1 convolution is used to map each 64-component feature vector to the desired number of classes. In total the network has 23 convolutional layers \textsuperscript{\cite{paperswithcode-U-Net}}.
 
 \begin{figure}[H]
 \centering
@@ -255,7 +255,7 @@ The u-net is fast and precise model for segmentation of images. Up to now it has
 
 \subsection{SegNet}
 \hspace{\parindent}
-SegNet is a semantic segmentation model designed in 2017. This core trainable segmentation architecture consists of an encoder network, a corresponding decoder network followed by a pixel-wise classification layer. The architecture of the encoder network is topologically identical to the 13 convolutional layers in the VGG16 network. The role of the decoder network is to map the low resolution encoder feature maps to full input resolution feature maps for pixel-wise classification. The novelty of SegNet lies is in the manner in which the decoder upsamples its lower resolution input feature maps. Specifically, the decoder uses pooling indices computed in the max-pooling step of the corresponding encoder to perform non-linear upsampling. \textsuperscript{\cite{badrinarayanan2017segnet}}
+SegNet is a semantic segmentation model designed in 2017. This core trainable segmentation architecture consists of an encoder network, a corresponding decoder network followed by a pixel-wise classification layer. The architecture of the encoder network is topologically identical to the 13 convolutional layers in the VGG16 network. The role of the decoder network is to map the low resolution encoder feature maps to full input resolution feature maps for pixel-wise classification. The novelty of SegNet lies is in the manner in which the decoder up-samples its lower resolution input feature maps. Specifically, the decoder uses pooling indices computed in the max-pooling step of the corresponding encoder to perform non-linear up-sampling. \textsuperscript{\cite{badrinarayanan2017segnet}}
 
 \begin{figure}[h]
 \centering
@@ -292,7 +292,7 @@ Connected component labeling (also known as connected component analysis, blob e
 
 When using contour analysis, we are often restricted by the hierarchy of the outlines (i.e., one contour contained within another). With connected component analysis, we can more easily segment and analyze these structures.
 
-A great example of connected component Labeling is that we are using this algorith in cell counting, when we get the image mask we are using it to label all the non connected objects of the image, each object is labeled with a unique color as we can see in fig \ref{fig:connected_component_labeling}.
+A great example of connected component Labeling is that we are using this algorithm in cell counting, when we get the image mask we are using it to label all the non connected objects of the image, each object is labeled with a unique color as we can see in fig \ref{fig:connected_component_labeling}.
 
 \begin{figure}[H]
 \centering
@@ -300,6 +300,8 @@ A great example of connected component Labeling is that we are using this algori
     \caption{Object counting using Connected Component Labeling (CCL).}
     \label{fig:connected_component_labeling}
 \end{figure}
+\subsection{Surface Filter}
+In this project we created our proper method for removing noise and classify objects which relies on the connected component labeling algorithm, this method is used to filter non connected objects in a binary image by surface, where it takes the minimum and maximum surface in pixels, and returns a clean image containing only the objects that satisfies the surface condition.
 
 \subsection{Discrete cosine transform}
 \hspace{\parindent}
