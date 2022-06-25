@@ -125,7 +125,7 @@ The augmentation we used was custom which involves the following steps:
 \section{Counting}
 \vspace{0.2in}
 \hspace{\parindent}
-After having segmented blood cell images (red, white blood cells and platelets), we use multiple post-processing methods (machine learning algorithms) to get the coordinates of circles and count them. as we can see in fig \ref{fig:scheme_RBC} and  \ref{fig:scheme_WBC_PLT}.\\
+After having segmented blood cell images (red, white blood cells and platelets), we use multiple post-processing methods (machine learning algorithms) to get the coordinates of circles and count them. as we can see in fig \ref{fig:scheme_RBC} and \ref{fig:scheme_WBC_PLT}.\\
 We can see below are all the algorithms we used to get an relatively accurate blood cell count:
 
 \subsection{Circle Hough Transform}
@@ -197,7 +197,7 @@ Here is a schema presenting the previously mentioned steps:
 
 \section{Metrics And Loss Functions}
 \hspace{\parindent}
-Loss functions are one of the important ingredients in deep learning-based medical image segmentation methods. In the past four years, more than 20 loss functions have been proposed for various segmentation tasks. Most of them can be used in any segmentation tasks in a plug-and-play way, we can see in (fig \ref{fig:LossFunctions}) the relations between the most used  Loss Functions, we will present below the used Loss Functions in our paper.
+Loss functions are one of the important ingredients in deep learning-based medical image segmentation methods. In the past four years, more than 20 loss functions have been proposed for various segmentation tasks. Most of them can be used in any segmentation tasks in a plug-and-play way, we can see in (fig \ref{fig:LossFunctions}) the relations between the most used Loss Functions, we will present below the used Loss Functions in our paper.
 
 \begin{figure}[H]
 \centering
@@ -265,7 +265,7 @@ To further illustrate this, if an input image was 100\% black, the output predic
 
 \subsection{IOU}
 \hspace{\parindent}
-The Jaccard Index or Intersection Over Union, also known as the Jaccard similarity coefficient, is a statistic (metric) used for gauging the similarity and diversity of sample sets. It was developed by Grove Karl Gilbert in 1884 as his ratio of verification (v),\textsuperscript{\cite{murphy1996finley}} and now is frequently referred to as the Critical Success Index in meteorology. It was later developed independently by Paul Jaccard, originally giving the French name coefficient de  communauté. \textsuperscript{\cite{jaccard1912distribution}} The Jaccard coefficient measures similarity between finite sample sets, and is defined as the size of the intersection divided by the size of the union of the sample sets, here is the formula:
+The Jaccard Index or Intersection Over Union, also known as the Jaccard similarity coefficient, is a statistic (metric) used for gauging the similarity and diversity of sample sets. It was developed by Grove Karl Gilbert in 1884 as his ratio of verification (v),\textsuperscript{\cite{murphy1996finley}} and now is frequently referred to as the Critical Success Index in meteorology. It was later developed independently by Paul Jaccard, originally giving the French name 'Coefficient de Communauté'. \textsuperscript{\cite{jaccard1912distribution}} The Jaccard coefficient measures similarity between finite sample sets, and is defined as the size of the intersection divided by the size of the union of the sample sets, here is the formula:
 
 \begin{equation}
     J(A,B) = \frac{Area\; of\; Overlap}{Area\; of\; Union} = \frac{|A \cap B|}{|A \cup B|}
@@ -287,7 +287,7 @@ Here is an example of using IOU on a stop sign, where the green bounding box is 
 The Sørensen–Dice coefficient is a statistic used to measure the similarity of two samples, It was developed by the botanists (scientific study of plants) Thorvald Sørensen and Lee Raymond Dice, who published in 1948 and 1945 respectively.\\
 Sørensen's original formula was intended to be applied to discrete data. Given two sets, X and Y, it is defined as :
 \begin{equation}
-    DSC(X, Y) = \frac{2 | X \cap Y |}{| X |  +  | Y |}
+    DSC(X, Y) = \frac{2 | X \cap Y |}{| X | + | Y |}
 \end{equation}
 where |X| and |Y| are the cardinalities of the two sets . The Sørensen index equals twice the number of elements common to both sets divided by the sum of the number of elements in each set as we can see in fig \ref{fig:DSC_EX}. 
 When applied to Boolean data, using the definition of true positive (TP), false positive (FP), and false negative (FN), it can be written as :
@@ -303,15 +303,15 @@ When applied to Boolean data, using the definition of true positive (TP), false 
     \label{fig:DSC_EX}
 \end{figure}
 
-This coefficient is not very different in form from the Jaccard index (IOU). In fact, both are equivalent in the sense that given a value for the Sørensen–Dice coefficient $S$ , one can calculate the respective Jaccard index value $J$  and vice versa, using the equations : 
+This coefficient is not very different in form from the Jaccard index (IOU). In fact, both are equivalent in the sense that given a value for the Sørensen–Dice coefficient $S$ , one can calculate the respective Jaccard index value $J$ and vice versa, using the equations : 
 \begin{equation}
     J = \frac{DSC}{( 2 − DSC )}
 \end{equation}
 
-and 
+And 
 
 \begin{equation}
-    DSC = \frac{2 J  }{( 1 + J )}
+    DSC = \frac{2 J }{( 1 + J )}
 \end{equation}
 
 The function ranges between zero and one, like Jaccard. the corresponding loss function:
@@ -324,15 +324,15 @@ The function ranges between zero and one, like Jaccard. the corresponding loss f
 The Tversky index, named after Amos Tversky, is an asymmetric similarity measure on sets that compares a variant to a prototype. The Tversky index can be seen as a generalization of the Sørensen–Dice coefficient and the Dice coefficient (aka Jaccard index).
 For sets X and Y the Tversky index is a number between 0 and 1 given by :
 \begin{equation}
-    S(X, Y) = \frac{| X \cap Y |}{| X \cap Y | + \alpha|X  ∖ Y| + \beta | Y  ∖  X|}
+    S(X, Y) = \frac{| X \cap Y |}{| X \cap Y | + \alpha|X ∖ Y| + \beta | Y ∖ X|}
 \end{equation}
 Here, $X ∖ Y$ denotes the relative complement of Y in X. 
-Further, $\alpha , \beta \geq 0$  are parameters of the Tversky index. Setting $\alpha = \beta = 1$ produces the Jaccard coefficient; setting $\alpha = \beta = 0.5$  produces the Sørensen–Dice coefficient. 
+Further, $\alpha , \beta \geq 0$ are parameters of the Tversky index. Setting $\alpha = \beta = 1$ produces the Jaccard coefficient; setting $\alpha = \beta = 0.5$ produces the Sørensen–Dice coefficient. 
 
 The function ranges between zero and one, the corresponding loss function:
 
 \begin{equation}
-    S\_LOSS(X, Y) =  1 - \frac{| X \cap Y |}{| X \cap Y | + \alpha|X  ∖ Y| + \beta | Y  ∖  X|}
+    S\_LOSS(X, Y) = 1 - \frac{| X \cap Y |}{| X \cap Y | + \alpha|X ∖ Y| + \beta | Y ∖ X|}
 \end{equation}
 
 \subsection{Cross-entropy}
