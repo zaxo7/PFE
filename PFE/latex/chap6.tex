@@ -156,54 +156,67 @@ Here are all the counting accuracies for each approach:
 
 \input{tables/plt_segnet.tex}
 
-\section{Results}
+\section{Result samples}
 \vspace{0.2in}
 \hspace{\parindent}
+After all the steps we have mentioned above, the final output of each counting algorithm is presented in the figures below:
+
+\begin{itemize}
+  \item \textbf{Figure \ref{fig:cht_output}}: Circle Hough Transform applied on the segmented output of Red Blood Cells, the CHT method performed very well on the edge output of the do-U-Net model.
+    Because of the circular shape of red blood cells and the parameter tuning of CHT, this is the best counting accuracy we achieved on Red Blood Cells.
+  \item \textbf{Figure \ref{fig:watershed_output}}: Watershed applied on the segmented output of White Blood Cells. Watershed outperformed the other algorithms because it segments touched and ovelapped objects. this is the best counting accuracy we achieved on White Blood Cells.
+  \item \textbf{Figure \ref{fig:ccl_output}}: Connected Component Labeling applied on the segmented output of White Blood Cells. This method performed well when it came to none touching objects (Platelets), in this figure also 2 Platelets where also detected as White Blood Cells, but they will get removed using the surface filter we implemented, which gets rid of small objects.
+\end{itemize}
 
 \begin{figure}[H]
 \centering
 \begin{minipage}{.5\textwidth}
   \centering
-  \fbox{\includegraphics[width = 2.8in]{../images/originalCHT.jpg}}
+  \fbox{\includegraphics[width = 2.6in]{../images/originalCHT.jpg}}
   \subcaption{Original image}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
   \centering
-  \fbox{\includegraphics[width = 3.2in]{../images/cht.png}}
+  \fbox{\includegraphics[width = 3.1in]{../images/cht.png}}
   \subcaption{Output CHT image}
 \end{minipage}
   \caption{Circle Hough Transform applied to count red blood cells}
+  \label{fig:cht_output}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \begin{minipage}{.5\textwidth}
   \centering
-  \fbox{\includegraphics[width = 2.8in]{../images/originalWatershed.jpg}}
+  \fbox{\includegraphics[width = 2.6in]{../images/originalWatershed.jpg}}
   \subcaption{Original image}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
   \centering
-  \fbox{\includegraphics[width = 2.8in]{../images/watershed_color.jpg}}
+  \fbox{\includegraphics[width = 2.6in]{../images/watershed_color.jpg}}
   \subcaption{Output Watershed image}
 \end{minipage}
   \caption{Watershed applied to count white blood cells}
+  \label{fig:watershed_output}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \begin{minipage}{.5\textwidth}
   \centering
-  \fbox{\includegraphics[width = 2.8in]{../images/originalCCL.jpg}}
+  \fbox{\includegraphics[width = 2.6in]{../images/originalCCL.jpg}}
   \subcaption{Original image}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
   \centering
-  \fbox{\includegraphics[width = 2.8in]{../images/ccl.png}}
+  \fbox{\includegraphics[width = 2.6in]{../images/ccl.png}}
   \subcaption{Output CCL image}
 \end{minipage}
   \caption{Connected Component Labeling applied to count white blood cells}
+  \label{fig:ccl_output}
 \end{figure}
+
+\vspace{-0.1in}
 
 \section{Conclusion}
 In conclusion, both models performed very well detecting and counting the blood cells, each one with its advantages and disadvantages.
