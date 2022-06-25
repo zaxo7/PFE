@@ -4,11 +4,11 @@
 - [x] Check indentations, paper format, tables, figures...
 - [ ] Add to chapter 1 (Data from touazi's email)
 - [x] Chapter 1 conclusion
-- [ ] Check chapter 2 (State of the Art)
+- [x] Check chapter 2 (State of the Art)
 - [x] Chapter 2 conclusion
 - [x] Chapter 3 (Dataset collection) Introduction and Conclusion
-- [ ] Verify chapter 4 duplicate informations
-- [ ] Verify chapter 5 duplicate informations
+- [x] Verify chapter 4 duplicate informations
+- [x] Verify chapter 5 duplicate informations
 - [x] Chapter 5 Conclusion
 - [x] Chapter 6 result images, maybe another schema
 - [x] Chapter 6 Conclusion
