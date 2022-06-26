@@ -18,13 +18,14 @@
 \hspace{\parindent}
 As part of our research, we have treated the case of segmenting and counting Red, White blood cells and platelets which also known as CBC (Complete Blood Count), we are using the ALL-IDB\textsuperscript{\cite{pm77-2n23-20}} Dataset to train and evaluate our models.
 In our case study, and from multiple articles, we can see that U-Net and Segnet models are dominating the field of cell segmentation and Medical Computer vision in general.
-In this chapter, we test out both U-Net and Segnet models, and analyse the results by comparing results of the two architectures.
+
+In this chapter, we test-out both U-Net and Segnet models, and analyse the results by comparing results of the two architectures.
 We will also explore different machine learning algorithms for both preprocessing and postprocessing.
 
-\section{Our approach}
+\section{Proposed approach}
 \vspace{0.2in}
 \hspace{\parindent}
-From all of the intel we have gathered, and previously read articles, all cell segmentation tasks (blood cell segmentation in particular) are mostly using U-Net and Segnet archtectures for segmenting blood cell images.
+From all of the intel we have gathered, and previously read articles, all cell segmentation tasks (blood cell segmentation in particular) are mostly using U-Net and SegNet architectures for segmenting blood cell images.
 We have implemented both the U-Net and SegNet models.
 In the following sections, we will briefly analyze and compare both convolutional neural network (CNN) models with their perspective results.
 And explain all the postprocessing methods we used for the counting of blood cells (red, white and platelets).
@@ -81,7 +82,9 @@ We also tested 3 different loss functions (tversky loss, binary crossentropy and
 
 \section{Dataset}
 \hspace{\parindent}
-For both models, we have decided to use the ALL-IDB1 dataset, which contains 108 blood cell images, of which 10 images with their perspective masks and edge masks were chosen for red blood cell training and 3 as a test dataset, for white blood cells 73 images with their masks, and 33 as a test dataset.
+For both models, we decided to work with the updated ALL-IDB1 dataset which has 13 RBC edges and masks, 108 WBC, Platelets Masks and 13 RBC images which has the count information, but the WBC and Platelets don't have the count information where we had to use manual count and algorithms to find the count information for these images.\\
+
+10 images with their perspective masks and edge masks were chosen for red blood cell training and 3 as a test dataset, for white blood cells 73 images with their masks, and 33 as a test dataset.
 For platelets, we used 71 for training and 31 as a test dataset.
 Only red blood cells have edge masks, because we need to get rid of overlapped cells, white blood cells and platelets dont need the edge masks, using masks only can retrieve all the necessary features, because both white blood cells and platelets rarely overlap.
 The images will be sliced to the input size of the according model to match the input shape of the models.
