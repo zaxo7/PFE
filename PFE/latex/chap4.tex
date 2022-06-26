@@ -188,10 +188,21 @@ Here is the resulting output of each model on Im037.jpg (see figure \ref{fig:ori
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
   \centering
+  \fbox{\includegraphics[width = 3in]{../images/rbc_mask_unet.png}}
+  \subcaption{Output UNet mask}
+\end{minipage}
+
+\begin{minipage}{.5\textwidth}
+  \centering
   \fbox{\includegraphics[width = 3in]{../images/rbc_edge_segnet.png}}
   \subcaption{Output SegNet edge}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \fbox{\includegraphics[width = 3in]{../images/rbc_edge_unet.png}}
+  \subcaption{Output UNet edge}
 \end{minipage}
-  \caption{Output from SegNet segmenting Red Blood Cells}
+  \caption{Output from SegNet and UNet segmenting Red Blood Cells}
   \label{fig:cht_output}
 \end{figure}
 
@@ -200,14 +211,30 @@ Here is the resulting output of each model on Im037.jpg (see figure \ref{fig:ori
 \begin{minipage}{.5\textwidth}
   \centering
   \fbox{\includegraphics[width = 3in]{../images/wbc_mask_segnet.png}}
-  \subcaption{Output white blood cells mask}
+  \subcaption{Output white blood cells mask from SegNet}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
   \centering
-  \fbox{\includegraphics[width = 3in]{../images/plt_mask_segnet.png}}
-  \subcaption{Output platelets mask}
+  \fbox{\includegraphics[width = 3in]{../images/wbc_mask_unet.png}}
+  \subcaption{Output white blood cells mask from UNet}
 \end{minipage}
-  \caption{Outputs from SegNet segmenting White Blood Cells and platelets}
+  \caption{Outputs from SegNet segmenting White Blood Cells}
+  \label{fig:cht_output}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \fbox{\includegraphics[width = 3in]{../images/plt_mask_segnet.png}}
+  \subcaption{Output mask of platelets with Segnet}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \fbox{\includegraphics[width = 3in]{../images/plt_mask_unet.png}}
+  \subcaption{Output mask of platelets with UNet}
+\end{minipage}
+  \caption{Outputs from SegNet and UNet segmenting platelets}
   \label{fig:cht_output}
 \end{figure}
 
