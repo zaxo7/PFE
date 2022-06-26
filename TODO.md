@@ -13,3 +13,9 @@
 - [x] Chapter 6 result images, maybe another schema
 - [x] Chapter 6 Conclusion
 - [ ] Fix bibliography page style
+- [ ] Add which type of blood cells they are segmenting in the comparative study table in state of art chapter.
+- [ ] fix margins
+- [ ] fix schemes add do-unet/segnet in the first and platelets in the second
+- [ ] add refrences
+- [ ] explain more about color space problem and the combinations between masks and edges in the future work  of conclusion
+
