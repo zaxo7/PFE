@@ -15,7 +15,8 @@
 In the present work, we have mainly presented two different models of segmentation based on CNNs and three counting algorithms to perform a complete blood count.
 We focused more on the segmentation task where  we tested two models U-Net and SegNet to get better masks. 
 
-We can see that the U-Net gave better result with less noisy mask, but the two models has some weaknesses with the images color space.
+We can see that the U-Net gave better result with less noisy mask, but the two models has some weaknesses with the images color space, because both models takes rgb images therefore they depend a lot on the color features, for example if we slightly change the colors of the input image we get a big diffrence in the output mask.
 In the counting task, we had a small time window where we couldn't tune the 3 three algorithm parameters to get the best results. but we got acceptable results in each blood cell type, especially with platelets.\\
 
-In the future, it would be interesting to develop a system which makes it possible to classify each blood cell depending on the shape and size and color to detect even more sophisticated abnormalities more accurate than the complete blood count.
+As a future work, we can combine between the two models to benefit the strength points of both models, we can also find more combinations between edge and mask.\\
+For the counting we can assign a weight for each  method to get a mean value from the 3 methods. And it would be interesting to develop a system which makes it possible to classify each blood cell depending on the shape and size and color to detect even more sophisticated abnormalities more accurate than the complete blood count.
