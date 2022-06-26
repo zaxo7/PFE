@@ -1,8 +1,8 @@
 - [x] Add dedication -- Aghiles
-- [1/2] Verify abstract, intro and conclusion together
+- [x] Verify abstract, intro and conclusion together
 - [ ] Complete memoir verification
 - [x] Check indentations, paper format, tables, figures...
-- [ ] Add to chapter 1 (Data from touazi's email)
+- [x] Add to chapter 1 (Data from touazi's email)
 - [x] Chapter 1 conclusion
 - [x] Check chapter 2 (State of the Art)
 - [x] Chapter 2 conclusion
@@ -17,6 +17,6 @@
 - [x] Fix margins
 - [x] Fix schemes add do-unet/segnet in the first and platelets in the second
 - [x] Add refrences
-- [ ] Explain more about color space problem and the combinations between masks and edges in the future work  of conclusion
+- [x] Explain more about color space problem and the combinations between masks and edges in the future work  of conclusion
 - [x] Add comparative table of do-unet and segnet
-- [ ] Add predictions of unet and segnet
+- [x] Add predictions of unet and segnet
