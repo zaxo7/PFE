@@ -169,6 +169,48 @@ Here are the results of both models in table \ref{table:comparisonSegNet_UNet}:
 \section{Result samples}
 \vspace{0.2in}
 \hspace{\parindent}
+Here is the resulting output of each model on Im037.jpg (see figure \ref{fig:originalImage}), segmenting all the cells Red, White and platelets:
+
+\begin{figure}[H]
+  \centering
+  \vspace{0.1in}
+  \fbox{\includegraphics[width = 2.8in]{../images/originalCHT.jpg}}
+  \caption{Original image Im037.jpg}
+  \label{fig:originalImage}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \fbox{\includegraphics[width = 3in]{../images/rbc_mask_segnet.png}}
+  \subcaption{Output SegNet mask}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \fbox{\includegraphics[width = 3in]{../images/rbc_edge_segnet.png}}
+  \subcaption{Output SegNet edge}
+\end{minipage}
+  \caption{Output from SegNet segmenting Red Blood Cells}
+  \label{fig:cht_output}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \fbox{\includegraphics[width = 3in]{../images/wbc_mask_segnet.png}}
+  \subcaption{Output white blood cells mask}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \fbox{\includegraphics[width = 3in]{../images/plt_mask_segnet.png}}
+  \subcaption{Output platelets mask}
+\end{minipage}
+  \caption{Outputs from SegNet segmenting White Blood Cells and platelets}
+  \label{fig:cht_output}
+\end{figure}
+
 After all the steps we have mentioned above, the final output of each counting algorithm is presented in the figures below:
 
 \begin{itemize}
