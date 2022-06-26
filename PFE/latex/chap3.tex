@@ -46,11 +46,13 @@ convolutional layers and skip connections in the model. Simultaneously, they min
 
 \begin{figure}[H]
 \centering
-  \vspace{-0.1in}
+  \vspace{0.2in}
     \centerline{\includegraphics[width = \linewidth]{../images/DO-UNET.png}}
     \caption{DO-UNet architecture}
     \label{fig:DO-UNET}
 \end{figure}
+
+\newpage
 
 \section{Segnet}
 \subsection{Definition}
@@ -71,7 +73,7 @@ This is unlike the other decoders in the network which produces feature maps wit
 The input shape we used is (128x128x3) and the output shape is (128x128), there is no loss in resolution because segnet uses the option `same' padding on each encoder layer.
 We also tested 3 different loss functions (tversky loss, binary crossentropy and Mean Squared Error MSE), out of which the MSE outperformed the others.
 
-\vspace{0.2in}
+\vspace{0.1in}
 
 \begin{figure}[H]
 \centering
@@ -82,7 +84,7 @@ We also tested 3 different loss functions (tversky loss, binary crossentropy and
 
 \section{Dataset}
 \hspace{\parindent}
-For both models, we decided to work with the updated ALL-IDB1 dataset which has 13 RBC edges and masks, 108 WBC, Platelets Masks and 13 RBC images which has the count information, but the WBC and Platelets don't have the count information where we had to use manual count and algorithms to find the count information for these images.\\
+For both models, we decided to work with the updated ALL-IDB1 dataset which has 13 RBC edges and masks, 108 WBC, Platelets Masks and 13 RBC images which has the count information, but the WBC and Platelets don't have the count information where we had to use manual count and algorithms to find the count information for these images.\
 
 10 images with their perspective masks and edge masks were chosen for red blood cell training and 3 as a test dataset, for white blood cells 73 images with their masks, and 33 as a test dataset.
 For platelets, we used 71 for training and 31 as a test dataset.
