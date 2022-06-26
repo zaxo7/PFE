@@ -5,7 +5,7 @@ PFE/latex/*.blg
 PFE/latex/*.lof
 PFE/latex/*.lot
 PFE/latex/*.out
-PFE/latex/*.pdf
+# PFE/latex/*.pdf
 PFE/latex/*.toc
 
 PFE/.olauth
