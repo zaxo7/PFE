@@ -1,267 +1,373 @@
+\thispagestyle{empty}
 \vspace*{\fill}
 \begin{center}
     {\color{Black} \rule{\linewidth}{1.2mm} }\\
 \vspace{0.25in}
-    {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapter III : Dataset Collection}}}}}
+{\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapter III: Contribution}}}}}
 \vspace{0.35in}\\
     {\color{Black} \rule{\linewidth}{1.2mm} }
 \end{center}
 \vspace*{\fill}
-\addcontentsline{toc}{chapter}{\color{Black}{Chapter III : Dataset Collection}}
+\addcontentsline{toc}{chapter}{\color{Black}{Chapter V : Contribution}}
 \setcounter{section}{0}
 
 \newpage
 
 \section{Introduction}
+\vspace{0.2in}
 \hspace{\parindent}
-In this chapter we will try to find the best dataset that will help us with our problem, by performing a comparison between all the available datasets and their annotations, we can see that there is a lot of datasets which are created to attack a specific sets of problems, we can see below all available datasets:
+As part of our research, we have treated the case of segmenting and counting Red, White blood cells and platelets which also known as CBC (Complete Blood Count), we are using the ALL-IDB\textsuperscript{\cite{pm77-2n23-20}} Dataset to train and evaluate our models.
+In our case study, and from multiple articles, we can see that U-Net and Segnet models are dominating the field of cell segmentation and Medical Computer vision in general.
 
-\section{ALL-IDB}
+In this chapter, we test-out both U-Net and Segnet models, and analyse the results by comparing results of the two architectures.
+We will also explore different machine learning algorithms for both preprocessing and postprocessing.
+
+\section{Proposed approach}
+\vspace{0.2in}
 \hspace{\parindent}
-ALL-IDB (Acute Lymphoblastic Leukemia Image Database for Image Processing) \textsuperscript{\cite{labati2011all}} is a public and free dataset, specifically designed for the evaluation and the comparison of algorithms for segmentation and image classification. The database focus on Acute Lymphoblastic Leukemia (ALL), Acute is a type of blood cancer that starts in white blood cells in bone marrow, the soft inner part of bones. It develops from immature lymphocytes, a kind of white blood cell that’s key to immune system.\textsuperscript{\cite{Annie_Stuart_What_2022_webmd}}.\
+From all of the intel we have gathered, and previously read articles, all cell segmentation tasks (blood cell segmentation in particular) are mostly using U-Net and SegNet architectures for segmenting blood cell images.
+We have implemented both the U-Net and SegNet models.
+In the following sections, we will briefly analyze and compare both convolutional neural network (CNN) models with their perspective results.
+And explain all the postprocessing methods we used for the counting of blood cells (red, white and platelets).
 
-Each image in the dataset, Contains classification/position of ALL lymphoblasts is provided by expert oncologists. A lymphoblast is a modified naive lymphocyte with altered cell morphology. It occurs when the lymphocyte is activated by an antigen.\
-
-The images of the dataset has been captured with an optical laboratory microscope coupled with a Canon PowerShot G5 camera. All images are in JPG format with 24 bit color depth, resolution 2592 x 1944. the ALL-IDB divides on two Datasets ALL-IDB1 and ALL-IDB2.\
-
-\subsection{Dataset ALL-IDB1}
+\section{DO-UNet}
+\subsection{Definition}
 \hspace{\parindent}
-The ALL-IDB1 can be used for segmentation or classification with image processing methods or Artificial intelligence models. The dataset is composed of 108 images collected during September, 2005. It contains about 39000 blood elements, where the lymphocytes has been labeled by expert oncologists.
+The U-Net is a convolutional neural network that was developed for biomedical image segmentation at the Computer Science Department of the University of Freiburg. The network is based on the fully convolutional network and its architecture was modified and extended to work with fewer training images and to yield more precise segmentations. In our case we are using DO-UNet from \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} which is a modified U-Net to produce dual outputs, which also known as contour aware network was first demonstrated by the DCAN architecture \textsuperscript{\cite{chen2016dcan}}. Based on a simple FCN, DCAN was trained to use the outer
+contours of the areas of interest to guide the training of the segmentation masks. This led to improved semantic and instance segmentation of the model, which in their case, looked at non-overlapping features in biomedical imaging.
+With the aim of counting closely co-located and overlapping cells, we are predominantly interested in the correct detection of individual objects as
+opposed to the exact precision of the segmentation mask itself. An examination
+of the hidden convolutional layers of the classical U-Net showed that the penultimate layer of the network extracts information about the edges of the cells, so the idea is to output the cell mask + edge mask then do a substraction to break the overlapping cells.
+
+\subsection{Architecture}
+\hspace{\parindent}
+They Started with the classical U-Net then reduced the number of
+convolutional layers and skip connections in the model. Simultaneously, they minimised the complexity of the model by looking at smaller input regions of the images, thus minimising the memory footprint of the model. They follow the approach of Ronneberger et. al. \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} by using unpadded convolutions throughout the network, resulting in a model with smaller output edge and mask (100 × 100 px) corresponding to a central region of a larger (188 × 188 px) input image region. DO-U-Net uses two, independently trained, output layers of identical size. Figure \ref{fig:DO-UNET} shows the DO-U-Net architecture.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width = 5in, height = 3in]{../images/ALLIDB1.jpg}
-\caption{Examples of the images contained in ALL-IDB1: healthy cells from non-ALL patients (a,b,c), probable lymphoblasts from ALL patients (d,e,f). }
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = \linewidth]{../images/DO-UNET.png}}
+    \caption{DO-UNet architecture}
+    \label{fig:DO-UNET}
 \end{figure}
 
-\textbf{annotation:} input image ''Im006\_1.jpg'' (a) and the related classification file ''Im006\_1.xyc'' reporting the coordinates of the centroids of probable ALL lymphoblasts (b).
+\section{Segnet}
+\subsection{Definition}
+\hspace{\parindent}
+The SegNet neural network, developed by Alex Kendall, Vijay Badrinarayanan, and Roberto Cipolla, all from the University of Cambridge, is a convolutional neural network used for semantic pixel wise labeling. This problem is more commonly called semantic segmentation. \textsuperscript{\cite{badrinarayanan2017segnet}}
 
-\begin{figure}[H]
-\begin{minipage}[b]{0.35\linewidth}
-\centering
-\includegraphics{../images/Im006_1.jpg}
-\subcaption{Im006\_1.jpg}
-\label{fig:Im006.jpg}
-\end{minipage}
-\hfill
-\begin{minipage}[b]{0.3\linewidth}
-\centering
-\lstinputlisting[breaklines]{../images/Im006\_1.xyc}
-\subcaption{Im006\_1.xyc}
-\label{fig:Im006.xyc}
-\end{minipage}
+\subsection{Architecture}
+\hspace{\parindent}
+SegNet has an encoder network and a corresponding decoder network, followed by a final pixelwise classification layer. This architecture is illustrated in the figure below.
+Our implemented model has the 13 encoder layers obtained from the VGG16 network, and 13 decoder layers to match the same number of encoder layers. The final decoder output is fed to a multi-class soft-max classifier to produce class probabilities for each pixel independently (pixelwise).
 
-\begin{minipage}[b]{0.35\linewidth}
-\centering
-\includegraphics[width=57mm]{../images/Im033_1.jpg}
-\subcaption{Im033\_1.jpg}
-\label{fig:Im033.jpg}
-\end{minipage}
-\hfill
-\begin{minipage}[b]{0.3\linewidth}
-\centering
-\lstinputlisting[breaklines]{../images/Im033\_1.xyc}
-\subcaption{Im033\_1.xyc}
-\label{fig:Im033.xyc}
-\end{minipage}
-\caption{Sample data from the ALL-IDB1 Database}
-\end{figure}
+Each encoder in the encoder network performs convolution with a filter bank to produce a set of feature maps. These are then batch normalized. Then an element-wise rectified- linear non-linearity (ReLU) max(0, x) is applied. Following that, max-pooling with a 2x2 window and stride 2 (non-overlapping window) is performed and the resulting output is sub-sampled by a factor of 2. Max-pooling is used to achieve translation invariance over small spatial shifts in the input image.
 
-The ALL-IDB1 image files are named with the notation ImXXX\_Y.jpg where XXX is a 3-digit integer counter and Y is a boolean digit equal to 0 if no blast cells are present, and equal to 1 if at least one blast cell is present in the image. All images labeled with Y=0 are from for healthy individuals, and all images labeled with Y=1 are from ALL patients. Each image file ImXXX\_Y.jpg (figure \ref{fig:Im006.jpg}, \ref{fig:Im033.jpg}) is associated with a text file ImXXX\_Y.xyc (figure \ref{fig:Im006.xyc}, \ref{fig:Im033.xyc}) reporting the coordinates of the centroids of the blast cells, if any.\\
+The appropriate decoder in the decoder network upsamples its input feature map(s) using the memorized max-pooling indices from the corresponding encoder feature map(s). This step pro- duces sparse feature map(s). This SegNet decoding technique is illustrated in the below figure.
+These feature maps are then convolved with a trainable decoder filter bank to produce dense feature maps. A batch normalization step is then applied to each of these maps. Note that the decoder corresponding to the first encoder (closest to the input image) produces a multi-channel feature map, although its encoder input has 3 channels (RGB).
+This is unlike the other decoders in the network which produces feature maps with the same number of size and channels as their encoder inputs. The high dimensional feature representation at the output of the final decoder is fed to a trainable soft-max classifier. \textsuperscript{\cite{badrinarayanan2017segnet}}\
 
-If we plot the coordinates in the Img006\_1.xyc (figure \ref{fig:Im006.jpg}) file on the image Im006\_1.jpg (figure \ref{fig:Im006.xyc}) we get the figure \ref{fig:Im006.xyc.jpg}
+The input shape we used is (128x128x3) and the output shape is (128x128), there is no loss in resolution because segnet uses the option `same' padding on each encoder layer.
+We also tested 3 different loss functions (tversky loss, binary crossentropy and Mean Squared Error MSE), out of which the MSE outperformed the others.
 
-\newpage
+\vspace{0.2in}
 
 \begin{figure}[H]
 \centering
-    \fbox{\includegraphics[width = 5in, height = 4in]{../images/img006.xyc.jpg}}
-\caption{coordinates from Img006\_1.xyc plotted on Img006\_1.jpg}
-\label{fig:Im006.xyc.jpg}
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 3.5in]{../images/segnet.png}}
+    \caption{SegNet architecture}
 \end{figure}
 
-\subsection{Dataset ALL-IDB1}
+\section{Dataset}
 \hspace{\parindent}
-This dataset has been created for testing the performances of classification systems. where the dataset has no segmentation information it contains only one information which is the presence of ALL lymphoblasts, the dataset is a collection of cropped area of interest of normal and blast cells that belongs to the ALL-IDB1 dataset as we can see in figure \ref{fig:ALL-IDB2}
+For both models, we decided to work with the updated ALL-IDB1 dataset which has 13 RBC edges and masks, 108 WBC, Platelets Masks and 13 RBC images which has the count information, but the WBC and Platelets don't have the count information where we had to use manual count and algorithms to find the count information for these images.\\
+
+10 images with their perspective masks and edge masks were chosen for red blood cell training and 3 as a test dataset, for white blood cells 73 images with their masks, and 33 as a test dataset.
+For platelets, we used 71 for training and 31 as a test dataset.
+Only red blood cells have edge masks, because we need to get rid of overlapped cells, white blood cells and platelets dont need the edge masks, using masks only can retrieve all the necessary features, because both white blood cells and platelets rarely overlap.
+The images will be sliced to the input size of the according model to match the input shape of the models.
+The resulting train dataset will be 3916 image, mask, and edge tiles (a total of 11748 tiles).
+For the test dataset 1072 image, mask, and edge tiles (a total of 3216 tiles) for red blood cells.
+As for white blood cells, 28126 image and mask tiles were used for training (a total of 56252 tiles), and 15892 image and mask tiles were used as a test dataset for white blood cells (a total of 31784 tiles).
+Finally, for platelets we used 27650 image and mask tiles were used for training (a total of 55300), and 14410 image and mask tiles as a test dataset for platelets (a total of 28820).
+
+\vspace{0.1in}
+
+\input{tables/table5.tex}
+
+\section{Dataset augmentation}
+\hspace{\parindent}
+We used the same dataset augmention on all cells (red, white blood cells, and platelets) in both models UNet and SegNet.
+The augmentation we used was custom which involves the following steps:
+\begin{enumerate}
+    \item Pick a random image from the train dataset.
+    \item Get the x and y coordinates randomly from the chosen image.
+    \item Rescale the image randomly to a smaller size then scale it back to the original size to reduce quality.
+    \item Take a slice of the image and mask accordingly and also edge if available.
+    \item Skip the image if it dosn't contain out object of interest
+    \item Resize the image and mask to the model input.
+    \item Randomly rotate and flip the image chip.
+    \item Randomly augment the colors (luminosity and saturation).
+\end{enumerate}
 
 \begin{figure}[H]
 \centering
-\includegraphics{../images/ALL-IDB2.jpg}
-\caption{Examples of the images contained in ALL-IDB2: healthy cells from non-ALL patients (a-d), probable lymphoblasts from ALL patients (e-h).}
-\label{fig:ALL-IDB2}
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 7in]{../images/Diag_RBC_DOUNET_SegNet.png}}
+    \caption{Schema of the segmentation and counting steps of the RBC's}
+    \label{fig:scheme_RBC}
 \end{figure}
-
-\vspace{-0.14in}
-
-The annotation of ALL-IDB2 is similar to the ALL-IDB1 but with no centroid coordinates. The ALL-IDB2 image files are named with the notation ImXXX\_Y.jpg where XXX is a progressive 3-digit integer and Y is a Boolean digit equal to 0 if the cell placed in the center of the image is not a blast cell, and equal to 1 if the cell placed in the center of the image is a blast cell. all images labeled with Y=0 are from for healthy individuals, and all images labeled with Y=1 are from ALL patients. 
-
-\section{Broad Bio-image Benchmark Collection}
-\hspace{\parindent}
-The Broad Bio-image Benchmark Collection (BBBC) is a collection of freely downloadable microscopy image sets, cited in 450+ studies. In addition to the images themselves, each set includes a description of the biological application and some type of "ground truth" (expected results) \textsuperscript{\cite{ljosa2012annotated}}. The BBBC is organized by the Broad Institute's Imaging Platform.\
-
-The dataset contains 54 image collections of various cell types, each collection has at least one of 6 ground truth types such as cell count, foreground / background, outlines of objects, biological labels, location and bounding boxes. in the sections below we describe each ground truth:
-
-\subsection{Cell counts}
-\hspace{\parindent}
-In this case, the ground truth consists of the number of cells (or other objects) in each image, as counted by one or more humans. for example in BBBC1(Human HT29 colon-cancer cells) we have an image in figure \ref{fig:BBBC1} with the labels file in figure \ref{fig:BBBC001_Counts}:
-
-\begin{figure}[H]
-\begin{minipage}[c]{\linewidth}
-\centering
-\includegraphics[width = 2.5in, height = 1.8in]{../images/AS_09125_050118150001_A03f05d0.jpg}
-\subcaption{AS\_09125\_050118150001\_A03f05d0.jpg}
-\label{fig:BBBC1}
-\end{minipage}
-
-\begin{minipage}[c]{\linewidth}
-\centering
-\lstinputlisting[breaklines]{../images/BBBC001_v1_counts.txt}
-\subcaption{BBBC001\_v1\_counts.txt}
-\label{fig:BBBC001_Counts}
-\end{minipage}
-\caption{Sample data from the BBBC1 Database with counts Ground truth}
-\end{figure}
-
-in the figure \ref{fig:BBBC001_Counts} we can see the two counts performed by two experts, for the image \ref{fig:BBBC1} the first expert have found 241 cells but the second one found 257 cells.
-
-\subsection{Foreground and background}
-\hspace{\parindent}
-In this case, a human produces a binary (black and white but in some cases thy use other colors) image the same size as the original image. Pixels that belong to the foreground (i.e., the cells or other objects) are white, and pixels that belong to the background are black. in the example below (figure \ref{fig:BBBC004_img} and \ref{fig:BBBC004_F}) we can see the image and the corresponding mask where the cells colored with blue and the background with black.
-
-\begin{figure}[H]
-\begin{minipage}[c]{0.4\linewidth}
-\centering
-\includegraphics[width=70mm]{../images/BBBC4-1.jpg}
-\subcaption{2Gray1.tif (image)}
-\label{fig:BBBC004_img}
-\end{minipage}
-\hfill
-\begin{minipage}[c]{0.4\linewidth}
-\centering
-\includegraphics[width=70mm]{../images/BBBC4-1-F.jpg}
-\subcaption{1.tif (mask)}
-\label{fig:BBBC004_F}
-\end{minipage}
-\caption{Sample data from the BBBC4 Database with mask as ground truth}
-\end{figure}
-
-\subsection{Outlines of individual objects}
-\hspace{\parindent}
-In this case, a human outlines each cell in the image in order to indicate which pixels belong to which cell. The ground truth is provided as binary images, with black outlines on a white background.
-
-\begin{figure}[H]
-\begin{minipage}[c]{0.4\linewidth}
-\centering
-\includegraphics[width=70mm]{../images/48hr-001-DIC.jpg}
-\subcaption{48hr-001-DIC.jpg (image)}
-\label{fig:BBBC009_img}
-\end{minipage}
-\hfill
-\begin{minipage}[c]{0.4\linewidth}
-\centering
-\includegraphics[width=70mm]{../images/48hr-001-DIC_.jpg}
-\subcaption{48hr-001-DIC.jpg (edge mask)}
-\label{fig:BBBC009_O}
-\end{minipage}
-\caption{Sample data from the BBBC9 Database with edge mask (outlines) as ground truth}
-\end{figure}
-
-\subsection{Biological labels}
-\hspace{\parindent}
-In these cases, the experiments have been prepared with control samples for which we know the expected biological result. The types of controls that are available dictate the type of statistic that can be calculated.
-
-\subsection{Location}
-\hspace{\parindent}
-In this case, the ground truth consists of the X, Y, and optionally Z location of objects (typically their centroids similar to ALL-IDB1 Annotation \ref{fig:Im006.xyc.jpg}) .
-
-\subsection{Bounding Boxes}
-\hspace{\parindent}
-Bounding boxes are rectangles completely enclosing an object.
-
-\vspace{-0.1in}
-
-\section{WBC Image Dataset : Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning}
-\hspace{\parindent}
-This is two datasets of white blood cell (WBC) images used for “Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning”, which can be used to evaluate cell image segmentation methods \textsuperscript{\cite{Zheng2018}}.\
-This collection contains two datasets different from each other in terms of the image color, cell shape, background, etc. The ground truth segmentation results are manually sketched by domain experts, where the nuclei, cytoplasms and background including red blood cells are marked in white, gray and black respectively. 
-
-\subsection{Dataset 1}
-\hspace{\parindent}
-Was obtained from Jiangxi Tecom Science Corporation \textsuperscript{\cite{2022_tecom-cn}}, China. It contains three hundred 120×120 images of WBCs and their color depth is 24 bits. The images were taken by a Motic Moticam Pro 252A optical microscope camera with a N800-D motorized auto-focus microscope.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5.2in]{../images/WBC_Dataset1.png}
-\caption{Sample data from WBC\_Segmentaion Dataset 1}
-\label{fig:WBC_Dataset1_sample}
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 7in]{../images/Diag_WBC_PLT_UNET_SegNet.png}}
+    \caption{Schema of the segmentation and counting steps of the WBC's and Platelets}
+    \label{fig:scheme_WBC_PLT}
 \end{figure}
 
-\subsection{Dataset 2}
-Consists of one hundred 300×300 color images, which were collected from the Cella-Vision blog \textsuperscript{\cite{2022_cellavision}}. The cell images are generally purple and may contain many red blood cells around the white blood cells.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=5.2in]{../images/WBC_Dataset2.png}
-\caption{Sample data from WBC\_Segmentaion Dataset 2}
-\label{fig:WBC_Dataset2_sample}
-\end{figure}
-
-\subsection{Annotation}
+\section{Counting}
+\vspace{0.2in}
 \hspace{\parindent}
-The class labels of each image in Dataset 1 and Dataset 2 are stored in csv files. The labels (1- 5) represent neutrophil, lymphocyte, monocyte, eosinophil and basophil, respectively.
+After having segmented blood cell images (red, white blood cells and platelets), we use multiple post-processing methods (machine learning algorithms) to get the coordinates of circles and count them. as we can see in fig \ref{fig:scheme_RBC} and \ref{fig:scheme_WBC_PLT}.\\
+We can see below are all the algorithms we used to get an relatively accurate blood cell count:
 
-
-\subsection{A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm}
+\subsection{Circle Hough Transform}
 \hspace{\parindent}
-The database is provided by \href{https://raabindata.com/free-data/#double-labeled-cropped-cells}{RabinData} and \textsuperscript{\cite{Kouzehkanan2022}} which divides on two separate datasets:
+Circle Hough Transform (CHT) is machine learning algorithm used to extract features (circles) from imperfect images.
+We modified its parameters (Minimum distance, Minimum and Maximum radius...) for each type of blood cells (red, white and platelets).\\
+Note that we do not rely on this approach to count white blood cells, because most white blood cells have different shapes.
+Therefore, this method is useless when it comes to white blood cells counting.
 
-\subsubsection{Raabin-WBC Data}
-\hspace{\parindent}
-Contains 4 sub-Datasets:
+We Modified this method by adding a loss function which will help us to eliminate False Positives circles by calculating the percentage of the intersection between the circle and the cell mask. we improved the counting accuracy by more than 20\% with a threshold intersection percentage of 60\%.\\
+As we can see in fig \ref{fig:cht_scheme} the steps of the counting with the CHT method:
 \begin{itemize}
-    \item \textbf{Double-labeled cropped cells} : Double-labeled cropped cells are also provided containing only five main classes including mature neutrophils, lymphocytes (small and large), eosinophils, monocytes, and basophils. 
-    \item \textbf{Nucleus\_cytoplasm\_Ground truths} : in this sub-Dataset they prepared the ground truths of the cytoplasm and the nucleus for a proper number of cropped white blood cells. For this purpose, 1145 cropped images including 242 lymphocytes, 242 monocytes, 242 neutrophils, 201 eosinophils, and 218 basophils were randomly selected, and their ground truths were extracted by an expert.
-    \item \textbf{Microscopic images were taken by the Olympus CX18 microscope and the Samsung Galaxy S5 camera and the 4th database with contain images taken by Zeiss microscope and the LG G3 camera } : in these two sub-Datasets. Corresponding to each microscopic image, a dictionary (json format) file containing the following information about that image was provided:
-    \begin{itemize}
-        \item Information about the blood elements in the image including their coordinates and labels.
-        \item Information about the blood smears including staining method and the type of the disease.
-        \item Information about the microscope includes the type of microscope and its magnification size.
-        \item The type of camera used.
-    \end{itemize}
-\end{itemize}
+    \item we first take the mask/edge from the model.
+    \item we apply a threshold on the mask to binarize it.
+    \item we apply our surface filter algorithm to filter object that are not in the size range of the cell that we are counting.
+    \item apply the circle hough transform to detect the circles in the cleaned image.
+    \item feed the binary mask and the obtained circles from CHT to calculate loss of each circle (percentage of intersection).
+    \item return the final number of circles that meet the threshold condition which is the circle count.
 
-\subsubsection{Raabin-Leukemia Data}
-\hspace{\parindent}
-Contains 4 sub-Datasets:
-\begin{itemize}
-    \item \textbf{Acute Lymphoblastic Leukemia}
-    \item \textbf{Acute Myeloblastic Leukemia} 
-    \item \textbf{Chronic Lymphocytic Leukemia}
-    \item \textbf{Chronic Myelogenous Leukemia}
-\end{itemize}
-In each of these sub-Dataset, All samples were taken from patients who had referred to our collaborator medical laboratory (Takht-e Tavous Laboratory in Tehran, Iran). It should be notices Zeiss microscope and LG J3 smartphone camera had been used for imaging.
+  \end{itemize} 
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 7in]{../images/CHT_scheme.png}}
+    \caption{CHT schema applied to count blood cells}
+    \label{fig:cht_scheme}
+\end{figure}
 
-\subsection{BCCD}
+\subsection{Connected Component Labeling}
 \hspace{\parindent}
-BCCD (Blood Cell Count and Detection) Dataset is a small-scale dataset for blood cells detection. The dataset contains a total of 364 (640x480) jpeg images with their annotations. The original data and annotations are from \href{https://github.com/cosmicad/dataset}{cosmicad} and \href{https://github.com/akshaylamba/all_CELL_data}{akshaylamba}.\\
-In this project, the Faster R-CNN algorithm from keras-frcnn for Object Detection is used. From this dataset, nicolaschen1 developed two Python scripts to make preparation data (CSV file and images) for recognition of abnormalities in blood cells on medical images.
+Connected Component Labeling (CCL) is machine learning algorithm used to detect connected regions in a binary image.
+Before applying the connected component labeling, we convert the images to gray-scale. Then, a binary threshold is applied to the images to get binary values.
+Finally, we apply the connected component labeling to get the labels and map component labels to the resulting image, and the number of labels is the cell count accordingly.
 
 \begin{figure}[H]
 \centering
-    \fbox{\includegraphics[width = 4.2in, height = 3.5in]{../images/BBCD1.jpg}}
-\caption{Sample data from BBCD}
-\label{fig:BBCD1}
+\begin{minipage}{.5\textwidth}
+  \centering
+  \centerline{\includegraphics[width = 77mm]{../images/Im0001_1_substraction.jpg}}
+    \subcaption{input Image}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \centerline{\includegraphics[width = 77mm]{../images/Im0001_1_connected_compounent_labeling.jpg}}
+    \subcaption{output image}
+\end{minipage}
+  \caption{Example of connected component labeling}
 \end{figure}
 
-In this database they use bounding boxes to locate the cells and each bounding box has the type of cell RBC or WBC and Platelets. they are using the VOC format as a database architecture.
-
-\section{Dataset resume}
+\subsection{Watershed}
 \hspace{\parindent}
+Watershed algorithms (also called drainage divide) are used in image processing primarily for object segmentation purposes, that is, for separating different objects in an image. the main purpose of using watershed in this phase is to segment the touching and overlapping cells, the watershed takes two inputs, first i takes an image with different intensity levels in our-case the distance transform of our mask where the intensity levels represents reliefs. the second input is the water sources in our-case we extracted local maxima from the distance transform image. we can see below the steps we used to count the cells.
 
-\input{tables/table2.tex}
+\begin{enumerate}
+    \item \textbf{Compute the Euclidean distance}: we compute euclidean distance from every binary pixel to the nearest zero pixel, this map will be used as our relief map in the watershed algorithm.
+    \item \textbf{We find peaks in the distance map}: we search for peaks in our euclidean distance map which is the local maxima in each region, which are the highest points in the map (higher intensity levels), which we will use as water sources in the watershed algorithm.
+    \item \textbf{Apply connected component labeling on the peak map}: we apply CCL algorithm which is also called 8-connectivity algorithm to label the peaks (label each water source).
+    \item \textbf{Apply the Watershed algorithm on the reversed distance map using the labeled peaks}: at the end we feed the reversed distance map and the water sources map (local maxima) to the watershed algorithm to get the segmented image. 
+\end{enumerate}
+
+Here is a schema presenting the previously mentioned steps:
+
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 7in]{../images/watershed.png}}
+    \caption{Watershed schema applied to count white blood cells}
+\end{figure}
+
+\section{Metrics And Loss Functions}
+\hspace{\parindent}
+Loss functions are one of the important ingredients in deep learning-based medical image segmentation methods. In the past four years, more than 20 loss functions have been proposed for various segmentation tasks. Most of them can be used in any segmentation tasks in a plug-and-play way, we can see in (fig \ref{fig:LossFunctions}) the relations between the most used Loss Functions, we will present below the used Loss Functions in our paper.
+
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = \linewidth]{../images/LossFunctions.png}}
+    \caption{Loss Functions}
+    \label{fig:LossFunctions}
+\end{figure}
+
+In this section, we will discuss the loss functions and metrics that we used to train and evaluate our models.
+
+When performing classification predictions (pixel-wise classification in our case) there's four types of outcomes that could occur.
+
+\begin{enumerate}
+    \item \textbf{True positives} are when you predict an observation belongs to a class and it actually does belong to that class.
+    \item \textbf{True negatives} are when you predict an observation does not belong to a class and it actually does not belong to that class.
+    \item \textbf{False positives} occur when you predict an observation belongs to a class when in reality it does not.
+    \item \textbf{False negatives} occur when you predict an observation does not belong to a class when in fact it does.
+\end{enumerate}
+
+These four outcomes are often plotted on a confusion matrix. The following confusion matrix is an example for the case of binary classification. This matrix should be generated making predictions on the test data and then identifying each prediction as one of the four possible outcomes described above.
+
+\vspace{0.1in}
+
+\input{tables/table6.tex}
+
+The three main metrics used to evaluate a classification model are accuracy, precision, and recall.
+
+Accuracy is defined as the percentage of correct predictions for the test data. It can be calculated easily by dividing the number of correct predictions by the number of total predictions.
+
+\begin{equation}
+  Accuracy = \frac{Correct\; Predictions}{All\; Predictions}
+\end{equation}
+
+Precision is defined as the fraction of relevant examples (true positives) among all of the examples which were predicted to belong in a certain class.
+
+\begin{equation}
+  Precision = \frac{True\; Positives}{True\; Positives + False\; Positives}
+\end{equation}
+
+Recall is defined as the fraction of examples which were predicted to belong to a class with respect to all of the examples that truly belong in the class.
+
+\begin{equation}
+  Recall = \frac{True\; Positives}{True\; Positives + False\; Negatives}
+\end{equation}
+
+We have a semantic segmentation problem. Therefore, we use the following metrics:
+
+\subsection{Pixel Accuracy}
+\hspace{\parindent}
+Pixel accuracy is perhaps the easiest to understand conceptually. It is the percent of pixels in the input image that are classified correctly.\
+
+We don't rely on this metric because it is susceptible to class-imbalance, which is when the classes are extremely imbalanced, it means that a class or some classes dominate the image, while some other classes make up only a small portion of the image. Unfortunately, class imbalance is prevalent in many real world data sets, so it can’t be ignored.\
+
+To further illustrate this, if an input image was 100\% black, the output prediction would be above 90\% accurate, which is a totally false prediction as presented in the figure below.
+
+\vspace{0.1in}
+
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 3.4in]{../images/class_imbalance.png}}
+    \caption{Example class imbalance}
+\end{figure}
+
+\subsection{IOU}
+\hspace{\parindent}
+The Jaccard Index or Intersection Over Union, also known as the Jaccard similarity coefficient, is a statistic (metric) used for gauging the similarity and diversity of sample sets. It was developed by Grove Karl Gilbert in 1884 as his ratio of verification (v),\textsuperscript{\cite{murphy1996finley}} and now is frequently referred to as the Critical Success Index in meteorology. It was later developed independently by Paul Jaccard, originally giving the French name 'Coefficient de Communauté'. \textsuperscript{\cite{jaccard1912distribution}} The Jaccard coefficient measures similarity between finite sample sets, and is defined as the size of the intersection divided by the size of the union of the sample sets, here is the formula:
+
+\begin{equation}
+    J(A,B) = \frac{Area\; of\; Overlap}{Area\; of\; Union} = \frac{|A \cap B|}{|A \cup B|}
+\end{equation}
+
+Here is an example of using IOU on a stop sign, where the green bounding box is the ground truth (the right prediction) and the red bounding box is what the model predicted.
+
+\vspace{0.1in}
+
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\fbox{\includegraphics[width = 3.5in]{../images/exampleIOU.jpg}}}
+    \caption{Example of IOU applied on a stop sign image}
+\end{figure}
+
+\subsection{Dice}
+\hspace{\parindent}
+The Sørensen–Dice coefficient is a statistic used to measure the similarity of two samples, It was developed by the botanists (scientific study of plants) Thorvald Sørensen and Lee Raymond Dice, who published in 1948 and 1945 respectively.\\
+Sørensen's original formula was intended to be applied to discrete data. Given two sets, X and Y, it is defined as :
+\begin{equation}
+    DSC(X, Y) = \frac{2 | X \cap Y |}{| X | + | Y |}
+\end{equation}
+where |X| and |Y| are the cardinalities of the two sets . The Sørensen index equals twice the number of elements common to both sets divided by the sum of the number of elements in each set as we can see in fig \ref{fig:DSC_EX}. 
+When applied to Boolean data, using the definition of true positive (TP), false positive (FP), and false negative (FN), it can be written as :
+\begin{equation}
+    DSC = \frac{2 TP}{2 TP + FN + FP}
+\end{equation}
+
+\begin{figure}[H]
+\centering
+  \vspace{-0.1in}
+    \centerline{\includegraphics[width = 4.8in]{../images/DSC.png}}
+    \caption{Example explaining Dice coefficient}
+    \label{fig:DSC_EX}
+\end{figure}
+
+This coefficient is not very different in form from the Jaccard index (IOU). In fact, both are equivalent in the sense that given a value for the Sørensen–Dice coefficient $S$ , one can calculate the respective Jaccard index value $J$ and vice versa, using the equations : 
+\begin{equation}
+    J = \frac{DSC}{( 2 − DSC )}
+\end{equation}
+
+And 
+
+\begin{equation}
+    DSC = \frac{2 J }{( 1 + J )}
+\end{equation}
+
+The function ranges between zero and one, like Jaccard. the corresponding loss function:
+\begin{equation}
+    DSC\_LOSS = 1 - \frac{2 TP}{2 TP + FN + FP}
+\end{equation}
+
+\subsection{Tversky}
+\hspace{\parindent}
+The Tversky index, named after Amos Tversky, is an asymmetric similarity measure on sets that compares a variant to a prototype. The Tversky index can be seen as a generalization of the Sørensen–Dice coefficient and the Dice coefficient (aka Jaccard index).
+For sets X and Y the Tversky index is a number between 0 and 1 given by :
+\begin{equation}
+    S(X, Y) = \frac{| X \cap Y |}{| X \cap Y | + \alpha|X ∖ Y| + \beta | Y ∖ X|}
+\end{equation}
+Here, $X ∖ Y$ denotes the relative complement of Y in X. 
+Further, $\alpha , \beta \geq 0$ are parameters of the Tversky index. Setting $\alpha = \beta = 1$ produces the Jaccard coefficient; setting $\alpha = \beta = 0.5$ produces the Sørensen–Dice coefficient. 
+
+The function ranges between zero and one, the corresponding loss function:
+
+\begin{equation}
+    S\_LOSS(X, Y) = 1 - \frac{| X \cap Y |}{| X \cap Y | + \alpha|X ∖ Y| + \beta | Y ∖ X|}
+\end{equation}
+
+\subsection{Cross-entropy}
+\hspace{\parindent}
+Cross-entropy loss, or log loss, measures the performance of a classification model whose output is a probability value between 0 and 1. Cross-entropy loss increases as the predicted probability diverges from the actual label. So predicting a probability of .012 when the actual observation label is 1 would be bad and result in a high loss value. A perfect model would have a log loss of 0.
+
+The cross-entropy for a single example in a binary classification task can be stated by unrolling the sum operation as follows:
+
+\begin{equation}
+    H(X, Y) = - (X(class0) * log(Y(class0)) + X(class1) * log(Y(class1)))
+\end{equation}
+
+\subsection{Mean Squared Error}
+\hspace{\parindent}
+Mean squared error (MSE) is simply defined as the average of squared differences between the predicted output and the true output. Squared error is commonly used because it is agnostic to whether the prediction was too high or too low, it just reports that the prediction was incorrect.
+
+This is the Mean Squared Error formula:
+
+\begin{equation}
+    MSE = \frac{1}{n} \sum_{i=1}^{n} (Y_{i} - \hat{Y}_{i})^{2}
+\end{equation}
+
+We used this loss function in both our DO-U-Net and DO-SegNet models for predicting red and white blood cells.\
+
+There is however a slight problem, the Mean Squared Error has the disadvantage of heavily weighting outliers.[11] This is a result of the squaring of each term, which effectively weights large errors more heavily than small ones.
 
 \section{Conclusion}
+\vspace{0.2in}
 \hspace{\parindent}
-In this chapter we explored all the available datasets and their annotations which can help us in our problem, we decided to work with the updated ALL-IDB1 dataset which has 13 RBC edges and masks, 108 WBC, Platelets Masks and 13 RBC images which has the count information, but the WBC and Platelets donthave the count information where we had to use manual count and algorithms to find the count information for these images.
+In this chapter we presented the components of our method from segmentation models and their metrics, loss functions and data augmentation. We also explained the counting methods that we are using in our solution.
 
 \newpage

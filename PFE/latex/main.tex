@@ -18,9 +18,9 @@
 \usepackage{amsmath}
 \usepackage{caption}
 \usepackage{adjustbox}
-%\usepackage[a4paper,margin=0.5in]{geometry}
+% \usepackage[a4paper,margin=0.5in]{geometry}
 \usepackage[a4paper,
-            left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+            left=2cm,right=2cm,top=2cm,bottom=2cm,footskip=.25in]{geometry}
 \usepackage[normalem]{ulem}
 \usepackage[none]{hyphenat}
 \usepackage[hidelinks]{hyperref}
@@ -97,7 +97,7 @@
 {\vskip 0.2ex}%
 {\hspace{0.15in}\contentslabel{0.13in}.\hspace{0.1in}}% numbered sections formatting
 {\itshape}% unnumbered sections formatting
-%{\titlerule*[0.3pc]{.}\contentspage}%
+{}%
 
 % Subsection rules
 \titlecontents{subsection}[3.5em]
@@ -129,7 +129,6 @@
 
 % Table of contents settings:
 
-
 \usepackage[framemethod=TikZ]{mdframed}
 
 % My custom page style
@@ -140,7 +139,7 @@
    \renewcommand{\footrulewidth}{0pt}%
    \fancyhead{}
    \fancyfoot{}
-   \fancyfoot[C]{\vspace{-0.38in}\hspace{0.04in} \large{\thepage}\hspace{0.07in}\large{|}\hspace{0.07in}\large{\pageref{LastPage}}}
+   \fancyfoot[C]{\vspace{-0.38in} \large{\thepage}\hspace{0.07in}\large{|}\hspace{0.07in}\large{\pageref{LastPage}}}
 }%
 \pagestyle{empty}
 
@@ -253,15 +252,13 @@
 
 \input{chap2.tex}
 
+\newpage
 
+\input{chap3.tex}
 
 \newpage
 
-\input{chap5.tex}
-
-\newpage
-
-\input{chap6.tex}
+\input{chap4.tex}
 
 \newpage
 
