@@ -1,0 +1,34 @@
+\pagestyle{myfancy}
+
+% \vspace*{-0.2in}
+
+\setcounter{page}{1}
+
+\begin{center}
+    {\color{Black} \rule{6.2in}{1.4mm} }\\
+    \vspace{0.1in}
+    \scshape{\fontsize{34}{46}{\bfseries{\color{Black}{Introduction}}
+    }}
+    \\
+    
+    \vspace{0.5in}
+\end{center}
+\addcontentsline{toc}{chapter}{\vspace{-0.12in}\color{Black}{Introduction}}
+\hspace*{0.16in}
+
+Blood carries out many vital functions as it circulates through the body. It transports oxygen from the lungs to other body tissues and carries away carbon dioxide. It carries nutrients from the digestive system to the cells of the body, and carries away wastes for excretion by the kidneys. Blood helps our body fight off infectious agents and inactivates toxins, stops bleeding through its clotting ability, and regulates our body temperature. Doctors rely on many blood tests to diagnose and monitor diseases. Some tests measure the components of blood itself; others examine substances found in the blood to identify abnormal functioning of various organs. Hence, we here propose a software system which will assist pathologists to detect blood cell count and help to find out the diseases. This information can be very helpful to a physician who, for example, is trying to identify the cause of a patient's diseases.
+
+Earlier hematologists were performing microscopic, examination and counting of blood cells manually, which was very time-consuming and tedious process. Also, the accuracy of counting mainly depends on their expertise skill and their physical conditions. Also, because of cells complex nature, it still remains a challenging task to segment cells from its background and count them automatically.
+
+Our work is to automate the task of cell counting, we will try to find the best solution to preform the complete blood count (CBC). Therefor, we procede in two steps:
+\begin{itemize}
+    \item \textbf{The segmentation:} where we need to segment the image to remove the noise and get a clear mask on which we are going preform the counting.In this phase we are comparing between two convolutional neural networks U-Net and SegNet.
+    \item \textbf{The counting:} in which we will take the output mask from the first phase and apply counting algorithms on it. We used 3 algorithms to count the cells Watershed, Connected Component Labeling, Circle Hough transform.\
+\end{itemize}
+
+This thesis is presented in four chapters:\\
+In the first chapter \textit{Blood Cells \& }  present the medical background of blood cells and the importance of the complete blood count. A brief summary of artificial intelligence with all of its branches and some image processing methods is given.\\
+In the second chapter \textit{State Of The Art} gives an overview of the diversity of state of the art methods with a comparative study. A  detailed study of the different dataset collections explored in this study is presented.\\
+The third chapter \textit{Contribution} present the method used in segmentation and counting.\\
+The last chapter \textit{Experiments And Results} gives the results of the experiments that we performed.
+

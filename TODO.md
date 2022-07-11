@@ -1,0 +1,22 @@
+- [x] Add dedication -- Aghiles
+- [x] Verify abstract, intro and conclusion together
+- [ ] Complete memoir verification
+- [x] Check indentations, paper format, tables, figures...
+- [x] Add to chapter 1 (Data from touazi's email)
+- [x] Chapter 1 conclusion
+- [x] Check chapter 2 (State of the Art)
+- [x] Chapter 2 conclusion
+- [x] Chapter 3 (Dataset collection) Introduction and Conclusion
+- [x] Verify chapter 4 duplicate informations
+- [x] Verify chapter 5 duplicate informations
+- [x] Chapter 5 Conclusion
+- [x] Chapter 6 result images, maybe another schema
+- [x] Chapter 6 Conclusion
+- [ ] Fix bibliography page style
+- [x] Add which type of blood cells they are segmenting in the comparative study table in state of art chapter.
+- [x] Fix margins
+- [x] Fix schemes add do-unet/segnet in the first and platelets in the second
+- [x] Add refrences
+- [x] Explain more about color space problem and the combinations between masks and edges in the future work  of conclusion
+- [x] Add comparative table of do-unet and segnet
+- [x] Add predictions of unet and segnet

@@ -1,36 +1,297 @@
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+    {\color{Black} \rule{\linewidth}{1.2mm} }\\
+\vspace{0.25in}
+ {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapter II : State of the art}}}}}
+\vspace{0.35in}\\
+    {\color{Black} \rule{\linewidth}{1.2mm} }
+\end{center}
+\vspace*{\fill}
+\addcontentsline{toc}{chapter}{\color{Black}{Chapter II : State of the art}}
+\setcounter{section}{0}
+
+\newpage
+
 \section{Introduction}
 \vspace{0.2in}
-\hspace*{0.16in}
+\hspace{\parindent}
+Blood cell segmentation is the extraction of different blood cells from microscopic images. Blood cell counting is the process of counting the detected blood cells after segmentation. Many researchers have implemented methods for segmentation and counting of blood cells using different approaches. In this section we first explore the used databases in their research and then present the methods according to the segmentation approach.
 
-Blood cell segmentation is the extraction of different blood cells from microscopic images. Blood cell counting is the process of counting the detected blood cells after segmentation. Many researchers have implemented methods for segmentation and counting of blood cells using different approaches. In this section we devise the methods according to the segmentation approach.
+\section{DataSet Collections}
+In this section we are comparing between the databases and their annotations that are available to pick the best database that will fit our problem. We can see that there is a lot of datasets which are created to attack a specific sets of problems, we can see below all available datasets:
+%we will try to find the best dataset that will help us with our problem, by performing a comparison between all the available datasets and their annotations, we can see that there is a lot of datasets which are created to attack a specific sets of problems, we can see below all available datasets:
 
-\section{Related Work}
+\subsection{ALL-IDB}
+\hspace{\parindent}
+ALL-IDB (Acute Lymphoblastic Leukemia Image Database for Image Processing) \textsuperscript{\cite{labati2011all}} is a public and free dataset, specifically designed for the evaluation and the comparison of algorithms for segmentation and image classification. The database focus on Acute Lymphoblastic Leukemia (ALL), Acute is a type of blood cancer that starts in white blood cells in bone marrow, the soft inner part of bones. It develops from immature lymphocytes, a kind of white blood cell that’s key to immune system.\textsuperscript{\cite{Annie_Stuart_What_2022_webmd}}.\
+
+Each image in the dataset, Contains classification/position of ALL lymphoblasts is provided by expert oncologists. A lymphoblast is a modified naive lymphocyte with altered cell morphology. It occurs when the lymphocyte is activated by an antigen.\
+
+The images of the dataset has been captured with an optical laboratory microscope coupled with a Canon PowerShot G5 camera. All images are in JPG format with 24 bit color depth, resolution 2592 x 1944. the ALL-IDB divides on two Datasets ALL-IDB1 and ALL-IDB2.\
+
+\subsection{Dataset ALL-IDB1}
+\hspace{\parindent}
+The ALL-IDB1 can be used for segmentation or classification with image processing methods or Artificial intelligence models. The dataset is composed of 108 images collected during September, 2005. It contains about 39000 blood elements, where the lymphocytes has been labeled by expert oncologists.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.8in]{../images/ALLIDB1.jpg}
+\caption{Examples of the images contained in ALL-IDB1: healthy cells from non-ALL patients (a,b,c), probable lymphoblasts from ALL patients (d,e,f). }
+\end{figure}
+
+\textbf{annotation:} input image ''Im006\_1.jpg'' (a) and the related classification file ''Im006\_1.xyc'' reporting the coordinates of the centroids of probable ALL lymphoblasts (b).
+
+\begin{figure}[H]
+\begin{minipage}[b]{0.35\linewidth}
+\centering
+\includegraphics[width=55mm]{../images/Im006_1.jpg}
+\subcaption{Im006\_1.jpg}
+\label{fig:Im006.jpg}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.3\linewidth}
+\centering
+\lstinputlisting[breaklines]{../images/Im006\_1.xyc}
+\subcaption{Im006\_1.xyc}
+\label{fig:Im006.xyc}
+\end{minipage}
+
+\begin{minipage}[b]{0.35\linewidth}
+\centering
+\includegraphics[width=55mm]{../images/Im033_1.jpg}
+\subcaption{Im033\_1.jpg}
+\label{fig:Im033.jpg}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.3\linewidth}
+\centering
+\lstinputlisting[breaklines]{../images/Im033\_1.xyc}
+\subcaption{Im033\_1.xyc}
+\label{fig:Im033.xyc}
+\end{minipage}
+\caption{Sample data from the ALL-IDB1 Database}
+\end{figure}
+
+The ALL-IDB1 image files are named with the notation ImXXX\_Y.jpg where XXX is a 3-digit integer counter and Y is a boolean digit equal to 0 if no blast cells are present, and equal to 1 if at least one blast cell is present in the image. All images labeled with Y=0 are from for healthy individuals, and all images labeled with Y=1 are from ALL patients. Each image file ImXXX\_Y.jpg (figure \ref{fig:Im006.jpg}, \ref{fig:Im033.jpg}) is associated with a text file ImXXX\_Y.xyc (figure \ref{fig:Im006.xyc}, \ref{fig:Im033.xyc}) reporting the coordinates of the centroids of the blast cells, if any.\\
+
+If we plot the coordinates in the Img006\_1.xyc (figure \ref{fig:Im006.jpg}) file on the image Im006\_1.jpg (figure \ref{fig:Im006.xyc}) we get the figure \ref{fig:Im006.xyc.jpg}
+
+
+
+\begin{figure}[H]
+\centering
+    \fbox{\includegraphics[width = 4in]{../images/img006.xyc.jpg}}
+\caption{coordinates from Img006\_1.xyc plotted on Img006\_1.jpg}
+\label{fig:Im006.xyc.jpg}
+\end{figure}
+
+\subsubsection{Dataset ALL-IDB1}
+\hspace{\parindent}
+This dataset has been created for testing the performances of classification systems. where the dataset has no segmentation information it contains only one information which is the presence of ALL lymphoblasts, the dataset is a collection of cropped area of interest of normal and blast cells that belongs to the ALL-IDB1 dataset as we can see in figure \ref{fig:ALL-IDB2}
+
+\begin{figure}[H]
+\centering
+\includegraphics{../images/ALL-IDB2.jpg}
+\caption{Examples of the images contained in ALL-IDB2: healthy cells from non-ALL patients (a-d), probable lymphoblasts from ALL patients (e-h).}
+\label{fig:ALL-IDB2}
+\end{figure}
+
+\vspace{-0.14in}
+
+The annotation of ALL-IDB2 is similar to the ALL-IDB1 but with no centroid coordinates. The ALL-IDB2 image files are named with the notation ImXXX\_Y.jpg where XXX is a progressive 3-digit integer and Y is a Boolean digit equal to 0 if the cell placed in the center of the image is not a blast cell, and equal to 1 if the cell placed in the center of the image is a blast cell. all images labeled with Y=0 are from for healthy individuals, and all images labeled with Y=1 are from ALL patients. 
+
+\subsection{Broad Bio-image Benchmark Collection}
+\hspace{\parindent}
+The Broad Bio-image Benchmark Collection (BBBC) is a collection of freely downloadable microscopy image sets, cited in 450+ studies. In addition to the images themselves, each set includes a description of the biological application and some type of "ground truth" (expected results) \textsuperscript{\cite{ljosa2012annotated}}. The BBBC is organized by the Broad Institute's Imaging Platform.\
+
+The dataset contains 54 image collections of various cell types, each collection has at least one of 6 ground truth types such as cell count, foreground / background, outlines of objects, biological labels, location and bounding boxes. in the sections below we describe each ground truth:
+
+\subsubsection{Cell counts}
+\hspace{\parindent}
+In this case, the ground truth consists of the number of cells (or other objects) in each image, as counted by one or more humans. for example in BBBC1(Human HT29 colon-cancer cells) we have an image in figure \ref{fig:BBBC1} with the labels file in figure \ref{fig:BBBC001_Counts}:
+
+\begin{figure}[H]
+\begin{minipage}[c]{\linewidth}
+\centering
+\includegraphics[width = 2.2in]{../images/AS_09125_050118150001_A03f05d0.jpg}
+\subcaption{AS\_09125\_050118150001\_A03f05d0.jpg}
+\label{fig:BBBC1}
+\end{minipage}
+
+\begin{minipage}[c]{\linewidth}
+\centering
+\lstinputlisting[breaklines]{../images/BBBC001_v1_counts.txt}
+\subcaption{BBBC001\_v1\_counts.txt}
+\label{fig:BBBC001_Counts}
+\end{minipage}
+\caption{Sample data from the BBBC1 Database with counts Ground truth}
+\end{figure}
+
+in the figure \ref{fig:BBBC001_Counts} we can see the two counts performed by two experts, for the image \ref{fig:BBBC1} the first expert have found 241 cells but the second one found 257 cells.
+
+\subsubsection{Foreground and background}
+\hspace{\parindent}
+In this case, a human produces a binary (black and white but in some cases thy use other colors) image the same size as the original image. Pixels that belong to the foreground (i.e., the cells or other objects) are white, and pixels that belong to the background are black. in the example below (figure \ref{fig:BBBC004_img} and \ref{fig:BBBC004_F}) we can see the image and the corresponding mask where the cells colored with blue and the background with black.
+
+\begin{figure}[H]
+\begin{minipage}[c]{0.4\linewidth}
+\centering
+\includegraphics[width=50mm]{../images/BBBC4-1.jpg}
+\subcaption{2Gray1.tif (image)}
+\label{fig:BBBC004_img}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.4\linewidth}
+\centering
+\includegraphics[width=50mm]{../images/BBBC4-1-F.jpg}
+\subcaption{1.tif (mask)}
+\label{fig:BBBC004_F}
+\end{minipage}
+\caption{Sample data from the BBBC4 Database with mask as ground truth}
+\end{figure}
+
+\subsubsection{Outlines of individual objects}
+\hspace{\parindent}
+In this case, a human outlines each cell in the image in order to indicate which pixels belong to which cell. The ground truth is provided as binary images, with black outlines on a white background.
+
+\begin{figure}[H]
+\begin{minipage}[c]{0.4\linewidth}
+\centering
+\includegraphics[width=50mm]{../images/48hr-001-DIC.jpg}
+\subcaption{48hr-001-DIC.jpg (image)}
+\label{fig:BBBC009_img}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.4\linewidth}
+\centering
+\includegraphics[width=50mm]{../images/48hr-001-DIC_.jpg}
+\subcaption{48hr-001-DIC.jpg (edge mask)}
+\label{fig:BBBC009_O}
+\end{minipage}
+\caption{Sample data from the BBBC9 Database with edge mask (outlines) as ground truth}
+\end{figure}
+
+\subsubsection{Biological labels}
+\hspace{\parindent}
+In these cases, the experiments have been prepared with control samples for which we know the expected biological result. The types of controls that are available dictate the type of statistic that can be calculated.
+
+\subsubsection{Location}
+\hspace{\parindent}
+In this case, the ground truth consists of the X, Y, and optionally Z location of objects (typically their centroids similar to ALL-IDB1 Annotation \ref{fig:Im006.xyc.jpg}) .
+
+\subsubsection{Bounding Boxes}
+\hspace{\parindent}
+Bounding boxes are rectangles completely enclosing an object.
+
+\vspace{-0.1in}
+
+\subsection{WBC Image Dataset : Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning}
+\hspace{\parindent}
+This is two datasets of white blood cell (WBC) images used for “Fast and Robust Segmentation of White Blood Cell Images by Self-supervised Learning”, which can be used to evaluate cell image segmentation methods \textsuperscript{\cite{Zheng2018}}.\
+This collection contains two datasets different from each other in terms of the image color, cell shape, background, etc. The ground truth segmentation results are manually sketched by domain experts, where the nuclei, cytoplasms and background including red blood cells are marked in white, gray and black respectively. 
+
+\subsubsection{Dataset 1}
+\hspace{\parindent}
+Was obtained from Jiangxi Tecom Science Corporation \textsuperscript{\cite{2022_tecom-cn}}, China. It contains three hundred 120×120 images of WBCs and their color depth is 24 bits. The images were taken by a Motic Moticam Pro 252A optical microscope camera with a N800-D motorized auto-focus microscope.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.2in]{../images/WBC_Dataset1.png}
+\caption{Sample data from WBC\_Segmentaion Dataset 1}
+\label{fig:WBC_Dataset1_sample}
+\end{figure}
+
+\subsubsection{Dataset 2}
+Consists of one hundred 300×300 color images, which were collected from the Cella-Vision blog \textsuperscript{\cite{2022_cellavision}}. The cell images are generally purple and may contain many red blood cells around the white blood cells.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.2in]{../images/WBC_Dataset2.png}
+\caption{Sample data from WBC\_Segmentaion Dataset 2}
+\label{fig:WBC_Dataset2_sample}
+\end{figure}
+
+\subsection{Annotation}
+\hspace{\parindent}
+The class labels of each image in Dataset 1 and Dataset 2 are stored in csv files. The labels (1- 5) represent neutrophil, lymphocyte, monocyte, eosinophil and basophil, respectively.
+
+
+\subsection{A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm}
+\hspace{\parindent}
+The database is provided by \href{https://raabindata.com/free-data/#double-labeled-cropped-cells}{RabinData} and \textsuperscript{\cite{Kouzehkanan2022}} which divides on two separate datasets:
+
+\subsubsection{Raabin-WBC Data}
+\hspace{\parindent}
+Contains 4 sub-Datasets:
+\begin{itemize}
+    \item \textbf{Double-labeled cropped cells} : Double-labeled cropped cells are also provided containing only five main classes including mature neutrophils, lymphocytes (small and large), eosinophils, monocytes, and basophils. 
+    \item \textbf{Nucleus\_cytoplasm\_Ground truths} : in this sub-Dataset they prepared the ground truths of the cytoplasm and the nucleus for a proper number of cropped white blood cells. For this purpose, 1145 cropped images including 242 lymphocytes, 242 monocytes, 242 neutrophils, 201 eosinophils, and 218 basophils were randomly selected, and their ground truths were extracted by an expert.
+    \item \textbf{Microscopic images were taken by the Olympus CX18 microscope and the Samsung Galaxy S5 camera and the 4th database with contain images taken by Zeiss microscope and the LG G3 camera } : in these two sub-Datasets. Corresponding to each microscopic image, a dictionary (json format) file containing the following information about that image was provided:
+    \begin{itemize}
+        \item Information about the blood elements in the image including their coordinates and labels.
+        \item Information about the blood smears including staining method and the type of the disease.
+        \item Information about the microscope includes the type of microscope and its magnification size.
+        \item The type of camera used.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Raabin-Leukemia Data}
+\hspace{\parindent}
+Contains 4 sub-Datasets:
+\begin{itemize}
+    \item \textbf{Acute Lymphoblastic Leukemia}
+    \item \textbf{Acute Myeloblastic Leukemia} 
+    \item \textbf{Chronic Lymphocytic Leukemia}
+    \item \textbf{Chronic Myelogenous Leukemia}
+\end{itemize}
+In each of these sub-Dataset, All samples were taken from patients who had referred to our collaborator medical laboratory (Takht-e Tavous Laboratory in Tehran, Iran). It should be notices Zeiss microscope and LG J3 smartphone camera had been used for imaging.
+
+\subsection{BCCD}
+\hspace{\parindent}
+BCCD (Blood Cell Count and Detection) Dataset is a small-scale dataset for blood cells detection. The dataset contains a total of 364 (640x480) jpeg images with their annotations. The original data and annotations are from \href{https://github.com/cosmicad/dataset}{cosmicad} and \href{https://github.com/akshaylamba/all_CELL_data}{akshaylamba}.\\
+In this project, the Faster R-CNN algorithm from keras-frcnn for Object Detection is used. From this dataset, nicolaschen1 developed two Python scripts to make preparation data (CSV file and images) for recognition of abnormalities in blood cells on medical images.
+
+\begin{figure}[H]
+\centering
+    \fbox{\includegraphics[width=4.2in]{../images/BBCD1.jpg}}
+\caption{Sample data from BBCD}
+\label{fig:BBCD1}
+\end{figure}
+
+In this database they use bounding boxes to locate the cells and each bounding box has the type of cell RBC or WBC and Platelets. they are using the VOC format as a database architecture.
+
+\subsection{Dataset collections resume}
+\hspace{\parindent}
+
+\input{tables/table2.tex}
+
+\section{Computer-assisted blood cell segmentation and counting review}
 
 \subsection{Image Processing Approaches}
+\hspace{\parindent}
+Bhavnani et al. \textsuperscript{\cite{bhavnani2016segmentation}} have developed a method for segmenting and counting RBC (red blood cells), WBC (White blood cells) and platelets which is also called complete blood count (CBC), by using Otsu’s thresholding and morphological operations as a segmentation method, and for counting the are preforming a comparison between two methods: the watershed algorithm and Circular Hough Transform. The model takes an RGB image as an input apply some processing steps then uses Otsu's thresholding to extract RBC and WBC separately with different threshold values then apply the two algorithm to compare the results, the model has no image size constraint because it's based only on image processing techniques and needs a small database to select the threshold values for RBC and WBC in this article they used 20 images. In the Experiment phase they used ALLIDB Database which contains 108 images with 1712x1368 and 2592x1944 resolution.The CHT method is the best in terms of accuracy with 92.67\% but it has some weaknesses with overlapping cells and morphological abnormalities. In the other side the watershed method which is a little bit adapted with overlapping and touching cells had an accuracy of 91.07\%.\
 
-Bhavnani et al. \textsuperscript{\cite{bhavnani2016segmentation}} have developed a method for segmenting and counting RBC (red blood cells), WBC (White blood cells) and platelets which is also called complete blood count (CBC), by using Otsu’s thresholding and morphological operations as a segmentation method, and for counting the are preforming a comparison between two methods: the watershed algorithm and Circular Hough Transform. The model takes an RGB image as an input apply some processing steps then uses Otsu's Thresholding to extract RBC and WBC separately with different threshold values then apply the two algorithm to compare the results, the model has no image size constraint because it's based only on image processing techniques and needs a small database to select the threshold values for RBC and WBC in this article they used 20 images. In the Experiment phase they used ALLIDB Database which contains 108 images with 1712x1368 and 2592x1944 resolution.The CHT method is the best in terms of accuracy with 92.67\% but it has some weaknesses with overlapping cells and morphological abnormalities. In the other side the watershed method which is a little bit adapted with overlapping and touching cells had an accuracy of 91.07\%.\\
+Guiliang, FENG et al. \textsuperscript{\cite{guiliang2016microscopic}} have a developed an algorithm that segments and counts cell images based on image definition, a Discrete Cosine Transform (DCT) is applied, which is proposed by N. Ahmed and Rao in 1974 \textsuperscript{\cite{ahmed1974discrete}}. Instead of the traditional watershed approach, the DCT method showed better results in comparison.\
 
-Guiliang, FENG et al. \textsuperscript{\cite{guiliang2016microscopic}} have a developed an algorithm that segments and counts cell images based on image definition, a Discrete Cosine Transform (DCT) is applied, which is proposed by N. Ahmed and Rao in 1974 \textsuperscript{\cite{ahmed1974discrete}}. Instead of the traditional watershed approach, the DCT method showed better results in comparison.
+However, there is a drawback to this approach, because this algorithm depends on image definition it relies on well focused images, consequently, when the images are out of focus the segmentation and counting is not reliable. But despite that drawback, it achieved a relatively high accuracy of over 90\% which is better that the watershed method.\\
 
-However, there is a drawback to this approach, because this algorithm depends on image definition it relies on well focused images, consequently, when the images are out of focus the segmentation and counting is not reliable. But despite that drawback, it achieved a relatively high accuracy of over 90\% which is better that the watershed method. \\
-
-K. Sudha and P. Geetha \textsuperscript{\cite{SUDHA2020639}} have developed a two stage framework which will segment the leukocytes (a type of WBC) with an edge strength-based Grabcut method as a first stage, in the second stage will count the cells using the novel gradient circular hough transform (GCHT) method. the model takes and RGB image convert it to HSV color space to extract the S component where the WBCs are more clear then applies the edge strength-based location detection the results are fed to fine segmentation using Grabcut Algorithm which will output the edge segmentation mask, for the counting the mask will be fed to the proposed GCHT Algorithm. In the experiments phase they used ALL-IDB \textsuperscript{\cite{labati2011all}} and Cellavision \textsuperscript{\cite{Zheng2018}} datasets, after resising the images to 256x256.\\
-After the experiments the proposed method had rached an avreage segmentation accuracy of 99.32\% and a counting accuracy of 97.3\%.
-
-The new GCHT method can segment touched cells and even overlapped cells.\\
+K. Sudha and P. Geetha \textsuperscript{\cite{SUDHA2020639}} have developed a two stage framework which will segment the leukocytes (a type of WBC) with an edge strength-based Grabcut method as a first stage, in the second stage will count the cells using the novel gradient circular hough transform (GCHT) method. the model takes and RGB image convert it to HSV color space to extract the S component where the WBCs are more clear then applies the edge strength-based location detection the results are fed to fine segmentation using Grabcut Algorithm which will output the edge segmentation mask, for the counting the mask will be fed to the proposed GCHT Algorithm. In the experiments phase they used ALL-IDB \textsuperscript{\cite{labati2011all}} and Cellavision \textsuperscript{\cite{Zheng2018}} datasets, after resizing the images to 256x256.\\
+After the experiments the proposed method had reached an average segmentation accuracy of 99.32\% and a counting accuracy of 97.3\%.\\
+The new GCHT method can segment touched cells and even overlapped cells.
 
 \subsection{Machine Learning Approaches}
-
+\hspace{\parindent}
 Kimbahune et al. \textsuperscript{\cite{kimbahune2011blood}} have developed a method for segmenting and counting red blood cells (RBC) and white blood cells (WBC).
-segmentation is done using Pulse-Coupled Neural Network (PCNN) and square tracing algorithm for countour tracing after de-noising it with PCNN combined with median filter, the counting is performed by scanning the image and using edge detection methods as square tracing algorithm. this method gave good results compared to state of art methods.\\
+segmentation is done using Pulse-Coupled Neural Network (PCNN) and square tracing algorithm for contour tracing after de-noising it with PCNN combined with median filter, the counting is performed by scanning the image and using edge detection methods as square tracing algorithm. this method gave good results compared to state of art methods.\\
 %this kimbahune article they didn't give any info about the database or the experimental results 
 
-Carlos X. Hern{\'{a}}ndez et al. \textsuperscript{\cite{DBLP:journals/corr/abs-1802-10548}} have implemented a convolutional neural network (CNN) using a feature pyramid network (FPN) combined with a VGG style neural network for segmenting and counting of cells in a given microscopy image.
-The dataset they used is BBBC005 \textsuperscript{\cite{ljosa2012annotated}} from Broad Institute's Bioimage Benchmark Collection, which consists of 9600 images and each image is 696x520 pixels but they were scaled down to 256x192 for the purposes of their experiment.
+Carlos X. Hern{\'{a}}ndez et al. \textsuperscript{\cite{DBLP:journals/corr/abs-1802-10548}} have implemented a convolutional neural network (CNN) using a feature pyramid network (FPN) combined with a VGG style neural network for segmenting and counting of cells in a given microscopy image.\
+The dataset they used is BBBC005 \textsuperscript{\cite{ljosa2012annotated}} from Broad Institute's Bio-image Benchmark Collection, which consists of 9600 images and each image is 696x520 pixels but they were scaled down to 256x192 for the purposes of their experiment.\
 
-Out of the total 9600 images only 600 of the images which have a corresponding mask were used for the FPN training. And 100 of those were used for fast prototyping and a standard of 80-20 train/test split for the final models.
+Out of the total 9600 images only 600 of the images which have a corresponding mask were used for the FPN training. And 100 of those were used for fast prototyping and a standard of 80-20 train/test split for the final models.\
 On the other hand, the full 9600 images were used for the VGG network.
-This approach achieved a relatively good accuracy of 81.75\% but with some failure cases such as:
+This approach achieved a relatively good accuracy of 81.75\% but with some failure cases such as:\
 %the accuracy is calculated manually from the given results in the article
 % 100 - (rmspe = np.sqrt(np.mean(np.square(((y_true - y_pred) / y_true)), axis=0)))
 
@@ -40,31 +301,29 @@ This approach achieved a relatively good accuracy of 81.75\% but with some failu
   \item bad focal planes.
 \end{itemize}
 
-Tran, Thanh and Minh et al. \textsuperscript{\cite{tran2019blood}} have developed a method for segmenting and counting RBC and WBCs by using the SegNet model initialised with weights from a pre-trained VGG-16 model, for the counting they first apply Distance transform with 4 different distance metrics, then they apply binary dilation. At the End, they apply the connected component labeling algorithm to count the number of separated cells in images mask. for the training they used 42 images from ALL-IDB1 \textsuperscript{\cite{labati2011all}} after they cropped them to decrease the computation time and
-memory usage and reduce the number of RBC compared to WBC the result images have a resolution of 360*480*3 (RGB), they used 29 images for training and 13 for testing ,the model had a segmentation accuracy of 89\% and counting accuracy of 93.3\% on RBC and accuracy of 100\% on WBC with the testing database which has the cropped images of RBC and WBC.\\
+Tran, Thanh and Minh et al. \textsuperscript{\cite{tran2019blood}} have developed a method for segmenting and counting RBC and WBCs by using the SegNet model initialised with weights from a pre-trained VGG-16 model, for the counting they first apply Distance transform with 4 different distance metrics, then they apply binary dilation. At the End, they apply the connected component labeling algorithm to count the number of separated cells in images mask. for the training they used 42 images from ALL-IDB1 \textsuperscript{\cite{labati2011all}} after they cropped them to decrease the computation time and memory usage and reduce the number of RBC compared to WBC the result images have a resolution of 360*480*3 (RGB), they used 29 images for training and 13 for testing ,the model had a segmentation accuracy of 89\% and counting accuracy of 93.3\% on RBC and accuracy of 100\% on WBC with the testing database which has the cropped images of RBC and WBC.\
+
 On the first database with cropped images they had only few WBC but in this second database they have more WBC , the database 2 contains 108 only WBC images with the same size of database 1 360*480*3, they augmented the training dataset from 76 to 380 and used 32 images for testing, this second model focus only on the WBC which will increase the segmentation accuracy to 98.5\%, and have a counting accuracy of 97.29\%. The counting accuracy have decreased because of the clumped cells which is the weakness of this model.\\
 
-Yan Kong et al. \textsuperscript{\cite{Kong:20}} have developed a two-stage framework using parallel modified U-Nets together with seed guided water-mesh algorithm for automatic segmentation and yeast cells counting which is used to observe the living conditions and survival of yeast cells under experimental conditions.
+Yan Kong et al. \textsuperscript{\cite{Kong:20}} have developed a two-stage framework using parallel modified U-Nets together with seed guided water-mesh algorithm for automatic segmentation and yeast cells counting which is used to observe the living conditions and survival of yeast cells under experimental conditions.\
 
-The cell images used in this study were captured by Olympus IX83 (Olympus Life Sciences, Tokyo, Japan) inverted microscope. They manually selected 20 raw DIC (differential interference contrast) images which contained a number of yeast cells and the annotations were done manually by laboratory technicians, they then obtain 40 images, 20 masked annotation images and the other 20 is center annotation images of yeast cells.
+The cell images used in this study were captured by Olympus IX83 (Olympus Life Sciences, Tokyo, Japan) inverted microscope. They manually selected 20 raw DIC (differential interference contrast) images which contained a number of yeast cells and the annotations were done manually by laboratory technicians, they then obtain 40 images, 20 masked annotation images and the other 20 is center annotation images of yeast cells.\
 
-After spliting images into tiles of size 224x224 with a step stride of 65 and 33 pixels for the horizontal and vertical direction, respectively. They got 4360 raw image tiles and the corresponding center annotation and masked annotation images, from that set 3310 tiles were randomly selected as the training data set and rest was a validation set.
+After splitting images into tiles of size 224x224 with a step stride of 65 and 33 pixels for the horizontal and vertical direction, respectively. They got 4360 raw image tiles and the corresponding center annotation and masked annotation images, from that set 3310 tiles were randomly selected as the training data set and rest was a validation set.
 
 The raw test DIC images used in this study were sized approximately 1002x1998 pixels, but they were resized into 1092x2084 pixels so that each DIC image could be split into a grid of 8x16 image blocks. The image blocks were then fed into modified U-Net.
 
 This method achieved a precision of over 99.74\% and an average recall rate of 99.35\%. however, there is a limitation using this approach, which is the detection of small objects.\\
 
-Shahzad, Muhammad et al. \textsuperscript{\cite{shahzad2020robust}} have developed a custom convolutional encoder-decoder framework along with VGG-16 as the pixel-level feature extraction model to address the problem of whole-slide cell segmentation using the semantic segmentation approach. Their proposed framework works as follows: First, all the original images along with manually generated ground truth masks of each blood cell type are passed through the preprocessing stage. In the preprocessing stage, pixel-level labeling, RGB to grayscale conversion of masked image and pixel fusing, and unity mask generation are performed. After that, VGG16 is loaded into the system, which acts as a pretrained pixel-level feature extraction model. Finally, the training process is initiated on the proposed model.
+Shahzad, Muhammad et al. \textsuperscript{\cite{shahzad2020robust}} have developed a custom convolutional encoder-decoder framework along with VGG-16 as the pixel-level feature extraction model to address the problem of whole-slide cell segmentation using the semantic segmentation approach. Their proposed framework works as follows: First, all the original images along with manually generated ground truth masks of each blood cell type are passed through the pre-processing stage. In the pre-processing stage, pixel-level labeling, RGB to gray-scale conversion of masked image and pixel fusing, and unity mask generation are performed. After that, VGG16 is loaded into the system, which acts as a pre-trained pixel-level feature extraction model. Finally, the training process is initiated on the proposed model.
 
 They used ALL-IDB1 as their baseline dataset which consists of 108 whole-slide blood cell images, 59 (2592x1944) images were from healthy individuals and 49 (1712x1368) images from acute lymphoblastic leukemia (ALL) patients.
 
-This approach achieved a classwise accuracies of 97.45\%, 93.34\%, and 85.11\% for RBCs, WBCs, and platelets, respectively, while global and mean accuracies remain 97.18\% and 91.96\%, respectively.\\
+This approach achieved a class-wise accuracy of 97.45\%, 93.34\%, and 85.11\% for RBCs, WBCs, and platelets, respectively, while global and mean accuracy remain 97.18\% and 91.96\%, respectively.\\
 
-Overton, Toyah and Tucker, Allan \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} have developed a method which segments and counts IDP (Internally Displaced people) and erythrocytes (red blood cells) using DO-U-Net (Dual Output U-Net) which outputs a segmentation mask and an edge mask then they substract them to get rid of the overlapping and the touching problem, the model trains on extremely small datasets (10 images) and gives a high segmentation accuracy, They selected 10 images of 108 from ALL-IDB dataset for training the model, the model takes images with a resolution of 188x188 and outputs a segmentation mask and edge mask of lower resolution 100x100, the experiments results have given an accuracy of 98.31\% on a 5 randomly selected images from ALL-IDB, for the IDP they had 98.69\% for fixed resolution images and 94.66\% for scale-invariant satellite images.\\
+Overton, Toyah and Tucker, Allan \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} have developed a method which segments and counts IDP (Internally Displaced people) and erythrocytes (red blood cells) using DO-U-Net (Dual Output U-Net) which outputs a segmentation mask and an edge mask then they subtract them to get rid of the overlapping and the touching problem, the model trains on extremely small datasets (10 images) and gives a high segmentation accuracy, They selected 10 images of 108 from ALL-IDB dataset for training the model, the model takes images with a resolution of 188x188 and outputs a segmentation mask and edge mask of lower resolution 100x100, the experiments results have given an accuracy of 98.31\% on a 5 randomly selected images from ALL-IDB, for the IDP they had 98.69\% for fixed resolution images and 94.66\% for scale-invariant satellite images.\\
 
-Li, Dongming et al. \textsuperscript{\cite{li2021robust}} have developed a method for segmenting blood cells by combining neural ordinary differential equations (NODEs) with U-Net networks to improve the accuracy of image segmentation. In order to study the effect of ODE-solve on the speed and accuracy of the network, the ODE-block module was added to the nine convolutional layers in the U-Net network. Firstly, blood cell images are preprocessed to enhance the contrast between the regions to be segmented; secondly, the same dataset was used for the training set and testing set to test segmentation results. Then they select the location where the ordinary differential equation block (ODE-block) module is added, select the appropriate error tolerance, and balance the calculation time and the segmentation accuracy, in order to exert the best performance. 
-
-\newpage
+Li, Dongming et al. \textsuperscript{\cite{li2021robust}} have developed a method for segmenting blood cells by combining neural ordinary differential equations (NODEs) with U-Net networks to improve the accuracy of image segmentation. In order to study the effect of ODE-solve on the speed and accuracy of the network, the ODE-block module was added to the nine convolutional layers in the U-Net network. Firstly, blood cell images are pre-processed to enhance the contrast between the regions to be segmented; secondly, the same dataset was used for the training set and testing set to test segmentation results. Then they select the location where the ordinary differential equation block (ODE-block) module is added, select the appropriate error tolerance, and balance the calculation time and the segmentation accuracy, in order to exert the best performance.\
 
 Finally, the error tolerance of the ODE-block is adjusted to increase the network depth, and the training NODEs-UNet network model is used for cell image segmentation. 
 
@@ -76,6 +335,13 @@ Using this approach to segment blood cell images in the testing set, it can achi
 
 \input{tables/table1.tex}
 
+We can see in the table \ref{table:comparative-study-state-of-art} each method with the approach they used, the accuracy that they achieved and the type of cells that they are  targeting.
+
 \section{Conclusion}
 \vspace{0.1in}
-\hspace*{0.16in}
+\hspace{\parindent}
+First in this chapter, we explored all the available datasets and their annotations. Later, we saw the diversity of state of the art methods where most approaches have used deep learning as a segmentation method paired with multiple image processing methods for counting blood cells.
+
+%we decided to work with the updated ALL-IDB1 dataset which has 13 RBC edges and masks, 108 WBC, Platelets Masks and 13 RBC images which has the count information, but the WBC and Platelets donthave the count information where we had to use manual count and algorithms to find the count information for these images.
+
+%after we studied these articles we've chosen the article of Overton \textsuperscript{\cite{10.1007/978-3-030-44584-3_31}} because of the performance and optimisation of their segmentation model and we applied the same idea on the SegNet model, and for the counting methods we took the 3 of the most used methods to compare between them.

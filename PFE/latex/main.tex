@@ -4,6 +4,8 @@
 \renewcommand{\baselinestretch}{1.5}
 \usepackage{float}
 \usepackage{lipsum}
+\usepackage{multirow}
+\usepackage{makecell}
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage[table,xcdraw,dvipsnames]{xcolor}
@@ -16,10 +18,9 @@
 \usepackage{amsmath}
 \usepackage{caption}
 \usepackage{adjustbox}
-%\usepackage[a4paper,margin=0.5in]{geometry}
-\usepackage[a4paper,%
-            left=2cm,right=2cm,top=1cm,bottom=2cm,%
-            footskip=-1cm]{geometry}
+% \usepackage[a4paper,margin=0.5in]{geometry}
+\usepackage[a4paper,
+            left=2cm,right=2cm,top=2cm,bottom=2cm,footskip=.25in]{geometry}
 \usepackage[normalem]{ulem}
 \usepackage[none]{hyphenat}
 \usepackage[hidelinks]{hyperref}
@@ -42,9 +43,6 @@
 % For liste of figures and tables!
 \graphicspath{{./images/}}
 \usepackage{array}
-
-% Disable auto indentation globally
-\setlength{\parindent}{0pt}
 
 % Font options
 \usepackage{mathptmx}
@@ -75,7 +73,7 @@
 \renewcommand\bibname{References}
 
 % Bibliography styling
-\bibliographystyle{plain}
+\bibliographystyle{acm}
 
 % Redifining from 1.1 to 1.a ... 1.b ... and so on
 %\renewcommand{\thesubsection}{\alph{subsection}}
@@ -99,7 +97,7 @@
 {\vskip 0.2ex}%
 {\hspace{0.15in}\contentslabel{0.13in}.\hspace{0.1in}}% numbered sections formatting
 {\itshape}% unnumbered sections formatting
-{\titlerule*[0.3pc]{.}\contentspage}%
+{}%
 
 % Subsection rules
 \titlecontents{subsection}[3.5em]
@@ -130,21 +128,8 @@
 \addtolength{\cfttabnumwidth}{2.5em} % extra space for \cftpresnum
 
 % Table of contents settings:
-\renewcommand{\contentsname}{Table Des Matières}
 
 \usepackage[framemethod=TikZ]{mdframed}
-
-% For the box (theme)
-\mdfdefinestyle{MyFrame}{%
-    linecolor=black,
-    outerlinewidth=2pt,
-    roundcorner=0pt,
-    innertopmargin=13pt,
-    innerbottommargin=13pt,
-    innerrightmargin=20pt,
-    innerleftmargin=20pt,
-    backgroundcolor=gray!10!white}
-
 
 % My custom page style
 \fancypagestyle{myfancy}{%   
@@ -154,7 +139,7 @@
    \renewcommand{\footrulewidth}{0pt}%
    \fancyhead{}
    \fancyfoot{}
-   \fancyfoot[C]{\vspace{-0.35in}\textcolor{Gray}{\Large{Page}}\hspace{0.04in} \large{\thepage}\hspace{0.07in}\large{|}\hspace{0.07in}\large{\pageref{LastPage}}}
+   \fancyfoot[C]{\vspace{0.38in} \large{\thepage}\hspace{0.07in}\large{|}\hspace{0.07in}\large{\pageref{LastPage}}}
 }%
 \pagestyle{empty}
 
@@ -184,7 +169,7 @@
 {\Large\bfseries\color{Black}}
 {\thesection.\hspace{0.08in}}
 {0em}
-{}[\titlerule]
+{}
 
 \titleformat{\subsection}
 {\large\bfseries\color{Black}}
@@ -205,165 +190,48 @@
   }
   {\end{list}}
 
-\usepackage{tikz}
+% \usepackage{tikz}
 \usetikzlibrary{calc}
 
 \usepackage{fullwidth}
 
-
+\usepackage{pdfpages}
 
 
 \begin{document}
 
-\begin{titlepage}
-
-   \begin{tikzpicture}[remember picture, overlay]
-      \draw[line width = 2pt] ($(current page.north west) + (0.25in,-0.25in)$) rectangle ($(current page.south east) + (-0.25in,0.25in)$);
-   \end{tikzpicture}
-
-   \begin{center}
-       \vspace*{-0.4in}
-
-       \begin{large}
-
-           République Algérienne Démocratique et Populaire
-
-           Ministère de l'Enseignement Supérieur et de la Recherche Scientifique
-
-           Université M'Hamed Bougara de Boumerdès
-
-       \end{large}
-
-       \vspace{0.1in}
-
-    \begin{figure}[h]
-    \centering
-        \includegraphics[width = 1.5in, height = 1in]{../images/UnivUMBB.jpg}
-    \end{figure}
-     \vspace*{-0.1in}
-    \large{Faculté des Sciences}
-    \\
-    \vspace*{-0.1in}
-    \large{Département d'informatique}
-   \end{center}
-
-    \hspace{0.2in}
-    \large{\textbf{Domaine \,\; :}  Mathématiques Informatique}
-    \kern 1in
-    \large{\textbf{Année universitaire :}}
-
-    \hspace{0.2in}
-    \large{\textbf{Filière \quad\,\,\, :}  Informatique}
-    \kern 2.65in
-    2021 / 2022
-
-    \hspace{0.2in}
-    \large{\textbf{Spécialité \, :}  Technologie de l'information}
-
-    \begin{center}
-        \begin{large}
-
-            \vspace{0.1in}
-
-            \textit{\textbf{\uline{Projet fin d'étude}}}
-        
-        \end{large}
-
-        \vspace{0.3in}
-
-        \textit{\Huge{\textbf{\uline{Thème}}}}
-
-        \vspace{0.2in}
-
-        \begin{mdframed}[style=MyFrame]
-            \begin{center}
-            \color{Black}
-              \Large{\textbf{La segmentation et Comptage des cellules biologiques}}
-
-              \Large{\textbf{dans images de microscope par apprentissage profond}}
-            \end{center}
-        \end{mdframed}
-    \end{center}
-
-    \vspace{0.4in}
-
-    \hspace{0.2in}
-    \textit{\textbf{Présenté par :}}
-
-    \hspace{0.2in}
-    Gharbi Aghiles
-
-    \hspace{0.2in}
-    Neggazi Mohamed Lamine
-
-\end{titlepage}
+\includepdf{titlepage.pdf}
+%\input{titlepage.tex}
 
 \newpage
 
-\vspace*{0.2in}
-
-\thispagestyle{empty}
-
-\begin{center}
-    {\color{Black} \rule{3in}{1.4mm} }\\
-    \vspace{0.1in}
-    \scshape{\fontsize{34}{46}{\bfseries{\color{Black}{Résumé}}}}
-    \\
-    \vspace{0.6in}
-\end{center}
-\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{Résumé}}{}
-\begin{changemargin}{0.9cm}{0.9cm}
-\hspace*{0.16in}
-\end{changemargin}
-
-Le comptage de cellules est une tâche fastidieuse qui bénéficierait grandement de l'automatisation. Le comptage précis des cellules fournit des informations quantitatives essentielles et joue un rôle clé dans la recherche biologique ainsi que dans les applications industrielles et biomédicales. Malheureusement, la méthode de comptage manuel couramment utilisée demande beaucoup de temps, mal standardisée et n'est pas reproductible. La tâche est rendue encore plus difficile par le chevauchement des cellules. la mauvaise qualité de l'imagerie ... , nous décrivons ici un réseau de neurones convolutionnel qui vas segmenter les cellules comme une première phase, et les compter dans la seconde phase.
-
-\vspace{1in}
-
-\begin{changemargin}{0.9cm}{0.9cm}
-Mots clés : CNN, Comptage des cellules, segmentation d'image
-\end{changemargin}
+\input{dedication.tex}
 
 \newpage
 
-\vspace*{0.2in}
-
-\thispagestyle{empty}
-
-\begin{center}
-    {\color{Black} \rule{3in}{1.4mm} }\\
-    \vspace{0.1in}
-    \scshape{\fontsize{34}{46}{\bfseries{\color{Black}{Abstract}}}}
-    \\
-    \vspace{0.6in}
-\end{center}
-\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{Abstract}}{}
-\begin{changemargin}{0.9cm}{0.9cm}
-\hspace*{0.16in}
-
-Cell counting is a tedious task that would benefit greatly from automation. Accurate cell counting provides essential quantitative information and plays a key role in biological research as well as industrial and biomedical applications. Unfortunately, the commonly used manual counting method is time consuming, poorly standardized and not reproducible. The task is made even more difficult by overlapping cells and poor imaging quality. In this paper we describe a convolutional neural network that will segment the cells as a first phase, and count them in the second phase.
-
-\end{changemargin}
-
-\vspace{1in}
-
-\begin{changemargin}{0.9cm}{0.9cm}
-Keywords: CNN, cell segmentation, cell counting, convolutional neural networks
-\end{changemargin}
+\input{acknowledgment.tex}
 
 \newpage
 
-\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{Table des matières}}{}
+\input{abstract.tex}
+
+\newpage
+
+\input{resume.tex}
+
+\newpage
+
+\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{Table Of Contents}}{}
 \tableofcontents
 
 \newpage
 
-\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{Liste des figures}}{}
+\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{\listfigurename}}{}
 \listoffigures
 
 \newpage
 
-\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{Liste des tableaux}}{}
+\cftaddtitleline{toc}{part}{\vspace{-0.12in}\color{Black}{\listtablename}}{}
 \listoftables
 
 \addtocontents{toc}{\protect\renewcommand{\protect\cftsecleader}{\protect\cftdotfill{\protect\cftsecdotsep}}}
@@ -372,49 +240,14 @@ Keywords: CNN, cell segmentation, cell counting, convolutional neural networks
 \addtocontents{lot}{\protect\thispagestyle{empty}}
 \addtocontents{toc}{\protect\thispagestyle{empty}}
 
-\newpage
-
-\pagestyle{myfancy}
-
-\vspace*{-0.2in}
-
-\setcounter{page}{1}
-
-\begin{center}
-    {\color{Black} \rule{6.2in}{1.4mm} }\\
-    \vspace{0.1in}
-    \scshape{\fontsize{34}{46}{\bfseries{\color{Black}{General Introduction}}}}
-    \\
-    \vspace{0.5in}
-\end{center}
-\addcontentsline{toc}{chapter}{\vspace{-0.12in}\color{Black}{General Introduction}}
-\hspace*{0.16in}
-
-Blood carries out many vital functions as it circulates through the body. It transports oxygen from the lungs to other body tissues and carries away carbon dioxide. It carries nutrients from the digestive system to the cells of the body, and carries away wastes for excretion by the kidneys. Blood helps our body fight off infectious agents and inactivates toxins, stops bleeding through its clotting ability, and regulates our body temperature. Doctors rely on many blood tests to diagnose and monitor diseases. Some tests measure the components of blood itself; others examine substances found in the blood to identify abnormal functioning of various organs. Hence, we here propose a software system which will assist pathologists to detect blood cell count and help to find out the diseases. This information can be very helpful to a physician who, for example, is trying to identify the cause of a patient's diseases.
-
-Earlier hematologists were performing microscopic Copied selected text to selection primary: examination and counting of blood cells manually, which  was very time-consuming and tedious process. Also, the accuracy of counting mainly depends on their expertise skill and their physical conditions, and because of cells complex nature, it still remains a challenging task to segment cells from its background and count them automatically.\\
-<--- --->\\
-
-This thesis is presented in four chapters:\\
-
-\textbf{Chapter 1 State of the art:}\\
-\textbf{Chapter 2 Elaboration, Conception of multiple architecture and comparative study:}\\
-\textbf{Chapter 3 Dataset collection:}\\
-\textbf{Chapter 4 Implementation and experiments:}\\
+% Disable auto indentation globally
+\setlength{\parindent}{24pt}
 
 \newpage
 
-\vspace*{\fill}
-\begin{center}
-    {\color{Black} \rule{\linewidth}{1.2mm} }\\
-\vspace{0.25in}
-{\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapter I : Blood cells \& artificial intelligence}}}}}
-\vspace{0.35in}\\
-    {\color{Black} \rule{\linewidth}{1.2mm} }
-\end{center}
-\vspace*{\fill}
-\addcontentsline{toc}{chapter}{\color{Black}{Chapter I : Blood cells \& artificial intelligence}}
-\setcounter{section}{0}
+\newgeometry{left=3cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\input{introduction.tex}
 
 \newpage
 
@@ -422,35 +255,7 @@ This thesis is presented in four chapters:\\
 
 \newpage
 
-\vspace*{\fill}
-\begin{center}
-    {\color{Black} \rule{\linewidth}{1.2mm} }\\
-\vspace{0.25in}
- {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapter II : State of the art}}}}}
-\vspace{0.35in}\\
-    {\color{Black} \rule{\linewidth}{1.2mm} }
-\end{center}
-\vspace*{\fill}
-\addcontentsline{toc}{chapter}{\color{Black}{Chapter II : State of the art}}
-\setcounter{section}{0}
-
-\newpage
-
 \input{chap2.tex}
-
-\newpage
-
-\vspace*{\fill}
-\begin{center}
-    {\color{Black} \rule{\linewidth}{1.2mm} }\\
-\vspace{0.25in}
-    {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapter III : Dataset Collection}}}}}
-\vspace{0.35in}\\
-    {\color{Black} \rule{\linewidth}{1.2mm} }
-\end{center}
-\vspace*{\fill}
-\addcontentsline{toc}{chapter}{\color{Black}{Chapter III : Dataset Collection}}
-\setcounter{section}{0}
 
 \newpage
 
@@ -458,62 +263,16 @@ This thesis is presented in four chapters:\\
 
 \newpage
 
-\vspace*{\fill}
-\begin{center}
-    {\color{Black} \rule{\linewidth}{1.2mm} }\\
-\vspace{0.25in}
-    {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapter IV : }}}}}
-\vspace{0.35in}\\
-    {\color{Black} \rule{\linewidth}{1.2mm} }
-\end{center}
-\vspace*{\fill}
-\addcontentsline{toc}{chapter}{\color{Black}{Chapter IV : }}
-\setcounter{section}{0}
-
-\newpage
-
 \input{chap4.tex}
 
 \newpage
 
-\vspace*{\fill}
-\begin{center}
-    {\color{Black} \rule{\linewidth}{1.2mm} }\\
-\vspace{0.25in}
-    {\centering\fontsize{30}{40}{\bfseries{\color{Black}{\scshape{Chapter V : Implementation}}}}}
-\vspace{0.35in}\\
-    {\color{Black} \rule{\linewidth}{1.2mm} }
-\end{center}
-\vspace*{\fill}
-\addcontentsline{toc}{chapter}{\color{Black}{Chapter V : Implementation}}
-\setcounter{section}{0}
-
-\newpage
-
-\section{Introduction}
-\vspace{0.2in}
-\hspace*{0.16in}
-
-\section{Conclusion}
-\vspace{0.1in}
-\hspace*{0.16in}
-
-\newpage
-
-\vspace*{-0.2in}
-
-\begin{center}
-    {\color{Black} \rule{5.5in}{1.4mm} }\\
-    \vspace{0.1in}
-    \scshape{\fontsize{34}{46}{\bfseries{\color{Black}{General Conclusion}}}}
-    \\
-    \vspace{0.5in}
-\end{center}
-\addcontentsline{toc}{chapter}{\vspace{-0.12in}\color{Black}{General Conclusion}}
-\hspace*{0.16in}
+\input{conclusion.tex}
 
 \newpage
 
 \bibliography{main}
+
+\newpage
 
 \end{document}

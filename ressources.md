@@ -112,8 +112,7 @@ abnormalities.
 > the dataset has masks of white blood cells
 
 ### [Updated ALL-IDB](https://drive.google.com/drive/folders/1F7kZ1SRWUD9R6aHLMkj3wsjcHnvlGuwP)
-
-> they added RBC, Platlets Masks
+they added RBC, Platlets Masks
 
 ## Slides
 
