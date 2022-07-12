@@ -1,6 +1,6 @@
 - [x] Add dedication -- Aghiles
 - [x] Verify abstract, intro and conclusion together
-- [ ] Complete memoir verification
+- [x] Complete memoir verification
 - [x] Check indentations, paper format, tables, figures...
 - [x] Add to chapter 1 (Data from touazi's email)
 - [x] Chapter 1 conclusion
