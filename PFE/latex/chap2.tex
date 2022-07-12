@@ -36,8 +36,7 @@ The ALL-IDB1 can be used for segmentation or classification with image processin
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5.8in]{../images/ALLIDB1.jpg}segmentation is done using Pulse-Coupled Neural Network (PCNN) and square tracing algorithm for contour tracing after de-noising it with PCNN combined with median filter, the counting is performed by scanning the image and using edge detection methods as square tracing algorithm. this method gave good results compared to state of art methods.\\
-
+\includegraphics[width=5.8in]{../images/ALLIDB1.jpg}
 
 \caption{Examples of the images contained in ALL-IDB1: healthy cells from non-ALL patients (a,b,c), probable lymphoblasts from ALL patients (d,e,f). }
 \end{figure}
@@ -346,6 +345,8 @@ We can see in the table \ref{table:comparative-study-state-of-art} each method w
 \vspace{0.1in}
 \hspace{\parindent}
 First in this chapter, we explored all the available datasets and their annotations. Later, we saw the diversity of state of the art methods where most approaches have used deep learning as a segmentation method paired with multiple image processing methods for counting blood cells.
+
+\newpage
 
 %we decided to work with the updated ALL-IDB1 dataset which has 13 RBC edges and masks, 108 WBC, Platelets Masks and 13 RBC images which has the count information, but the WBC and Platelets donthave the count information where we had to use manual count and algorithms to find the count information for these images.
 
