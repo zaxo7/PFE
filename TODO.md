@@ -12,7 +12,7 @@
 - [x] Chapter 5 Conclusion
 - [x] Chapter 6 result images, maybe another schema
 - [x] Chapter 6 Conclusion
-- [ ] Fix bibliography page style
+- [x] Fix bibliography page style
 - [x] Add which type of blood cells they are segmenting in the comparative study table in state of art chapter.
 - [x] Fix margins
 - [x] Fix schemes add do-unet/segnet in the first and platelets in the second
