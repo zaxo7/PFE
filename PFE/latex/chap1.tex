@@ -398,6 +398,13 @@ In watershed segmentation an image is regarded as a topographic landscape with r
   \caption{Watershed algorithm from \textsuperscript{\cite{Steve_Eddins_2022_mathworks}}}
 \end{figure}
 
+In any grayscale images, there are areas where the intensity is high and there are some where intensity is low. We can denote these high intensity areas to peaks while low intensity areas to valleys. We think of an image as a topography map, where each pixel’s intensity contributes to the topography map, either a local elevation or a depression. To separate objects in images, we will fill out each valley with water of different colors. Slowly, the water will rise up and to a point water from different valleys start to merge. This is when we build barriers on top of the peak to avoid having the peak underwater. Once the barriers are built out, the barriers constitutes the boundary of the object.
+
+In our case we will use the watershed by Flooding + predefined water sources.
+We define euclidean distance transform map as our relief map, then extract local maxima from the euclidean distance map to use them as water sources.
+\\\\
+you can consult the \textbf{chapter 3 - section 7.3} for the use case of watershed algorithm in our system.
+
 \subsection{Connected Component Labeling}
 \hspace{\parindent}
 Connected component labeling (also known as connected component analysis, blob extraction, or region labeling) is an algorithmic application of graph theory used to determine the connectivity of “blob”-like regions in a binary image.
@@ -412,8 +419,44 @@ A great example of connected component Labeling is that we are using this algori
     \caption{Object counting using Connected Component Labeling (CCL).}
     \label{fig:connected_component_labeling}
 \end{figure}
+
+In our case we are using the two pass method where the algorithm will browse the matrix 2 times to create the segments which also known as the Hoshen–Kopelman algorithm \textsuperscript{\cite{hoshman2002}}. it iterates through 2-dimensional binary data. The algorithm makes two passes over the image: the first pass to assign temporary labels and record equivalences, and the second pass to replace each temporary label by the smallest label of its equivalence class. 
+
+\textbf{Connectivity checks} are carried out by checking neighbor pixels' labels (neighbor elements whose labels are not assigned yet are ignored), or say, the North-East, the North, the North-West and the West of the current pixel (assuming 8-connectivity). 4-connectivity uses only North and West neighbors of the current pixel. The following conditions are checked to determine the value of the label to be assigned to the current pixel (4-connectivity is assumed) 
+
+\begin{enumerate}
+    \item Does the pixel to the left (West) have the same value as the current pixel?
+        \begin{itemize}
+            \item \textbf{Yes} – We are in the same region. Assign the same label to the current pixel
+            \item \textbf{No} – Check next condition
+        \end{itemize}
+    \item Do both pixels to the North and West of the current pixel have the same value as the current pixel but not the same label?
+     \begin{itemize}
+        \item \textbf{Yes} – We know that the North and West pixels belong to the same region and must be merged. Assign the current pixel the minimum of the North and West labels, and record their equivalence relationship
+        \item \textbf{No} – Check next condition
+    \end{itemize}   
+    \item Does the pixel to the left (West) have a different value and the one to the North the same value as the current pixel?
+     \begin{itemize}
+        \item \textbf{Yes} – Assign the label of the North pixel to the current pixel
+        \item \textbf{No} – Check next condition
+    \end{itemize}
+    \item Do the pixel's North and West neighbors have different pixel values than current pixel?
+     \begin{itemize}
+        \item \textbf{Yes} – Create a new label id and assign it to the current pixel
+    \end{itemize}
+\end{enumerate}
+
+You can consult \textbf{Chapter 3 - Section 7.2} for the use case of CCL in our System.
+
 \subsection{Surface Filter}
 In this project we created our proper method for removing noise and classify objects which relies on the connected component labeling algorithm, this method is used to filter non connected objects in a binary image by surface, where it takes the minimum and maximum surface in pixels, and returns a clean image containing only the objects that satisfies the surface condition.
+
+\begin{enumerate}
+    \item binarize the image by applying a threshold.
+    \item Apply Connected Component Labeling on the image to label each non connected region.
+    \item calculate the surface of each region segmented with CCL then apply the conditions.
+    \item remove all the regions that doesn't satisfy the min or max condition.
+\end{enumerate}
 
 \subsection{Discrete cosine transform}
 \hspace{\parindent}
