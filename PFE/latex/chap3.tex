@@ -26,7 +26,7 @@ We will also explore different machine learning algorithms for both pre-processi
 \vspace{0.2in}
 \hspace{\parindent}
 From all of the intel we have gathered, and previously read articles, all cell segmentation tasks (blood cell segmentation in particular) are mostly using U-Net and SegNet architectures for segmenting blood cell images.
-We have implemented both the U-Net and SegNet models.
+We have used both the U-Net and SegNet models.
 In the following sections, we will briefly analyze and compare both convolutional neural network (CNN) models with their perspective results.
 And explain all the postprocessing methods we used for the counting of blood cells (red, white and platelets).
 
@@ -62,7 +62,7 @@ The SegNet neural network, developed by Alex Kendall, Vijay Badrinarayanan, and 
 \subsection{Architecture}
 \hspace{\parindent}
 SegNet has an encoder network and a corresponding decoder network, followed by a final pixelwise classification layer. This architecture is illustrated in the figure below.
-Our implemented model has the 13 encoder layers obtained from the VGG16 network, and 13 decoder layers to match the same number of encoder layers. The final decoder output is fed to a multi-class soft-max classifier to produce class probabilities for each pixel independently (pixelwise).
+The model we used has the 13 encoder layers obtained from the VGG16 network, and 13 decoder layers to match the same number of encoder layers. The final decoder output is fed to a multi-class soft-max classifier to produce class probabilities for each pixel independently (pixelwise).
 
 Each encoder in the encoder network performs convolution with a filter bank to produce a set of feature maps. These are then batch normalized. Then an element-wise rectified- linear non-linearity (ReLU) max(0, x) is applied. Following that, max-pooling with a 2x2 window and stride 2 (non-overlapping window) is performed and the resulting output is sub-sampled by a factor of 2. Max-pooling is used to achieve translation invariance over small spatial shifts in the input image.
 
