@@ -489,12 +489,21 @@ where (a,b) is the center of the circle, and r is the radius. If a 2D point (x,y
 This is the CHT algorithm:
 
 \begin{enumerate}
-    \item For each A[a,b,r] = 0;
-    \item Process the filtering algorithm on image Gaussian Blurring, convert the image to grayscale ( grayScaling), make Canny operator, The Canny operator gives the edges on image.
-    \item Vote the all possible circles in accumulator.
+    \item For each A[a,b,r] = 0: where the radius is in a given min-max range.
+    \item Process the filtering algorithm: 
+    \begin{enumerate}
+        \item apply image Gaussian Blurring.
+        \item convert the image to grayscale.
+        \item apply Canny Algorithm to extract edges of all non connected objects in the image.
+    \end{enumerate}
+    \item For each region edge, Vote the all possible circles in accumulator.
     \item The local maximum voted circles of Accumulator A gives the circle Hough space.
     \item The maximum voted circle of Accumulator gives the circle. \textsuperscript{\cite{circle-hough-transform}}
 \end{enumerate}
+
+We can note that for each given radius another accumulator should be used.
+
+You can consult \textbf{Chapter 3 - Section 7.1} for the use case of CHT in our System.
 
 \subsection{Distance Transform}
 \hspace{\parindent}

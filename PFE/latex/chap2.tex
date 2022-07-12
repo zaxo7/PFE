@@ -284,7 +284,7 @@ Kimbahune et al. \textsuperscript{\cite{kimbahune2011blood}} have developed a me
 segmentation is done using Pulse-Coupled Neural Network (PCNN) and square tracing algorithm for contour tracing after de-noising it with PCNN combined with median filter, the counting is performed by scanning the image and using edge detection methods as square tracing algorithm. this method gave good results compared to state of art methods.\\
 %this kimbahune article they didn't give any info about the database or the experimental results 
 
-Carlos X. Hern{\'{a}}ndez et al. \textsuperscript{\cite{DBLP:journals/corr/abs-1802-10548}} have implemented a convolutional neural network (CNN) using a feature pyramid network (FPN) combined with a VGG style neural network for segmenting and counting of cells in a given microscopy image.\
+Carlos X. Hern{\'{a}}ndez et al. \textsuperscript{\cite{DBLP:journals/corr/abs-1802-10548}} have used a convolutional neural network (CNN) using a feature pyramid network (FPN) combined with a VGG style neural network for segmenting and counting of cells in a given microscopy image.\
 The dataset they used is BBBC005 \textsuperscript{\cite{ljosa2012annotated}} from Broad Institute's Bio-image Benchmark Collection, which consists of 9600 images and each image is 696x520 pixels but they were scaled down to 256x192 for the purposes of their experiment.\
 
 Out of the total 9600 images only 600 of the images which have a corresponding mask were used for the FPN training. And 100 of those were used for fast prototyping and a standard of 80-20 train/test split for the final models.\
